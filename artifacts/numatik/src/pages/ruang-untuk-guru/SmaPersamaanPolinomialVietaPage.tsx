@@ -295,7 +295,7 @@ const SmaPersamaanPolinomialVietaPage = () => (
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
         <div className="min-w-0 space-y-12">
           <section id="menyelesaikan-persamaan-polinomial">
             <SectionHeading
@@ -685,7 +685,7 @@ const SmaPersamaanPolinomialVietaPage = () => (
           </section>
         </div>
 
-        <aside className="hidden lg:block">
+        <aside className="hidden desktop:block">
           <div className="sticky top-8 rounded-3xl border border-white/10 bg-[#101b2d]/85 p-4 backdrop-blur">
             <p className="mb-3 flex items-center gap-2 font-body text-xs font-black uppercase tracking-[.17em] text-cyan-100">
               <Target className="h-4 w-4" aria-hidden="true" /> Peta belajar

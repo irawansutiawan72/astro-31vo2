@@ -228,7 +228,7 @@ const CapaianPembelajaranPage = () => {
         </div>
 
         {/* ── IDENTITAS (editable) ── */}
-        <section className="grid md:grid-cols-3 gap-4 mb-8">
+        <section className="grid desktop:grid-cols-3 phone-land:grid-cols-2 gap-4 mb-8">
           <div className="rounded-2xl border border-cyan-200/25 bg-card/80 backdrop-blur p-5 md:col-span-2">
             <School className="w-8 h-8 text-cyan-200 mb-3" />
             <h2 className="font-display text-xl font-bold text-cyan-100 mb-4">Identitas Fase</h2>

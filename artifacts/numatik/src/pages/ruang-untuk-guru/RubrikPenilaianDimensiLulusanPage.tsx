@@ -253,7 +253,7 @@ th{background:#eaf4fb;font-weight:bold;border:1px solid #ccc;padding:5pt 8pt}
         </div>
 
         {/* Tabel Versi Desktop — seluruhnya editable */}
-        <section className="hidden lg:block rounded-3xl border border-cyan-200/25 bg-card/85 backdrop-blur p-5 mb-8 overflow-x-auto">
+        <section className="hidden desktop:block rounded-3xl border border-cyan-200/25 bg-card/85 backdrop-blur p-5 mb-8 overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr>
@@ -306,7 +306,7 @@ th{background:#eaf4fb;font-weight:bold;border:1px solid #ccc;padding:5pt 8pt}
         </section>
 
         {/* Versi Mobile/Tablet — Card per Dimensi */}
-        <section className="lg:hidden space-y-4 mb-8">
+        <section className="desktop:hidden space-y-4 mb-8">
           {dimensiData.map((row, idx) => (
             <article
               key={idx}

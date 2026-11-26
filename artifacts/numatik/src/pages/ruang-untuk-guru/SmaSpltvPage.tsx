@@ -239,7 +239,7 @@ const SmaSpltvPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_250px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="spltv-concept" data-testid="spltv-concept-section">
               <SectionTitle index="01" kicker="Mulai dari ide utama" title="Apa itu SPLTV?" description="SPLTV adalah beberapa persamaan linear yang bekerja bersama untuk mencari tiga nilai yang belum diketahui." />
@@ -279,7 +279,7 @@ const SmaSpltvPage = () => {
 
             <section id="spltv-methods" data-testid="spltv-methods-section">
               <SectionTitle index="02" kicker="Pilih strategi" title="Bagaimana cara menyelesaikannya?" description="Prinsipnya: ubah SPLTV menjadi sistem dua variabel, selesaikan, lalu cari nilai terakhir." />
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 {[
                   { title: "Eliminasi", color: "cyan", icon: <WandSparkles className="h-5 w-5" />, detail: "Samakan koefisien satu variabel, lalu jumlahkan atau kurangkan persamaan agar variabel itu hilang." },
                   { title: "Substitusi", color: "violet", icon: <ArrowRight className="h-5 w-5" />, detail: "Nyatakan satu variabel dari sebuah persamaan, kemudian gantikan nilainya ke persamaan lain." },
@@ -464,7 +464,7 @@ const SmaSpltvPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-8 rounded-3xl border border-white/10 bg-[#101b2d]/80 p-4 backdrop-blur">
               <p className="mb-3 flex items-center gap-2 font-body text-xs font-black uppercase tracking-[.17em] text-cyan-100"><Target className="h-4 w-4" /> Peta belajar</p>
               <nav aria-label="Navigasi materi SPLTV" className="space-y-1">

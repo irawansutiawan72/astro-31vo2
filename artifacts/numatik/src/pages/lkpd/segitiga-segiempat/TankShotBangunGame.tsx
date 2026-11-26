@@ -467,7 +467,7 @@ const TankShotBangunGame = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-[auto,1fr] gap-5 items-start">
+      <div className="grid desktop:grid-cols-[auto,1fr] phone-land:grid-cols-2 gap-5 items-start">
         <div className="relative mx-auto">
           <canvas
             ref={canvasRef}

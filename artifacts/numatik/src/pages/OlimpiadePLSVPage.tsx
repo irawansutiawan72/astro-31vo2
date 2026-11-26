@@ -4,8 +4,17 @@ import Starfield from "@/components/Starfield";
 import PageNavigation from "@/components/PageNavigation";
 import { Trophy, ChevronDown, ChevronUp } from "lucide-react";
 import { playPopSound } from "@/hooks/useAudio";
+import { useTheme } from "@/contexts/ThemeContext";
 import 'katex/dist/katex.min.css';
 import { InlineMath } from 'react-katex';
+
+const LIGHT_THEME_IMAGE_SOURCES: Record<string, string> = {
+  "/images/plsv-garis-bilangan-kuadrat.svg": "/images/plsv-garis-bilangan-kuadrat-light.svg",
+  "/images/plsv-garis-bilangan-pecahan.svg": "/images/plsv-garis-bilangan-pecahan-light.svg",
+};
+
+const getThemeAwareImageSource = (src: string, isDark: boolean) =>
+  isDark ? src : LIGHT_THEME_IMAGE_SOURCES[src] ?? src;
 
 const renderWithLatex = (text: string) => {
   const parts = text.split(/(\$[^$]+\$)/g);
@@ -1064,6 +1073,7 @@ const latihanOlimpiade: SoalItem[] = [
 
 const OlimpiadePLSVPage = () => {
   const navigate = useNavigate();
+  const { isDark } = useTheme();
   const [activeTab, setActiveTab] = useState<"materi" | "dasar" | "olimpiade">("materi");
   const [expandedSections, setExpandedSections] = useState<number[]>(() => Array.from({ length: materiSection.sections.length }, (_, i) => i));
   const [showPembahasan, setShowPembahasan] = useState<Set<string>>(new Set());
@@ -1109,7 +1119,8 @@ const OlimpiadePLSVPage = () => {
               const imgMatch = line.match(/^\[IMAGE:([^|]+)(?:\|(\w+))?\]$/);
               if (imgMatch) {
                 const sizeClass = imgMatch[2] === 'small' ? 'max-w-[200px]' : imgMatch[2] === 'medium' ? 'max-w-sm w-full' : 'max-w-lg w-full';
-                return <div key={lineIdx} className="my-3 flex justify-center"><img src={imgMatch[1]} alt="Ilustrasi" className={`${sizeClass} rounded-lg`} /></div>;
+                const imageSource = getThemeAwareImageSource(imgMatch[1], isDark);
+                return <div key={lineIdx} className="my-3 flex justify-center"><img src={imageSource} alt="Ilustrasi" className={`${sizeClass} rounded-lg`} /></div>;
               }
               return <span key={lineIdx}>{lineIdx > 0 && <br />}{lineIdx === 0 && line.startsWith('OSN') ? <span className="text-yellow-400 font-semibold">{line}</span> : renderWithLatex(line)}</span>;
             })}
@@ -1278,7 +1289,8 @@ const OlimpiadePLSVPage = () => {
                         const imgMatch = line.match(/^\[IMAGE:([^|]+)(?:\|(\w+))?\]$/);
                         if (imgMatch) {
                           const sizeClass = imgMatch[2] === 'small' ? 'max-w-[200px]' : imgMatch[2] === 'medium' ? 'max-w-sm w-full' : 'max-w-lg w-full';
-                          return <div key={i} className="my-3 flex justify-center"><img src={imgMatch[1]} alt="Ilustrasi" className={`${sizeClass} rounded-lg`} /></div>;
+                          const imageSource = getThemeAwareImageSource(imgMatch[1], isDark);
+                          return <div key={i} className="my-3 flex justify-center"><img src={imageSource} alt="Ilustrasi" className={`${sizeClass} rounded-lg`} /></div>;
                         }
                         return <div key={i} className="mb-1">{renderWithLatex(line)}</div>;
                       })}

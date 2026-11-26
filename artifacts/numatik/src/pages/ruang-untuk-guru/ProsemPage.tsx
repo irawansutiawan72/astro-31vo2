@@ -515,7 +515,7 @@ const ProsemPage = () => {
         </div>
 
         {/* Info Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 animate-slide-up">
+        <div className="grid grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2 gap-3 mb-6 animate-slide-up">
           {[
             { icon: BookOpen, label: "Mata Pelajaran", value: "Matematika" },
             { icon: CalendarDays, label: "Kelas / Semester", value: `${kelasRom} / ${semester === "ganjil" ? "Ganjil" : "Genap"}` },

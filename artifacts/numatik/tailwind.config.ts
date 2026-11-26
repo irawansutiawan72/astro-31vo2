@@ -13,6 +13,14 @@ export default {
       },
     },
     extend: {
+      screens: {
+        desktop: {
+          raw: "(hover: hover) and (pointer: fine) and (min-width: 1024px)",
+        },
+        "phone-land": {
+          raw: "(max-height: 500px) and (orientation: landscape)",
+        },
+      },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],

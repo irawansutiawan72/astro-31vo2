@@ -703,7 +703,7 @@ const KokulikulerPage = () => {
 
         {/* Info Box */}
         <div className="bg-amber-900/20 border border-amber-500/30 rounded-2xl p-4 mb-6 animate-slide-up">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2 gap-3">
             {(["Proyek", "Olimpiade", "Eksplorasi", "Investigasi"] as JenisAktivitas[]).map(j => {
               const s = JENIS_STYLE[j];
               const Icon = s.icon;

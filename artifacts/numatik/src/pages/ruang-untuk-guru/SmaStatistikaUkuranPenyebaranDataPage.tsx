@@ -112,8 +112,8 @@ export default function SmaStatistikaUkuranPenyebaranDataPage() {
           <div className="mt-6 flex flex-wrap gap-2">{["Jangkauan", "Kuartil", "Simpangan rata-rata", "Ragam", "Simpangan baku"].map(t=><span key={t} className="rounded-full border border-white/10 bg-white/[.04] px-3 py-1.5 text-xs font-semibold text-slate-200">{t}</span>)}</div>
         </div>
       </header>
-      <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Peta materi" data-testid="lesson-map-mobile">{outline.map(([label,id])=><a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-xs text-slate-200 hover:border-cyan-200/40 hover:text-cyan-100">{label}</a>)}</nav>
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_245px]"><div className="min-w-0 space-y-12">
+      <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 desktop:hidden" aria-label="Peta materi" data-testid="lesson-map-mobile">{outline.map(([label,id])=><a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-xs text-slate-200 hover:border-cyan-200/40 hover:text-cyan-100">{label}</a>)}</nav>
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_245px] phone-land:grid-cols-2"><div className="min-w-0 space-y-12">
         <section id="jangkauan" className="scroll-mt-8 space-y-5">
           <Heading n="2.5" title="Saat median sama, apakah sebarannya sama?" intro="Ukuran penyebaran memberi gambaran seberapa rapat atau renggang data. Dua kelompok bisa punya median identik, tetapi nilai-nilai di sekitarnya menempati rentang yang sangat berbeda."/>
           <div className="space-y-4 rounded-3xl border border-cyan-200/15 bg-cyan-200/[.045] p-4 sm:p-5">
@@ -187,7 +187,7 @@ export default function SmaStatistikaUkuranPenyebaranDataPage() {
 
         <section id="ragam-baku" className="scroll-mt-8 space-y-5">
           <Heading n="B–C" title="Ragam dan simpangan baku" intro="Ragam mengkuadratkan simpangan agar arah positif dan negatif tidak saling meniadakan. Akar ragam mengembalikan ukuran ke satuan data semula."/>
-          <div className="grid gap-4 lg:grid-cols-2">
+          <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
             <div className="rounded-3xl border border-violet-200/15 bg-violet-200/[.045] p-4 sm:p-5"><h3 className="font-display text-lg font-bold text-violet-100">B. Ragam (varians)</h3><p className="mt-2 text-sm leading-relaxed text-slate-300">Untuk data tunggal, ragam σ² adalah rata-rata kuadrat simpangan setiap nilai terhadap rataan. Rumus yang setara dapat diperoleh dari rata-rata kuadrat data dikurangi kuadrat rata-rata.</p><div className="mt-4 space-y-3"><Formula>σ² = Σ(xᵢ − x̄)² ÷ n</Formula><Formula>σ² = (Σxᵢ² ÷ n) − (Σxᵢ ÷ n)²</Formula></div><p className="mt-3 text-sm leading-relaxed text-slate-300"><strong className="text-violet-100">xᵢ</strong> = data ke-i; <strong className="text-violet-100">x̄</strong> = mean; <strong className="text-violet-100">n</strong> = ukuran data.</p><p className="mt-3 text-sm text-slate-300">Untuk data berkelompok:</p><div className="mt-2"><Formula>σ² = Σfᵢ(xᵢ − x̄)² ÷ Σfᵢ</Formula></div><p className="mt-3 text-sm leading-relaxed text-slate-300">xᵢ = titik tengah kelas ke-i; x̄ = rataan; fᵢ = frekuensi kelas ke-i; Σfᵢ = jumlah seluruh frekuensi.</p></div>
             <div className="rounded-3xl border border-orange-200/15 bg-orange-200/[.04] p-4 sm:p-5"><h3 className="font-display text-lg font-bold text-orange-100">C. Simpangan baku (standar deviasi)</h3><p className="mt-2 text-sm leading-relaxed text-slate-300">Simpangan baku σ adalah akar kuadrat dari ragam. Ukurannya kembali ke satuan yang sama dengan data, sehingga mudah ditafsirkan sebagai besar penyimpangan.</p><div className="mt-4 space-y-3"><Formula>σ = √[Σ(xᵢ − x̄)² ÷ n]</Formula><Formula>σ = √[(Σxᵢ² ÷ n) − (Σxᵢ ÷ n)²]</Formula></div><p className="mt-3 text-sm leading-relaxed text-slate-300">Jadi, simpangan baku adalah akar ragam: <strong className="text-orange-100">σ = √σ²</strong>. Pada data berkelompok, titik tengah dan frekuensi digunakan bersama:</p><div className="mt-3"><Formula>σ = √[Σfᵢ(xᵢ − x̄)² ÷ Σfᵢ]</Formula></div><p className="mt-3 text-sm text-slate-300">xᵢ = titik tengah kelas; x̄ = rataan; fᵢ = frekuensi; Σfᵢ = total frekuensi.</p></div>
           </div>
@@ -210,7 +210,7 @@ export default function SmaStatistikaUkuranPenyebaranDataPage() {
           </Example>
         </section>
       </div>
-      <aside className="hidden lg:block"><div className="sticky top-6 rounded-3xl border border-white/10 bg-[#101b2d]/90 p-4 backdrop-blur"><p className="mb-3 font-mono text-[10px] font-black uppercase tracking-[.2em] text-cyan-100">Peta materi</p><nav aria-label="Peta materi halaman" className="space-y-1">{outline.map(([label,id],i)=><a key={id} href={`#${id}`} className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-cyan-200/[.08] hover:text-cyan-100"><span className="mr-2 font-mono text-xs text-cyan-200/70">0{i+1}</span>{label}</a>)}</nav></div></aside></div>
+      <aside className="hidden desktop:block"><div className="sticky top-6 rounded-3xl border border-white/10 bg-[#101b2d]/90 p-4 backdrop-blur"><p className="mb-3 font-mono text-[10px] font-black uppercase tracking-[.2em] text-cyan-100">Peta materi</p><nav aria-label="Peta materi halaman" className="space-y-1">{outline.map(([label,id],i)=><a key={id} href={`#${id}`} className="block rounded-xl px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-cyan-200/[.08] hover:text-cyan-100"><span className="mr-2 font-mono text-xs text-cyan-200/70">0{i+1}</span>{label}</a>)}</nav></div></aside></div>
     </main>
   </div>;
 }

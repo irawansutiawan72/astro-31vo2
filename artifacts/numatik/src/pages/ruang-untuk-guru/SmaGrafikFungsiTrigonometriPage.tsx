@@ -229,7 +229,7 @@ function GraphExplorer() {
   const selectedHorizontalAngle = getHorizontalShiftAngle(settings.h);
 
   return (
-    <div className="grid min-w-0 gap-4 lg:grid-cols-[1.3fr_0.7fr]">
+    <div className="grid min-w-0 gap-4 desktop:grid-cols-[1.3fr_0.7fr] phone-land:grid-cols-2">
       <div className="min-w-0 rounded-2xl border border-cyan-200/15 bg-[#08112b] p-2 sm:p-3">
         <svg viewBox="0 0 360 270" role="img"
           aria-label={`Grafik fungsi ${kind}; faktor skala a ${fmt(settings.a)}, frekuensi k ${fmt(settings.k)}, pergeseran horizontal h ${selectedHorizontalAngle ? `${fmt(selectedHorizontalAngle.degrees)} derajat` : `${fmt(settings.h)} radian`}, dan pergeseran vertikal d ${fmt(settings.d)}`}

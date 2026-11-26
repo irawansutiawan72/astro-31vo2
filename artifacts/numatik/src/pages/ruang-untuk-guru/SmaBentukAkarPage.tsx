@@ -242,7 +242,7 @@ const SmaBentukAkarPage = () => {
           </Section>
 
           <Section id="operations" title={t.operations} icon={<Calculator className="h-5 w-5" />} color="orange" open={expanded.includes("operations")} onToggle={toggle}>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
               <div className="rounded-xl bg-slate-900/60 p-4 text-sm">
                 <p className="mb-2 font-semibold text-orange-300">Penjumlahan/Pengurangan</p>
                 <BlockMath math="a\sqrt{b}\pm c\sqrt{b}=(a\pm c)\sqrt{b}" />

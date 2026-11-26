@@ -521,7 +521,7 @@ function AnimasiDilatasiTitik() {
       </div>
 
       {/* Grid + Panel */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start w-full overflow-hidden">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-4 items-start w-full overflow-hidden">
 
         <div className="w-full max-w-[360px] mx-auto lg:mx-0 flex-shrink-0">
           <DGrid accent={resultColor}>
@@ -785,7 +785,7 @@ function AnimasiDilatasi() {
       </div>
 
       {/* Grid + Panel */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start w-full overflow-hidden">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-4 items-start w-full overflow-hidden">
 
         {/* SVG Grid */}
         <div className="w-full max-w-[360px] mx-auto lg:mx-0 flex-shrink-0">
@@ -1160,7 +1160,7 @@ function AnimasiRotasiKurvaLinearD() {
       </div>
 
       {/* Grid + Panel */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start w-full">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-4 items-start w-full">
 
         {/* SVG Grid */}
         <div className="w-full max-w-[360px] mx-auto lg:mx-0 flex-shrink-0">
@@ -1627,7 +1627,7 @@ function AnimasiDilatasiKurvaLinear() {
       </div>
 
       {/* Grid + Panel */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start w-full">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-4 items-start w-full">
 
         {/* SVG Grid */}
         <div className="w-full max-w-[360px] mx-auto lg:mx-0 flex-shrink-0">

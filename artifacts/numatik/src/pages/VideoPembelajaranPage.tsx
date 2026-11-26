@@ -306,7 +306,7 @@ const VideoPembelajaranPage = () => {
 
       {/* ─── MAIN CONTENT ─── */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-16">
-        <div className="grid grid-cols-1 xl:grid-cols-[1fr_360px] gap-6">
+        <div className="grid grid-cols-1 desktop:grid-cols-[1fr_360px] phone-land:grid-cols-2 gap-6">
 
           {/* ══════ LEFT ══════ */}
           <div className="flex flex-col gap-5" ref={playerRef}>

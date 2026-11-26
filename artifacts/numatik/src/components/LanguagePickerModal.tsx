@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Settings } from "lucide-react";
+import { Settings, X } from "lucide-react";
 import * as THREE from "three";
 import { useTranslation } from "react-i18next";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
@@ -106,8 +106,8 @@ const getLanguageCardStyle = (language: Language, isActive: boolean, isDark: boo
 
 const createEarthTexture = () => {
   const canvas = document.createElement("canvas");
-  canvas.width = 1024;
-  canvas.height = 512;
+  canvas.width = 512;
+  canvas.height = 256;
   const context = canvas.getContext("2d");
   if (!context) throw new Error("Unable to create the globe texture canvas");
 
@@ -124,13 +124,13 @@ const createEarthTexture = () => {
   for (let latitude = -60; latitude <= 60; latitude += 30) {
     const y = ((90 - latitude) / 180) * canvas.height;
     context.beginPath();
-    context.ellipse(canvas.width / 2, y, canvas.width / 2, Math.max(12, Math.cos(latitude * Math.PI / 180) * 55), 0, 0, Math.PI * 2);
+    context.ellipse(canvas.width / 2, y, canvas.width / 2, Math.max(6, Math.cos(latitude * Math.PI / 180) * 27.5), 0, 0, Math.PI * 2);
     context.stroke();
   }
   for (let longitude = -60; longitude <= 60; longitude += 30) {
     const x = ((longitude + 180) / 360) * canvas.width;
     context.beginPath();
-    context.ellipse(x, canvas.height / 2, 55, canvas.height / 2, 0, 0, Math.PI * 2);
+    context.ellipse(x, canvas.height / 2, 27.5, canvas.height / 2, 0, 0, Math.PI * 2);
     context.stroke();
   }
 
@@ -143,14 +143,14 @@ const createEarthTexture = () => {
     [[0.75,0.43],[0.81,0.4],[0.85,0.45],[0.83,0.55],[0.8,0.63],[0.77,0.59],[0.74,0.51]],
     [[0.88,0.71],[0.91,0.69],[0.94,0.73],[0.92,0.78],[0.89,0.77]],
   ];
-  const land = context.createLinearGradient(0, 70, 0, 420);
+  const land = context.createLinearGradient(0, 35, 0, 210);
   land.addColorStop(0, "#a2c875");
   land.addColorStop(0.42, "#4e9a55");
   land.addColorStop(0.72, "#8cae58");
   land.addColorStop(1, "#b8ab68");
   context.fillStyle = land;
   context.strokeStyle = "rgba(196,231,154,.5)";
-  context.lineWidth = 2.5;
+  context.lineWidth = 1.25;
   for (const continent of continents) {
     context.beginPath();
     continent.forEach(([x, y], index) => {
@@ -181,11 +181,11 @@ const createEarthTexture = () => {
     context.closePath();
   }
   context.clip();
-  for (let index = 0; index < 2800; index += 1) {
+  for (let index = 0; index < 700; index += 1) {
     const x = random() * canvas.width;
     const y = random() * canvas.height;
-    const size = 1 + random() * 4;
-    const warmTerrain = y < 175 || y > 330;
+    const size = 0.5 + random() * 2;
+    const warmTerrain = y < 87.5 || y > 165;
     context.fillStyle = warmTerrain
       ? `rgba(205,183,112,${0.08 + random() * 0.16})`
       : `rgba(195,232,138,${0.08 + random() * 0.18})`;
@@ -203,8 +203,8 @@ const createEarthTexture = () => {
 
 const createCloudTexture = () => {
   const canvas = document.createElement("canvas");
-  canvas.width = 1024;
-  canvas.height = 512;
+  canvas.width = 512;
+  canvas.height = 256;
   const context = canvas.getContext("2d");
   if (!context) throw new Error("Unable to create the cloud texture canvas");
 
@@ -213,17 +213,17 @@ const createCloudTexture = () => {
     seed = (seed * 1664525 + 1013904223) >>> 0;
     return seed / 4294967296;
   };
-  context.filter = "blur(4px)";
-  for (let index = 0; index < 85; index += 1) {
+  context.filter = "blur(2px)";
+  for (let index = 0; index < 45; index += 1) {
     const centerX = random() * canvas.width;
-    const centerY = 65 + random() * 380;
-    const width = 25 + random() * 68;
-    const height = 5 + random() * 15;
+    const centerY = 32.5 + random() * 190;
+    const width = 12.5 + random() * 34;
+    const height = 2.5 + random() * 7.5;
     context.fillStyle = `rgba(235,249,255,${0.08 + random() * 0.12})`;
     context.beginPath();
     context.ellipse(centerX, centerY, width, height, (random() - 0.5) * 0.45, 0, Math.PI * 2);
     context.fill();
-    for (let puff = 0; puff < 4; puff += 1) {
+    for (let puff = 0; puff < 2; puff += 1) {
       context.beginPath();
       context.ellipse(
         centerX + (random() - 0.5) * width,
@@ -252,82 +252,91 @@ const LanguageGlobe = () => {
     const mount = mountRef.current;
     if (!mount) return;
 
-    let renderer: THREE.WebGLRenderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    } catch {
-      setUnavailable(true);
-      return;
-    }
+    let disposeGlobe = () => {};
+    const timer = window.setTimeout(() => {
+      if (!mount.isConnected) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 20);
-    camera.position.z = 3.35;
+      let renderer: THREE.WebGLRenderer;
+      try {
+        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      } catch {
+        setUnavailable(true);
+        return;
+      }
 
-    const geometry = new THREE.SphereGeometry(1, 64, 48);
-    const material = new THREE.MeshStandardMaterial({
-      map: createEarthTexture(),
-      roughness: 0.96,
-      metalness: 0,
-    });
-    const globe = new THREE.Mesh(geometry, material);
-    scene.add(globe);
-    const cloudsGeometry = new THREE.SphereGeometry(1.008, 64, 48);
-    const cloudsMaterial = new THREE.MeshBasicMaterial({
-      map: createCloudTexture(),
-      transparent: true,
-      opacity: 0.52,
-      depthWrite: false,
-    });
-    const clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
-    clouds.renderOrder = 1;
-    scene.add(clouds);
-    scene.add(new THREE.AmbientLight(0x789bc7, 0.95));
-    const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
-    keyLight.position.set(-2.5, 2, 4);
-    scene.add(keyLight);
-    const rimLight = new THREE.DirectionalLight(0x238dff, 1.8);
-    rimLight.position.set(3, -0.5, -2);
-    scene.add(rimLight);
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 20);
+      camera.position.z = 3.35;
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    renderer.setClearColor(0x000000, 0);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.08;
-    renderer.domElement.setAttribute("aria-hidden", "true");
-    mount.appendChild(renderer.domElement);
+      const geometry = new THREE.SphereGeometry(1, 64, 48);
+      const material = new THREE.MeshStandardMaterial({
+        map: createEarthTexture(),
+        roughness: 0.96,
+        metalness: 0,
+      });
+      const globe = new THREE.Mesh(geometry, material);
+      scene.add(globe);
+      const cloudsGeometry = new THREE.SphereGeometry(1.008, 64, 48);
+      const cloudsMaterial = new THREE.MeshBasicMaterial({
+        map: createCloudTexture(),
+        transparent: true,
+        opacity: 0.52,
+        depthWrite: false,
+      });
+      const clouds = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
+      clouds.renderOrder = 1;
+      scene.add(clouds);
+      scene.add(new THREE.AmbientLight(0x789bc7, 0.95));
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+      keyLight.position.set(-2.5, 2, 4);
+      scene.add(keyLight);
+      const rimLight = new THREE.DirectionalLight(0x238dff, 1.8);
+      rimLight.position.set(3, -0.5, -2);
+      scene.add(rimLight);
 
-    const resize = () => {
-      const size = Math.max(1, Math.min(mount.clientWidth, mount.clientHeight));
-      renderer.setSize(size, size, false);
-      camera.aspect = 1;
-      camera.updateProjectionMatrix();
-    };
-    const observer = new ResizeObserver(resize);
-    observer.observe(mount);
-    resize();
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setClearColor(0x000000, 0);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.08;
+      renderer.domElement.setAttribute("aria-hidden", "true");
+      mount.appendChild(renderer.domElement);
 
-    let animationFrame = 0;
-    const animate = () => {
-      globe.rotation.y += 0.0032;
-      clouds.rotation.y += 0.0037;
-      renderer.render(scene, camera);
-      animationFrame = window.requestAnimationFrame(animate);
-    };
-    animate();
+      const resize = () => {
+        const size = Math.max(1, Math.min(mount.clientWidth, mount.clientHeight));
+        renderer.setSize(size, size, false);
+        camera.aspect = 1;
+        camera.updateProjectionMatrix();
+      };
+      const observer = new ResizeObserver(resize);
+      observer.observe(mount);
+      resize();
+
+      let animationFrame = 0;
+      const animate = () => {
+        globe.rotation.y += 0.0032;
+        clouds.rotation.y += 0.0037;
+        renderer.render(scene, camera);
+        animationFrame = window.requestAnimationFrame(animate);
+      };
+      animate();
+      disposeGlobe = () => {
+        window.cancelAnimationFrame(animationFrame);
+        observer.disconnect();
+        geometry.dispose();
+        cloudsGeometry.dispose();
+        material.map?.dispose();
+        material.dispose();
+        cloudsMaterial.map?.dispose();
+        cloudsMaterial.dispose();
+        renderer.dispose();
+        renderer.domElement.remove();
+      };
+    }, 80);
 
     return () => {
-      window.cancelAnimationFrame(animationFrame);
-      observer.disconnect();
-      geometry.dispose();
-      cloudsGeometry.dispose();
-      material.map?.dispose();
-      material.dispose();
-      cloudsMaterial.map?.dispose();
-      cloudsMaterial.dispose();
-      renderer.dispose();
-      renderer.domElement.remove();
+      window.clearTimeout(timer);
+      disposeGlobe();
     };
   }, []);
 
@@ -535,9 +544,10 @@ function getThemeStyles(theme: string): ThemeStyles {
 interface Props {
   open: boolean;
   onClose: () => void;
+  instantEntrance?: boolean;
 }
 
-const LanguagePickerModal = ({ open, onClose }: Props) => {
+const LanguagePickerModal = ({ open, onClose, instantEntrance = false }: Props) => {
   const navigate = useNavigate();
   const { language, setLanguage } = useLanguage();
   const { theme } = useTheme();
@@ -556,6 +566,15 @@ const LanguagePickerModal = ({ open, onClose }: Props) => {
       setLaunching(false);
     }
   }, [open, language]);
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && !launching) onClose();
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [launching, onClose, open]);
 
   const handleSelect = (id: Language) => {
     playPopSound();
@@ -597,11 +616,14 @@ const LanguagePickerModal = ({ open, onClose }: Props) => {
       {open && (
         <motion.div
           key="lang-picker-fullscreen"
-          initial={{ opacity: 0 }}
+          initial={instantEntrance ? { opacity: 1 } : { opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.28 }}
+          transition={{ duration: instantEntrance ? 0 : 0.28 }}
           className="language-picker-root fixed inset-0 z-[90] flex flex-col"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="language-picker-title"
         >
           {/* ── Top decorative area ── */}
           <div
@@ -703,10 +725,12 @@ const LanguagePickerModal = ({ open, onClose }: Props) => {
 
           {/* ── Bottom control panel ── */}
           <motion.div
-            initial={{ y: 80, opacity: 0 }}
+            initial={instantEntrance ? { y: 0, opacity: 1 } : { y: 80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 28, delay: 0.1 }}
+            transition={instantEntrance
+              ? { duration: 0 }
+              : { type: "spring", stiffness: 300, damping: 28, delay: 0.1 }}
             className={`language-picker-panel relative z-20 border-t shadow-2xl ${s.panelBg} ${s.panelBorder}`}
           >
             {/* Drag handle */}
@@ -718,24 +742,34 @@ const LanguagePickerModal = ({ open, onClose }: Props) => {
               <div className="language-picker-math-pattern" aria-hidden="true">
                 <span>1+1=2</span><span>A²+B²=C²</span><span>∠90°</span>
               </div>
-              <div className="picker-progress picker-progress-language" aria-label={`${t("selectLanguage")} 2 of 2`}>
+              <div className="picker-progress picker-progress-language" aria-label={t("languageStepProgress")}>
                 <div className="picker-progress-step"><span>01</span><b>{t("selectTheme")}</b></div>
                 <div className="picker-progress-line is-complete" />
                 <div className="picker-progress-step is-active"><span>02</span><b>{t("selectLanguage")}</b></div>
               </div>
               {/* Header */}
-              <div className="language-picker-heading flex items-center gap-2 mb-4">
+              <div className="language-picker-heading flex items-center justify-between gap-2 mb-4">
                 <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shrink-0">
                   <span className="text-sm">🌐</span>
                 </div>
-                <div>
+                <div className="flex-1">
                   <p className={`font-display text-[13px] font-black leading-tight ${s.headerTitle}`}>
-                    {t("selectLanguage")}
+                    <span id="language-picker-title">{t("selectLanguage")}</span>
                   </p>
                   <p className={`font-body text-xs ${s.headerSub}`}>
                     {t("languageSubtitle")}
                   </p>
                 </div>
+                <button
+                  type="button"
+                  aria-label={t("closeLanguagePicker")}
+                  title={t("closeLanguagePicker")}
+                  disabled={confirming}
+                  onClick={onClose}
+                  className={`menu-control-button menu-focusable flex h-10 w-10 items-center justify-center rounded-full disabled:opacity-50 ${s.headerTitle}`}
+                >
+                  <X aria-hidden="true" className="h-5 w-5" />
+                </button>
               </div>
 
               {/* Language cards */}

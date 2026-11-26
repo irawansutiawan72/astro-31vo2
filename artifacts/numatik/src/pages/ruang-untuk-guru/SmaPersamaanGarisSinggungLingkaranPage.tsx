@@ -158,7 +158,7 @@ const SmaPersamaanGarisSinggungLingkaranPage = () => (
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
         <div className="min-w-0 space-y-12">
           <section id="gagasan-singgung">
             <SectionHeading index="1" title="Satu titik sentuh, satu sifat istimewa" description="Sebuah garis disebut menyinggung lingkaran apabila keduanya memiliki tepat satu titik persekutuan. Jari-jari yang ditarik ke titik sentuh selalu tegak lurus garis singgung." />
@@ -332,7 +332,7 @@ const SmaPersamaanGarisSinggungLingkaranPage = () => (
           </section>
         </div>
 
-        <aside className="hidden lg:block">
+        <aside className="hidden desktop:block">
           <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#101b2d]/90 p-4 backdrop-blur">
             <p className="mb-3 flex items-center gap-2 font-display text-sm font-bold text-cyan-100"><Target className="h-4 w-4" aria-hidden="true" /> Peta belajar</p>
             <nav className="space-y-1.5">

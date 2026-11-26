@@ -752,7 +752,7 @@ const TKATryOut1Page = () => {
                 )}
               </div>
             </div>
-            <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-10 lg:grid-cols-5">
+            <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-10 desktop:grid-cols-5 phone-land:grid-cols-5">
               {QUESTIONS.map((item, index) => {
                 const isAnswered = answers[item.number] !== undefined;
                 const isCurrent = index === current;
@@ -773,7 +773,7 @@ const TKATryOut1Page = () => {
                 );
               })}
             </div>
-            <div className="mt-4 hidden border-t border-white/10 pt-3 text-[10px] text-white/40 lg:block">
+            <div className="mt-4 hidden border-t border-white/10 pt-3 text-[10px] text-white/40 desktop:block">
               <p className="mb-1 flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-emerald-400" /> Sudah dijawab</p>
               <p className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-white/20" /> Belum dijawab</p>
             </div>

@@ -90,7 +90,7 @@ const SmaPeluangKombinasiPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-10">
             <section id="makna-kombinasi" data-testid="section-combination-meaning" className="scroll-mt-6">
               <SectionHeading number="A" title="Memilih tanpa mengurutkan" intro="Kombinasi adalah cara memilih beberapa unsur ketika posisi atau urutan unsur terpilih tidak dibedakan. Mulailah dengan pertanyaan sederhana: apakah menukar dua nama menghasilkan pilihan yang baru?" />
@@ -243,7 +243,7 @@ const SmaPeluangKombinasiPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block" aria-label="Daftar bagian materi">
+          <aside className="hidden desktop:block" aria-label="Daftar bagian materi">
             <div className="sticky top-6 rounded-2xl border border-white/10 bg-[#0d1728]/90 p-4 backdrop-blur" data-testid="lesson-outline">
               <p className="mb-4 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta materi</p>
               <ol className="space-y-3 font-body text-xs text-slate-300">

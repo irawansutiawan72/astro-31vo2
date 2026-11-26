@@ -6,8 +6,8 @@
     "src/games/shared/questions/bank.ts",
     "src/contexts/LanguageContext.tsx",
     "src/games/numatik-runner/engine/RunnerEngine.ts",
-    "src/games/obby-matematika/engine/index.ts",
-    "src/games/obby-matematika/engine/types.ts"
+    "src/games/obby-numatik-3d/engine/index.ts",
+    "src/games/obby-numatik-3d/engine/types.ts"
   ],
   "exclude": ["node_modules", "build", "dist"]
 }

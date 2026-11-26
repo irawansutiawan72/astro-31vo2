@@ -5,6 +5,7 @@ import PageNavigation from "@/components/PageNavigation";
 import { BookOpen, ChevronDown, ChevronUp, Lightbulb, Calculator, Target, AlertTriangle } from "lucide-react";
 import { playPopSound } from "@/hooks/useAudio";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import "katex/dist/katex.min.css";
 import { InlineMath, BlockMath } from "react-katex";
 
@@ -735,6 +736,8 @@ const BacteriaAnimation = ({ t }: { t: BacteriaT }) => {
 // ─── Main Page ───────────────────────────────────────────────────────────────
 const PengertianNotasiPangkatPage = () => {
   const { language } = useLanguage();
+  const { isDark } = useTheme();
+  const lightMode = !isDark;
   const t = translations[language as keyof typeof translations] ?? translations.id;
 
   const [expandedSections, setExpandedSections] = useState<string[]>([
@@ -878,32 +881,32 @@ const PengertianNotasiPangkatPage = () => {
                     <p><strong className="text-green-300">{t.konsep1_syarat}</strong> {t.konsep1_syarat_desc} <InlineMath math="n" /> {t.konsep1_syarat_desc2} <InlineMath math="n \geq 1" />.</p>
                   </div>
                 </div>
-                <div className="bg-slate-800/60 border border-slate-600/40 rounded-lg p-4">
-                  <p className="font-body text-xs font-semibold text-slate-300 mb-3">{t.anatomi_label}</p>
+                <div className={`border rounded-lg p-4 ${lightMode ? "bg-card/80 border-border" : "bg-slate-800/60 border-slate-600/40"}`}>
+                  <p className={`font-body text-xs font-semibold mb-3 ${lightMode ? "text-slate-700" : "text-slate-300"}`}>{t.anatomi_label}</p>
                   <div className="flex flex-col items-center gap-3">
                     <div className="relative inline-block">
-                      <div className="bg-gradient-to-br from-cyan-900/60 to-blue-900/60 border-2 border-cyan-500/50 rounded-xl px-10 py-6 text-center">
+                      <div className={`bg-gradient-to-br border-2 rounded-xl px-10 py-6 text-center ${lightMode ? "from-cyan-100 to-blue-100 border-cyan-300" : "from-cyan-900/60 to-blue-900/60 border-cyan-500/50"}`}>
                         <span className="inline-flex items-start">
-                          <span className="font-display text-5xl font-bold text-white leading-none">5</span>
-                          <span className="font-display text-2xl font-bold text-yellow-400 leading-none" style={{ marginTop: '-4px', marginLeft: '3px' }}>3</span>
+                          <span className={`font-display text-5xl font-bold leading-none ${lightMode ? "text-slate-900" : "text-white"}`}>5</span>
+                          <span className={`font-display text-2xl font-bold leading-none ${lightMode ? "text-amber-700" : "text-yellow-400"}`} style={{ marginTop: '-4px', marginLeft: '3px' }}>3</span>
                         </span>
                       </div>
                       <div className="mt-3 flex justify-around text-xs font-body">
                         <div className="text-center">
                           <div className="w-2 h-6 border-l-2 border-cyan-400 mx-auto mb-1"></div>
-                          <span className="text-cyan-300 font-semibold">{t.basis_label}</span><br />
-                          <span className="text-white/60">{t.basis_sub}</span>
+                          <span className={`font-semibold ${lightMode ? "text-cyan-700" : "text-cyan-300"}`}>{t.basis_label}</span><br />
+                          <span className={lightMode ? "text-slate-600" : "text-white/60"}>{t.basis_sub}</span>
                         </div>
                         <div className="text-center">
                           <div className="w-2 h-6 border-l-2 border-yellow-400 mx-auto mb-1"></div>
-                          <span className="text-yellow-300 font-semibold">{t.eksponen_label}</span><br />
-                          <span className="text-white/60">{t.eksponen_sub}</span>
+                          <span className={`font-semibold ${lightMode ? "text-amber-700" : "text-yellow-300"}`}>{t.eksponen_label}</span><br />
+                          <span className={lightMode ? "text-slate-600" : "text-white/60"}>{t.eksponen_sub}</span>
                         </div>
                       </div>
                     </div>
-                    <div className="bg-slate-900/50 rounded-lg p-3 text-center w-full">
-                      <p className="font-body text-sm text-white/80"><InlineMath math="5^3 = 5 \times 5 \times 5 = 125" /></p>
-                      <p className="font-body text-xs text-white/50 mt-1">{t.read_as}</p>
+                    <div className={`rounded-lg p-3 text-center w-full ${lightMode ? "bg-card" : "bg-slate-900/50"}`}>
+                      <p className={`font-body text-sm ${lightMode ? "text-slate-800" : "text-white/80"}`}><InlineMath math="5^3 = 5 \times 5 \times 5 = 125" /></p>
+                      <p className={`font-body text-xs mt-1 ${lightMode ? "text-slate-600" : "text-white/50"}`}>{t.read_as}</p>
                     </div>
                   </div>
                 </div>

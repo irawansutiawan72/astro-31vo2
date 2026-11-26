@@ -349,7 +349,7 @@ const TabelReferensiPage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 desktop:grid-cols-2 phone-land:grid-cols-2 gap-4">
           <SectionCard
             title="PERKALIAN 1 – 10"
             icon={Hash}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { X } from "lucide-react";
 import { playPopSound } from "@/hooks/useAudio";
 import { canExitApp, exitApp } from "@/lib/exitApp";
@@ -8,6 +9,7 @@ interface ExitDialogProps {
 }
 
 const ExitDialog = ({ className = "" }: ExitDialogProps) => {
+  const { t } = useTranslation();
   const [showDialog, setShowDialog] = useState(false);
   const [showBrowserWarning, setShowBrowserWarning] = useState(false);
 
@@ -35,12 +37,12 @@ const ExitDialog = ({ className = "" }: ExitDialogProps) => {
     <>
       <button
         id="btn-exit"
-        aria-label="Keluar"
+        aria-label={t("exitDialog.button")}
         onClick={handleExit}
         className={`w-10 h-10 rounded-full bg-card/80 backdrop-blur border border-border 
           flex items-center justify-center text-destructive hover:border-destructive/60 
           transition-all duration-300 cursor-pointer ${className}`}
-        title="Keluar"
+        title={t("exitDialog.button")}
       >
         <X className="w-5 h-5" />
       </button>
@@ -50,23 +52,23 @@ const ExitDialog = ({ className = "" }: ExitDialogProps) => {
           <div className="bg-card border border-border rounded-2xl p-6 max-w-sm w-[90vw] text-center animate-scale-in shadow-2xl">
             <X className="w-10 h-10 text-destructive mx-auto mb-3" />
             <h2 className="font-display text-lg font-bold text-foreground mb-2">
-              Keluar Aplikasi?
+              {t("exitDialog.confirmTitle")}
             </h2>
             <p className="text-muted-foreground text-sm font-body mb-6">
-              Apakah kamu yakin ingin keluar dari NUMATIK?
+              {t("exitDialog.confirmMessage")}
             </p>
             <div className="flex gap-3 justify-center">
               <button
                 onClick={() => { playPopSound(); setShowDialog(false); }}
                 className="font-display text-sm px-6 py-2 rounded-lg bg-muted text-foreground cursor-pointer hover:opacity-90 transition-opacity"
               >
-                Tidak
+                {t("exitDialog.cancel")}
               </button>
               <button
                 onClick={confirmExit}
                 className="font-display text-sm px-6 py-2 rounded-lg bg-destructive text-destructive-foreground cursor-pointer hover:opacity-90 transition-opacity"
               >
-                Ya, Keluar
+                {t("exitDialog.confirm")}
               </button>
             </div>
           </div>
@@ -80,16 +82,16 @@ const ExitDialog = ({ className = "" }: ExitDialogProps) => {
               <X className="w-6 h-6 text-accent" />
             </div>
             <h2 className="font-display text-lg font-bold text-foreground mb-2">
-              Fitur Tidak Tersedia
+              {t("exitDialog.unavailableTitle")}
             </h2>
             <p className="text-muted-foreground text-sm font-body mb-6">
-              Keluar aplikasi hanya bisa dilakukan jika NUMATIK berjalan sebagai aplikasi mobile yang mendukung fitur ini. Jika Anda membuka lewat browser (atau iOS), aplikasi tidak bisa ditutup otomatis.
+              {t("exitDialog.unavailableMessage")}
             </p>
             <button
               onClick={() => { playPopSound(); setShowBrowserWarning(false); }}
               className="font-display text-sm px-6 py-2 rounded-lg bg-primary text-primary-foreground cursor-pointer hover:opacity-90 transition-opacity"
             >
-              Mengerti
+              {t("exitDialog.understood")}
             </button>
           </div>
         </div>

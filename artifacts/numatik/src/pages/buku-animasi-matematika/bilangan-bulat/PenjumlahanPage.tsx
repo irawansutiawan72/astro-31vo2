@@ -825,7 +825,7 @@ const POLA_ROWS = [
   { bLabel: "(-2)", bColor: "#f87171", res: 0,  resColor: "#94a3b8" },
 ];
 
-const PolaPercobaanAnim = () => {
+const PolaPercobaanAnim = ({ lightMode = false }: { lightMode?: boolean }) => {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -851,8 +851,8 @@ const PolaPercobaanAnim = () => {
   const ARC_R_CX = XRES + 34;
 
   return (
-    <div className="rounded-xl border border-indigo-500/30 bg-slate-900/70 p-4 mb-4">
-      <p className="text-xs font-body text-indigo-300/80 mb-2 text-center font-semibold">
+    <div className={`rounded-xl border p-4 mb-4 ${lightMode ? "border-border bg-card" : "border-indigo-500/30 bg-slate-900/70"}`}>
+      <p className={`text-xs font-body mb-2 text-center font-semibold ${lightMode ? "text-indigo-700" : "text-indigo-300/80"}`}>
         🔍 Perhatikan — apa yang terjadi saat bilangan kedua berkurang 1?
       </p>
       <div className="flex justify-center overflow-x-auto">
@@ -927,11 +927,11 @@ const PolaPercobaanAnim = () => {
         </svg>
       </div>
       <div className="flex justify-center gap-6 mt-1 text-xs font-body">
-        <span className="flex items-center gap-1 text-indigo-300">
+        <span className={`flex items-center gap-1 ${lightMode ? "text-indigo-700" : "text-indigo-300"}`}>
           <svg width="18" height="8"><path d="M 0 4 Q 9 0 18 4" fill="none" stroke="#818cf8" strokeWidth="2"/></svg>
           bilangan ke-2 berkurang 1
         </span>
-        <span className="flex items-center gap-1 text-emerald-300">
+        <span className={`flex items-center gap-1 ${lightMode ? "text-emerald-700" : "text-emerald-300"}`}>
           <svg width="18" height="8"><path d="M 0 4 Q 9 0 18 4" fill="none" stroke="#34d399" strokeWidth="2"/></svg>
           hasil berkurang 1
         </span>
@@ -1711,7 +1711,7 @@ const PenjumlahanBilanganBulatPage = () => {
 
                 <InteraktifPenjumlahan lightMode={lightMode} />
 
-                <PolaPercobaanAnim />
+                <PolaPercobaanAnim lightMode={lightMode} />
 
                 <div className="bg-purple-500/10 border border-purple-500/30 rounded-lg p-4 mt-4">
                   <p className="font-body text-sm font-semibold text-purple-300 mb-3">{c.formulaTitle}</p>

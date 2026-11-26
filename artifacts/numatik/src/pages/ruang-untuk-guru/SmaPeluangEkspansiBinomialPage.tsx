@@ -122,7 +122,7 @@ const SmaPeluangEkspansiBinomialPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-10">
             <section id="pola-binomial" data-testid="section-binomial-pattern" className="scroll-mt-6">
               <SectionHeading number="A" title="Pangkat suku dua punya pola!" intro="Ekspansi binomial adalah penjabaran perpangkatan suatu bentuk yang terdiri dari dua suku. Contohnya (2x + y)⁵, (m − 3n)⁷, dan (p + q)⁹. Daripada mengalikan panjang berkali-kali, mari amati dulu pola koefisiennya." />
@@ -245,7 +245,7 @@ const SmaPeluangEkspansiBinomialPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block" aria-label="Daftar bagian materi">
+          <aside className="hidden desktop:block" aria-label="Daftar bagian materi">
             <div className="sticky top-6 rounded-2xl border border-white/10 bg-[#0d1728]/90 p-4 backdrop-blur" data-testid="lesson-outline">
               <p className="mb-4 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta materi</p>
               <ol className="space-y-3 font-body text-xs text-slate-300">

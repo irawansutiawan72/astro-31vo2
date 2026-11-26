@@ -137,7 +137,7 @@ const DragMatchPlay = ({ game }: { game: DragMatchGame }) => {
         )}
       </div>
 
-      <div className={`grid gap-3 mb-4 ${game.buckets.length === 2 ? "md:grid-cols-2" : game.buckets.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+      <div className={`grid gap-3 mb-4 ${game.buckets.length === 2 ? "md:grid-cols-2" : game.buckets.length === 3 ? "desktop:grid-cols-3 phone-land:grid-cols-2" : "md:grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2"}`}>
         {game.buckets.map((b) => {
           const placedHere = game.items.filter((it) => placements[it.id] === b.id);
           const tone = bucketTone[b.color ?? "cyan"];

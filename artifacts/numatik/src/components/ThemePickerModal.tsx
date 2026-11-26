@@ -11,7 +11,6 @@ import { playPopSound } from "@/hooks/useAudio";
 type ThemeDef = {
   id: Theme;
   emoji: string;
-  name: string;
   swatch: string;
   ring: string;
   dot: string;
@@ -19,32 +18,32 @@ type ThemeDef = {
 
 const THEMES: ThemeDef[] = [
   {
-    id: "dark",   emoji: "🌌", name: "Luar Angkasa",
+    id: "dark",   emoji: "🌌",
     swatch: "linear-gradient(135deg,#0f172a,#1e1b4b,#0e2240)",
     ring: "ring-violet-500 shadow-[0_0_14px_rgba(139,92,246,0.6)]", dot: "bg-violet-400",
   },
   {
-    id: "sunset", emoji: "☁️", name: "Langit Cerah",
+    id: "sunset", emoji: "☁️",
     swatch: "linear-gradient(135deg,#38bdf8,#7dd3fc,#bae6fd,#e0f2fe)",
     ring: "ring-sky-400 shadow-[0_0_14px_rgba(14,165,233,0.5)]", dot: "bg-sky-400",
   },
   {
-    id: "pastel", emoji: "🎨", name: "Pastel",
+    id: "pastel", emoji: "🎨",
     swatch: "linear-gradient(135deg,#fff1ad,#d5c9ff,#ffbdd9,#bfeeff)",
     ring: "ring-violet-500 shadow-[0_0_14px_rgba(103,88,212,0.4)]", dot: "bg-violet-500",
   },
   {
-    id: "ocean",  emoji: "🌊", name: "Lautan Biru",
+    id: "ocean",  emoji: "🌊",
     swatch: "linear-gradient(135deg,#0c2a4a,#075985,#0369a1)",
     ring: "ring-cyan-500 shadow-[0_0_14px_rgba(6,182,212,0.5)]", dot: "bg-cyan-400",
   },
   {
-    id: "light",  emoji: "❄️", name: "Salju Cerah",
+    id: "light",  emoji: "❄️",
     swatch: "linear-gradient(135deg,#e0f2fe,#f0f9ff,#ffffff)",
     ring: "ring-blue-500 shadow-[0_0_14px_rgba(59,130,246,0.4)]", dot: "bg-blue-500",
   },
   {
-    id: "forest", emoji: "🌿", name: "Hutan Hijau",
+    id: "forest", emoji: "🌿",
     swatch: "linear-gradient(135deg,#bbf7d0,#dcfce7,#f0fdf4)",
     ring: "ring-green-500 shadow-[0_0_14px_rgba(34,197,94,0.45)]", dot: "bg-green-500",
   },
@@ -184,6 +183,11 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
       event.preventDefault();
       const currentIndex = THEMES.findIndex((item) => item.id === selected);
@@ -192,17 +196,18 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleSelect, open, selected]);
+  }, [handleSelect, onClose, open, selected]);
 
   const handleContinue = () => {
     playPopSound();
+    if (onContinue) {
+      onContinue();
+      return;
+    }
+
     setConfirming(true);
     setTimeout(() => {
-      if (onContinue) {
-        onContinue();
-      } else {
-        navigate("/menu");
-      }
+      navigate("/menu");
     }, 350);
   };
 
@@ -228,6 +233,9 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
           transition={{ duration: 0.28 }}
           className="theme-picker-root fixed inset-0 z-[80] flex flex-col"
           data-theme={selected}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="theme-picker-title"
         >
           {/* ── Full-screen preview (fills all space above the panel) ── */}
           <div className="theme-picker-preview relative flex-1 min-h-0 overflow-hidden">
@@ -247,7 +255,7 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
             {/* Preview label */}
             <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/30 backdrop-blur-sm border border-white/15">
               <span className="text-xs font-body text-white font-black uppercase tracking-widest">
-                PRATINJAU
+                {t("themePreview")}
               </span>
             </div>
 
@@ -286,7 +294,7 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
               <div className="theme-picker-math-pattern" aria-hidden="true">
                 <span>π</span><span>Σ</span><span>△</span><span>√</span><span>∞</span>
               </div>
-              <div className="picker-progress" aria-label={`${t("selectTheme")} 1 of 2`}>
+              <div className="picker-progress" aria-label={t("themeStepProgress")}>
                 <div className="picker-progress-step is-active"><span>01</span><b>{t("selectTheme")}</b></div>
                 <div className="picker-progress-line" />
                 <div className="picker-progress-step"><span>02</span><b>{t("selectLanguage")}</b></div>
@@ -300,7 +308,7 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
                   </div>
                   <div>
                     <p className="font-display text-[13px] font-black text-white leading-tight">
-                      {t("selectTheme")}
+                      <span id="theme-picker-title">{t("selectTheme")}</span>
                     </p>
                     <p className="font-body text-xs text-white/40">
                       {t("themeSubtitle")}
@@ -308,7 +316,10 @@ const ThemePickerModal = ({ open, onClose, onContinue }: Props) => {
                   </div>
                 </div>
                 <button
+                  type="button"
                   onClick={handleSkip}
+                  aria-label={t("closeThemePicker")}
+                  title={t("closeThemePicker")}
                   className="w-11 h-11 rounded-full bg-white/8 hover:bg-white/18 transition flex items-center justify-center cursor-pointer"
                 >
                   <X className="w-5 h-5 text-white/50" />

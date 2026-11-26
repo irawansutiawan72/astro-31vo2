@@ -149,21 +149,21 @@ const VARIANTS: GameVariant[] = [
 const SubmaterialGameVariantsChooserK9 = () => {
   const navigate = useNavigate();
   const { theme } = useTheme();
-  const isLight = theme === "light";
+  const isLight = theme !== "dark" && theme !== "ocean";
   const { parentSlug, slug } = useParams<{ parentSlug: string; slug: string }>();
 
   const entry = parentSlug && slug ? getSubmaterialK9(parentSlug, slug) : undefined;
 
   if (!entry) {
     return (
-      <div className={`relative min-h-screen flex flex-col items-center justify-center ${isLight ? "gradient-snow" : "gradient-space"}`}>
+      <div className={`numatik-game-submaterial-chooser relative min-h-screen flex flex-col items-center justify-center ${isLight ? "gradient-snow" : "gradient-space"}`}>
         {isLight ? <Snowfall /> : <Starfield />}
         <div className="relative z-10 text-center px-6">
           <h1 className="font-display text-2xl font-black mb-2" style={{ color: "var(--text-primary)" }}>Sub-materi tidak ditemukan</h1>
           <p className="text-sm mb-6 font-body" style={{ color: "var(--text-secondary)" }}>Sub-materi ini belum tersedia di Numatik Gamez.</p>
           <button
             onClick={() => navigate(-1)}
-            className="rounded-full px-5 py-2 text-sm font-bold transition-colors" style={{ border: "1px solid var(--border)", background: "var(--btn-bg)", color: "var(--text-primary)" }}
+            className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${isLight ? "border border-slate-300 bg-white text-slate-800 hover:bg-slate-50" : ""}`} style={isLight ? undefined : { border: "1px solid var(--border)", background: "var(--btn-bg)", color: "var(--text-primary)" }}
           >
             ← Kembali
           </button>
@@ -175,7 +175,7 @@ const SubmaterialGameVariantsChooserK9 = () => {
   const parentPath = `/numatik-gamez/${entry.parentSlug}`;
 
   return (
-    <div className={`relative min-h-screen flex flex-col items-center overflow-hidden ${isLight ? "gradient-snow" : "gradient-space"}`}>
+    <div className={`numatik-game-submaterial-chooser relative min-h-screen flex flex-col items-center overflow-hidden ${isLight ? "gradient-snow" : "gradient-space"}`}>
       {isLight ? <Snowfall /> : <Starfield />}
       <PageNavigation prevPath={parentPath} />
 
@@ -217,24 +217,25 @@ const SubmaterialGameVariantsChooserK9 = () => {
                   transition-all duration-300 animate-slide-up cursor-pointer hover:scale-[1.015]
                   ${isStrike ? "border-2 border-amber-300/80 ring-1 ring-red-400/50" : ""}
                   ${isWorld ? "border-2 border-cyan-300/80 ring-1 ring-emerald-300/50" : ""}
-                  ${isCityRider ? "border-2 border-fuchsia-300/80 ring-1 ring-violet-400/50" : ""}`}
+                  ${isCityRider ? "border-2 border-fuchsia-300/80 ring-1 ring-violet-400/50" : ""}
+                  ${isLight ? "border border-slate-200 bg-white/95" : ""}`}
                 style={{
                   animationDelay: `${i * 0.05}s`,
                   boxShadow: is3dGame
-                    ? `0 5px 0 ${depthShadowColor}, 0 8px 26px ${v.glow}`
-                    : `0 2px 20px rgba(0,0,0,0.4)`,
+                    ? `0 5px 0 ${isLight ? "rgba(100,116,139,0.45)" : depthShadowColor}, 0 8px 26px ${isLight ? "rgba(15,23,42,0.12)" : v.glow}`
+                    : isLight ? "0 2px 12px rgba(15,23,42,0.10)" : "0 2px 20px rgba(0,0,0,0.4)",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.boxShadow =
                     is3dGame
-                      ? `0 6px 0 ${depthShadowColor}, 0 12px 34px ${v.glow}`
-                      : `0 4px 30px ${v.glow}, 0 2px 10px rgba(0,0,0,0.5)`;
+                      ? `0 6px 0 ${isLight ? "rgba(100,116,139,0.55)" : depthShadowColor}, 0 12px 34px ${isLight ? "rgba(15,23,42,0.16)" : v.glow}`
+                      : isLight ? `0 5px 18px rgba(15,23,42,0.16), 0 0 14px ${v.glow}` : `0 4px 30px ${v.glow}, 0 2px 10px rgba(0,0,0,0.5)`;
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLButtonElement).style.boxShadow =
                     is3dGame
-                      ? `0 5px 0 ${depthShadowColor}, 0 8px 26px ${v.glow}`
-                      : `0 2px 20px rgba(0,0,0,0.4)`;
+                      ? `0 5px 0 ${isLight ? "rgba(100,116,139,0.45)" : depthShadowColor}, 0 8px 26px ${isLight ? "rgba(15,23,42,0.12)" : v.glow}`
+                      : isLight ? "0 2px 12px rgba(15,23,42,0.10)" : "0 2px 20px rgba(0,0,0,0.4)";
                 }}
               >
                 <div
@@ -243,11 +244,13 @@ const SubmaterialGameVariantsChooserK9 = () => {
                 />
                 <div
                   className={`absolute inset-0 transition-opacity duration-300 ${
-                    is3dGame ? "opacity-[0.24] group-hover:opacity-[0.36]" : "opacity-[0.10] group-hover:opacity-[0.18]"
+                    isLight
+                      ? is3dGame ? "opacity-[0.08] group-hover:opacity-[0.14]" : "opacity-[0.04] group-hover:opacity-[0.10]"
+                      : is3dGame ? "opacity-[0.24] group-hover:opacity-[0.36]" : "opacity-[0.10] group-hover:opacity-[0.18]"
                   }`}
                   style={{ background: `linear-gradient(135deg, ${v.from}, ${v.to})` }}
                 />
-                <div className="absolute inset-0 border border-white/10 rounded-2xl" />
+                <div className={`absolute inset-0 border rounded-2xl ${isLight ? "border-slate-200/80" : "border-white/10"}`} />
                 <div
                   className="absolute top-0 left-0 right-0 h-px opacity-50"
                   style={{ background: `linear-gradient(90deg, transparent, ${v.from}, ${v.to}, transparent)` }}
@@ -255,8 +258,8 @@ const SubmaterialGameVariantsChooserK9 = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/5 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
 
                 <div
-                  className="relative flex-shrink-0 flex items-center justify-center w-20 border-r border-white/10"
-                  style={{ background: `linear-gradient(180deg, ${v.from}22, ${v.to}22)` }}
+                  className={`relative flex-shrink-0 flex items-center justify-center w-20 border-r ${isLight ? "border-slate-200" : "border-white/10"}`}
+                  style={{ background: `linear-gradient(180deg, ${v.from}${isLight ? "14" : "22"}, ${v.to}${isLight ? "14" : "22"})` }}
                 >
                   {v.variantSlug === "pesawat-tembak-meteor" ? (
                     <img
@@ -296,22 +299,24 @@ const SubmaterialGameVariantsChooserK9 = () => {
                   <div className="min-w-0 flex-1">
                     {is3dGame && (
                       <div
-                        className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 mb-1.5 font-display text-[10px] font-black tracking-[0.12em] text-white shadow-[0_3px_0_rgba(0,0,0,0.55),0_0_14px_rgba(255,255,255,0.2)] ${
+                        className={`inline-flex items-center gap-1 rounded-md border px-2 py-1 mb-1.5 font-display text-[10px] font-black tracking-[0.12em] ${
+                          isLight ? "text-slate-900 shadow-sm" : "text-white shadow-[0_3px_0_rgba(0,0,0,0.55),0_0_14px_rgba(255,255,255,0.2)]"
+                        } ${
                           isStrike
-                            ? "border-amber-200/80 bg-gradient-to-b from-amber-300 via-orange-500 to-red-600"
+                            ? isLight ? "border-amber-300 bg-gradient-to-b from-amber-100 via-orange-100 to-red-100" : "border-amber-200/80 bg-gradient-to-b from-amber-300 via-orange-500 to-red-600"
                             : isCityRider
-                              ? "border-fuchsia-100/80 bg-gradient-to-b from-fuchsia-300 via-fuchsia-500 to-violet-600"
-                              : "border-cyan-100/80 bg-gradient-to-b from-cyan-300 via-teal-500 to-emerald-600"
+                              ? isLight ? "border-fuchsia-300 bg-gradient-to-b from-fuchsia-100 via-fuchsia-100 to-violet-100" : "border-fuchsia-100/80 bg-gradient-to-b from-fuchsia-300 via-fuchsia-500 to-violet-600"
+                              : isLight ? "border-cyan-300 bg-gradient-to-b from-cyan-100 via-teal-100 to-emerald-100" : "border-cyan-100/80 bg-gradient-to-b from-cyan-300 via-teal-500 to-emerald-600"
                         }`}
                       >
                         <span className="text-sm leading-none">3D</span>
                         <span>GAME {isStrike ? "· STRIKE" : isCityRider ? "· RIDER" : "· WORLD"}</span>
                       </div>
                     )}
-                    <div className="font-display text-sm font-bold text-white leading-tight mb-1">
+                    <div className={`font-display text-sm font-bold leading-tight mb-1 ${isLight ? "text-slate-900" : "text-white"}`}>
                       {v.name}
                     </div>
-                    <div className="text-[11px] text-white/50 font-body leading-snug">
+                    <div className={`text-[11px] font-body leading-snug ${isLight ? "text-slate-600" : "text-white/60"}`}>
                       {v.description}
                     </div>
                   </div>
@@ -319,10 +324,10 @@ const SubmaterialGameVariantsChooserK9 = () => {
 
                 <div className="relative flex-shrink-0 flex items-center pr-4">
                   <div
-                    className="flex items-center gap-1.5 px-4 py-2 rounded-xl font-black text-[11px] text-white transition-all duration-300 group-hover:scale-105"
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-xl font-black text-[11px] text-white transition-all duration-300 group-hover:scale-105 ${isLight ? "border border-white/70" : ""}`}
                     style={{
                       background: `linear-gradient(135deg, ${v.from}, ${v.to})`,
-                      boxShadow: `0 2px 12px ${v.glow}`,
+                      boxShadow: isLight ? "0 4px 14px rgba(37,99,235,0.28)" : `0 2px 12px ${v.glow}`,
                     }}
                   >
                     <Play className="w-3 h-3 fill-white" />
@@ -337,7 +342,7 @@ const SubmaterialGameVariantsChooserK9 = () => {
         <div className="mt-10 text-center">
           <button
             onClick={() => { playPopSound(); navigate(parentPath); }}
-            className="text-sm hover:text-cyan-400 transition-colors cursor-pointer font-body" style={{ color: "var(--text-secondary)" }}
+            className={`rounded-full px-4 py-2 text-sm transition-colors cursor-pointer font-body ${isLight ? "border border-slate-300 bg-white/90 text-slate-700 hover:bg-cyan-50 hover:text-cyan-800" : "hover:text-cyan-400"}`} style={isLight ? undefined : { color: "var(--text-secondary)" }}
           >
             ← Kembali ke {entry.parentLabel}
           </button>

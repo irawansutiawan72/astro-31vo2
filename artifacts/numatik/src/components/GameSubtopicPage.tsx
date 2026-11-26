@@ -54,7 +54,7 @@ const GameSubtopicPage = ({
   const navigate = useNavigate();
   const { theme } = useTheme();
   const { t, i18n } = useTranslation();
-  const isLight = theme === "light";
+  const isLight = theme !== "dark" && theme !== "ocean";
   const allTopicsPath = "/numatik-gamez";
   const language = i18n.resolvedLanguage?.split("-")[0] ?? "id";
   const backToAllLabel =
@@ -100,8 +100,13 @@ const GameSubtopicPage = ({
                   ${isComingSoon ? "cursor-default opacity-70" : "cursor-pointer hover:scale-[1.015]"}`}
                 style={{
                   animationDelay: `${i * 0.05}s`,
-                  background: 'var(--btn-bg)',
-                  boxShadow: `0 2px 20px rgba(0,0,0,0.4)`,
+                  background: isLight
+                    ? "linear-gradient(135deg, #f0f9ff 0%, #dbeafe 55%, #bae6fd 100%)"
+                    : "var(--btn-bg)",
+                  border: isLight ? "1px solid rgba(14,165,233,0.35)" : undefined,
+                  boxShadow: isLight
+                    ? "0 6px 18px rgba(14,165,233,0.18)"
+                    : "0 2px 20px rgba(0,0,0,0.4)",
                 }}
                 onMouseEnter={(e) => {
                   if (!isComingSoon) {
@@ -131,7 +136,9 @@ const GameSubtopicPage = ({
                 )}
                 <div
                   className="absolute inset-0 border rounded-2xl transition-colors duration-300"
-                  style={{ borderColor: isComingSoon ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.10)" }}
+                  style={{ borderColor: isComingSoon
+                    ? (isLight ? "rgba(14,165,233,0.12)" : "rgba(255,255,255,0.06)")
+                    : (isLight ? "rgba(14,165,233,0.28)" : "rgba(255,255,255,0.10)") }}
                 />
 
                 {!isComingSoon && (
@@ -153,50 +160,58 @@ const GameSubtopicPage = ({
                 <div
                   className="relative flex-shrink-0 flex flex-col items-center justify-center w-16 border-r"
                   style={{
-                    borderColor: "rgba(255,255,255,0.07)",
+                    borderColor: isLight ? "rgba(14,165,233,0.22)" : "rgba(255,255,255,0.07)",
                     background: isComingSoon
-                      ? "rgba(255,255,255,0.03)"
-                      : `linear-gradient(180deg, ${colors.from}22, ${colors.to}22)`,
+                      ? (isLight ? "rgba(14,165,233,0.05)" : "rgba(255,255,255,0.03)")
+                      : (isLight ? "rgba(255,255,255,0.58)" : `linear-gradient(180deg, ${colors.from}22, ${colors.to}22)`),
                   }}
                 >
                   <span
                     className="text-[9px] font-black tracking-widest"
-                    style={{ color: isComingSoon ? "rgba(255,255,255,0.2)" : colors.from }}
+                    style={{ color: isComingSoon
+                      ? (isLight ? "rgba(3,105,161,0.35)" : "rgba(255,255,255,0.2)")
+                      : (isLight ? "#0369a1" : colors.from) }}
                   >
                     {t('gameArena.lvl')}
                   </span>
                   <span
                     className="text-2xl font-black leading-tight"
-                    style={isComingSoon ? { color: "rgba(255,255,255,0.2)" } : {
-                      background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
+                    style={isComingSoon
+                      ? { color: isLight ? "rgba(3,105,161,0.35)" : "rgba(255,255,255,0.2)" }
+                      : isLight
+                        ? { color: "#0c4a6e" }
+                        : {
+                            background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`,
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                          }}
                   >
                     {levelNum}
                   </span>
-                  <span className="text-[8px] text-white/20 mt-0.5">{t('gameArena.stage')}</span>
+                  <span className={`text-[8px] mt-0.5 ${isLight ? "text-slate-500" : "text-white/20"}`}>{t('gameArena.stage')}</span>
                 </div>
 
                 <div className="relative flex-1 flex items-center gap-3 px-4 py-3.5 min-w-0">
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-1.5 mb-0.5">
                       <span className="text-base leading-none">{isComingSoon ? "🔒" : "☄️"}</span>
-                      <span className={`font-body text-[11px] text-xs font-bold leading-tight ${isComingSoon ? "text-white/40" : "text-white"}`}>
+                      <span className={`font-body text-[11px] text-xs font-bold leading-tight ${isComingSoon ? (isLight ? "text-slate-500" : "text-white/40") : (isLight ? "text-slate-900" : "text-white")}`}>
                         {subtopic.name}
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5 mt-1.5">
                       {isComingSoon ? (
-                        <span className="text-[9px] text-white/25">{t('gameArena.comingSoonText')}</span>
+                        <span className={`text-[9px] ${isLight ? "text-slate-500" : "text-white/25"}`}>{t('gameArena.comingSoonText')}</span>
                       ) : (
                         <>
                           <span
                             className="text-[9px] font-bold px-1.5 py-0.5 rounded-full"
                             style={{
-                              background: `linear-gradient(90deg, ${colors.from}33, ${colors.to}33)`,
-                              color: colors.to,
-                              border: `1px solid ${colors.to}44`,
+                              background: isLight
+                                ? "rgba(255,255,255,0.82)"
+                                : `linear-gradient(90deg, ${colors.from}33, ${colors.to}33)`,
+                              color: isLight ? "#0369a1" : colors.to,
+                              border: `1px solid ${isLight ? "rgba(14,165,233,0.35)" : `${colors.to}44`}`,
                             }}
                           >
                             🎯 {t('gameArena.fiveQuestions')}
@@ -209,17 +224,19 @@ const GameSubtopicPage = ({
 
                 <div className="relative flex-shrink-0 flex items-center pr-4">
                   {isComingSoon ? (
-                    <div className="flex items-center gap-1 px-3 py-2 rounded-xl font-black text-[10px] text-white/25 border border-white/10">
+                    <div className={`flex items-center gap-1 px-3 py-2 rounded-xl font-black text-[10px] border ${isLight ? "text-slate-500 border-slate-300 bg-white/70" : "text-white/25 border-white/10"}`}>
                       <span>⏳</span>
                       <span>{t('gameArena.soonBadge')}</span>
                     </div>
                   ) : (
                     <div
-                      className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-black text-[11px] text-white
+                      className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-black text-[11px] text-white border border-white/70
                         transition-all duration-300 group-hover:scale-105"
                       style={{
                         background: `linear-gradient(135deg, ${colors.from}, ${colors.to})`,
-                        boxShadow: `0 2px 12px ${colors.glow}`,
+                        boxShadow: isLight
+                          ? "0 4px 12px rgba(37,99,235,0.28)"
+                          : `0 2px 12px ${colors.glow}`,
                       }}
                     >
                       <Play className="w-3 h-3 fill-white" />
@@ -235,7 +252,7 @@ const GameSubtopicPage = ({
         <div className="mt-10 text-center">
           <button
             onClick={() => { playPopSound(); navigate(allTopicsPath); }}
-            className="text-sm text-white/40 hover:text-cyan-400 transition-colors cursor-pointer font-body"
+            className={`text-sm transition-colors cursor-pointer font-body ${isLight ? "text-slate-700 hover:text-cyan-700" : "text-white/40 hover:text-cyan-400"}`}
           >
             ← {backToAllLabel}
           </button>

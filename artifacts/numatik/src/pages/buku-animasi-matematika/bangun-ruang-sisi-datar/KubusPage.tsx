@@ -1463,7 +1463,7 @@ const AllDiagonalBidangSVG = ({ lang }: { lang: string }) => {
   return (
     <div className="space-y-3 my-3">
       <p className={isDark ? "text-xs text-green-100/80 bg-green-950/50 border border-green-700/40 rounded-lg p-3" : "text-xs text-green-800 bg-green-50 border border-green-300 rounded-lg p-3"}>{descText}</p>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid sm:grid-cols-2 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3">
         {diags.map((d, i) => (
           <div key={d.key} className={isDark ? "bg-slate-900/55 border border-slate-700/70 rounded-lg p-3 space-y-2" : "bg-white border border-gray-200 rounded-lg p-3 space-y-2"}>
             <svg viewBox="0 0 240 190" className="w-full mx-auto"
@@ -1696,7 +1696,7 @@ const BidangDiagonalVariasiGallery = ({ lang }: { lang: string }) => {
       <div className={isDark ? "rounded-lg bg-slate-900/60 border border-violet-700/30 p-3" : "rounded-lg bg-violet-50 border border-violet-300/60 p-3"}>
         <p className={isDark ? "text-xs text-violet-200" : "text-xs text-violet-700"}>{desc}</p>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="grid sm:grid-cols-2 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3">
         {variants.map((variant, i) => (
           <BidangDiagonalVariantCube key={variant.label} variant={variant} idx={i} />
         ))}

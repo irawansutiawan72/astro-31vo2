@@ -2,9 +2,16 @@ import type { Language } from "@/contexts/LanguageContext";
 
 export const translations = {
   id: {
-    title: "Obby Matematika",
-    subtitle: "Jelajahi lima zona, pecahkan soal, dan taklukkan garis finis!",
+    title: "Obby Numatik 3D",
+    subtitle: "Pilih satu dari enam tempat, pecahkan soal, dan taklukkan garis finis!",
     play: "Mulai bermain",
+    choosePlace: "Pilih tempat mulai",
+    gardenDescription: "Lintasi taman hijau dengan platform bergerak.",
+    forestDescription: "Seberangi jembatan gantung di tengah hutan.",
+    desertDescription: "Lompati pilar-pilar di gurun berbatu.",
+    factoryDescription: "Hadapi ban berjalan dan rintangan pabrik.",
+    towerDescription: "Tantang platform runtuh di menara tinggi.",
+    snowDescription: "Jelajahi gunung salju dan jembatan es.",
     settings: "Pengaturan",
     quality: "Kualitas grafis",
     sensitivity: "Sensitivitas kamera",
@@ -20,7 +27,7 @@ export const translations = {
     instructions: "Gerakkan joystick untuk berjalan. Tekan LONCAT untuk melompat, dan geser area kanan untuk memutar kamera.",
     pause: "Permainan dijeda",
     resume: "Lanjutkan",
-    menu: "Menu",
+    menu: "Kembali ke daftar game",
     loading: "Menyiapkan lintasan...",
     webgl: "Perangkat ini belum mendukung WebGL 2 untuk menjalankan game 3D.",
     time: "Waktu",
@@ -42,12 +49,20 @@ export const translations = {
     desert: "Gurun Batu",
     factory: "Pabrik",
     tower: "Menara Langit",
+    snow: "Gunung Salju",
     finishZone: "Garis Finish",
   },
   en: {
-    title: "Math Obby",
-    subtitle: "Explore five zones, solve questions, and reach the finish!",
+    title: "Obby Numatik 3D",
+    subtitle: "Choose one of six places, solve questions, and reach the finish!",
     play: "Start playing",
+    choosePlace: "Choose a starting place",
+    gardenDescription: "Cross a green garden with moving platforms.",
+    forestDescription: "Cross swinging bridges in the forest.",
+    desertDescription: "Hop across pillars in the rocky desert.",
+    factoryDescription: "Avoid conveyor belts and factory obstacles.",
+    towerDescription: "Take on collapsing platforms in a high tower.",
+    snowDescription: "Explore a snowy mountain and icy bridges.",
     settings: "Settings",
     quality: "Graphics quality",
     sensitivity: "Camera sensitivity",
@@ -63,7 +78,7 @@ export const translations = {
     instructions: "Move with the joystick. Press JUMP to leap, and drag the right side to rotate the camera.",
     pause: "Game paused",
     resume: "Resume",
-    menu: "Menu",
+    menu: "Back to game list",
     loading: "Preparing course...",
     webgl: "This device does not support WebGL 2 required for 3D gameplay.",
     time: "Time",
@@ -85,12 +100,20 @@ export const translations = {
     desert: "Rocky Desert",
     factory: "Factory",
     tower: "Sky Tower",
+    snow: "Snow Mountain",
     finishZone: "Finish Line",
   },
   ja: {
-    title: "数学オビー",
-    subtitle: "5つのゾーンを進み、問題を解いてゴールを目指そう!",
+    title: "Obby Numatik 3D",
+    subtitle: "6つの場所から選び、問題を解いてゴールを目指そう!",
     play: "プレイ開始",
+    choosePlace: "スタート地点を選択",
+    gardenDescription: "動く足場のある緑の庭園を進もう。",
+    forestDescription: "森の揺れる橋を渡ろう。",
+    desertDescription: "岩石砂漠の柱を飛び越えよう。",
+    factoryDescription: "ベルトコンベアや工場の障害物に挑もう。",
+    towerDescription: "高い塔の崩れる足場に挑戦しよう。",
+    snowDescription: "雪山と氷の橋を探検しよう。",
     settings: "設定",
     quality: "グラフィック品質",
     sensitivity: "カメラ感度",
@@ -106,7 +129,7 @@ export const translations = {
     instructions: "ジョイスティックで移動。ジャンプボタンで跳び、右側をドラッグしてカメラを回転。",
     pause: "一時停止",
     resume: "再開",
-    menu: "メニュー",
+    menu: "ゲーム一覧に戻る",
     loading: "コースを準備中...",
     webgl: "この端末は3Dゲームに必要なWebGL 2に対応していません。",
     time: "時間",
@@ -128,9 +151,16 @@ export const translations = {
     desert: "岩石砂漠",
     factory: "工場",
     tower: "天空の塔",
+    snow: "雪山",
     finishZone: "ゴール",
   },
 } as const;
 
 export type ObbyTranslationKey = keyof typeof translations.id;
-export const getObbyTranslations = (language: Language) => translations[language];
+export const getObbyTranslations = (language: Language) => {
+  switch (language) {
+    case "en": return translations.en;
+    case "ja": return translations.ja;
+    default: return translations.id;
+  }
+};

@@ -348,7 +348,7 @@ const ATPPage = () => {
           </div>
         </div>
 
-        <section className="grid md:grid-cols-4 gap-4 mb-6">
+        <section className="grid desktop:grid-cols-4 phone-land:grid-cols-2 gap-4 mb-6">
           <div className="rounded-2xl border border-cyan-200/25 bg-card/80 backdrop-blur p-5 md:col-span-2">
             <School className="w-8 h-8 text-cyan-200 mb-3" />
             <h2 className="font-display text-xl font-bold text-cyan-100 mb-3">Identitas Dokumen</h2>
@@ -378,7 +378,7 @@ const ATPPage = () => {
               <p className="text-sm text-white/65 mt-1">Ringkasan ini membantu membaca sebaran tujuan pembelajaran dari kelas 7 sampai kelas 9.</p>
             </div>
           </div>
-          <div className="grid lg:grid-cols-3 gap-4">
+          <div className="grid desktop:grid-cols-3 phone-land:grid-cols-2 gap-4">
             {classFlow.map((flow) => (
               <div key={flow.grade} className="rounded-2xl border border-white/10 bg-black/20 p-5">
                 <h3 className="font-display text-xl font-bold text-primary mb-2">{flow.grade}</h3>
@@ -415,7 +415,7 @@ const ATPPage = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid lg:grid-cols-[1fr_1.2fr] gap-5">
+              <div className="grid desktop:grid-cols-[1fr_1.2fr] phone-land:grid-cols-2 gap-5">
                 <div className="rounded-2xl border border-white/10 bg-black/20 p-5">
                   <h4 className="font-display font-bold text-yellow-100 mb-3">Capaian Pembelajaran</h4>
                   <textarea

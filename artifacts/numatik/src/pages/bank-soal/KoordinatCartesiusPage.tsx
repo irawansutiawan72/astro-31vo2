@@ -1753,7 +1753,7 @@ export default function BankSoalKoordinatCartesiusPage() {
           </p>
         </div>
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+        <div className="grid grid-cols-2 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3 mb-8">
           {[
             { label: "Total Soal", value: "100", color: "text-cyan-400", bg: "bg-cyan-500/10 border-cyan-500/20" },
             { label: "Mudah", value: stats.mudah.toString(), color: "text-emerald-400", bg: "bg-emerald-500/10 border-emerald-500/20" },

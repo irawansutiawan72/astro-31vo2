@@ -20,14 +20,25 @@
   "languageContinue": "🌏 メインメニューへ",
   "changeLanguageHint": "いつでも言語を変更できます",
   "settingsLanguage": "設定 → 言語",
+  "themePreview": "テーマのプレビュー",
+  "themeStepProgress": "2段階中1段階目：テーマを選択",
+  "languageStepProgress": "2段階中2段階目：言語を選択",
+  "closeThemePicker": "テーマ選択を閉じる",
+  "closeLanguagePicker": "言語選択を閉じる",
   "languages": {
     "id": "Bahasa Indonesia",
     "en": "English",
+    "ms-MY": "Bahasa Melayu (Malaysia)",
+    "zh-CN": "简体中文",
+    "ru": "Русский",
     "ja": "日本語"
   },
   "languageNative": {
     "id": "Bahasa Indonesia",
     "en": "English",
+    "ms-MY": "Bahasa Melayu (Malaysia)",
+    "zh-CN": "简体中文",
+    "ru": "Русский",
     "ja": "日本語"
   },
   "nav": {
@@ -35,6 +46,16 @@
     "next": "次のページ",
     "home": "メインメニュー",
     "backToHome": "スタート画面"
+  },
+  "exitDialog": {
+    "button": "終了",
+    "confirmTitle": "アプリを終了しますか？",
+    "confirmMessage": "NUMATIKを終了してもよろしいですか？",
+    "cancel": "キャンセル",
+    "confirm": "終了する",
+    "unavailableTitle": "この機能は利用できません",
+    "unavailableMessage": "対応するモバイルアプリとしてNUMATIKを実行している場合のみ終了できます。ブラウザーまたはiOSで開いている場合、アプリを自動で閉じることはできません。",
+    "understood": "了解"
   },
   "menu": {
     "title": "メインメニュー",
@@ -55,6 +76,8 @@
     "matchingMenuItems": "該当するメニュー",
     "lastOpened": "最近開いた項目",
     "homeTab": "ホーム",
+    "hideSidebar": "サイドバーを隠す",
+    "showSidebar": "サイドバーを表示",
     "learnTab": "学習",
     "practiceTab": "練習",
     "gamesTab": "ゲーム",
@@ -106,7 +129,19 @@
     "donate": "寄付",
     "guide": "ガイド",
     "settings": "設定",
-    "reference": "参考資料"
+    "reference": "参考資料",
+    "musicTracks": {
+      "mp3-numatik-theme": "Disco Space",
+      "mp3-dreams": "夢",
+      "mp3-happy-day": "ハッピーデイ",
+      "mp3-motivation": "モチベーション",
+      "mp3-optimistic": "楽観",
+      "mp3-soft-presentation": "やさしいプレゼン",
+      "mp3-tech-ambient": "テクノロジーの雰囲気",
+      "mp3-tech-corporate": "テック・コーポレート",
+      "mp3-architect-tech": "建築家",
+      "mp3-tech-news": "テクノロジーニュース"
+    }
   },
   "menuItems": {
     "guide": {

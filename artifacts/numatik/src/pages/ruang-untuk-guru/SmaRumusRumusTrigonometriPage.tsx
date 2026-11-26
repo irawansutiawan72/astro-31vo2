@@ -169,7 +169,7 @@ const SmaRumusRumusTrigonometriPage = () => (
         <section id="sudut-ganda" className="scroll-mt-8">
           <SectionHeading index="03" kicker="Sudut yang sama dua kali" title="Rumus sudut ganda" icon={<Sparkles className="h-5 w-5" />} />
           <p className="mb-4 max-w-3xl font-body text-sm leading-relaxed text-slate-300">Cukup ganti <InlineMath math="\beta" /> dengan <InlineMath math="\alpha" /> pada rumus jumlah. Tiga hasil berikut adalah bentuk-bentuk setara yang bisa dipilih sesuai kebutuhan soal.</p>
-          <div className="grid min-w-0 gap-4 md:grid-cols-3">
+          <div className="grid min-w-0 gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
             <article className="min-w-0 rounded-3xl border border-pink-200/15 bg-pink-200/[.045] p-4">
               <h3 className="font-display text-base font-extrabold text-pink-100">Sinus dua kali sudut</h3>
               <Formula math="\sin 2\alpha=2\sin\alpha\cos\alpha" />

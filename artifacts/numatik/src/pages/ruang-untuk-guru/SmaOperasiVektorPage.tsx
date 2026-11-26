@@ -165,7 +165,7 @@ const SmaOperasiVektorPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_250px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="cara-grafis" data-testid="graphical-methods-section">
               <SectionTitle index="01" kicker="Bangun dari gambar" title="Dua panah, satu resultan" description="Jumlah vektor adalah perpindahan total. Panjang dan arah tiap panah tetap; yang berubah hanya posisi saat kita menyusunnya." />
@@ -192,7 +192,7 @@ const SmaOperasiVektorPage = () => {
                   <div className="flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl border border-violet-100/20 bg-violet-200/[.08] text-violet-100"><Compass className="h-5 w-5" /></span><div><p className="font-body text-xs font-black uppercase tracking-[.18em] text-violet-100/70">Meja eksperimen</p><p className="font-display text-lg font-extrabold text-white">Ubah vektor, amati hasil</p></div></div>
                   <button type="button" onClick={resetLab} className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 py-2 font-body text-xs font-bold text-slate-200 transition hover:bg-white/[.09] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-200" data-testid="reset-vector-lab"><RotateCcw className="h-3.5 w-3.5" />Atur ulang</button>
                 </div>
-                <div className="grid lg:grid-cols-[1fr_280px]">
+                <div className="grid desktop:grid-cols-[1fr_280px] phone-land:grid-cols-2">
                   <div className="min-w-0 p-3 sm:p-5">
                     <div className="mb-3 flex flex-wrap gap-2" role="group" aria-label="Pilih operasi vektor">
                       <button type="button" onClick={() => setOperation("add")} aria-pressed={operation === "add"} data-testid="operation-add" className={`rounded-full border px-4 py-2 font-body text-sm font-bold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 ${operation === "add" ? "border-cyan-200/50 bg-cyan-300/15 text-cyan-50" : "border-white/10 bg-white/[.035] text-slate-300 hover:border-cyan-100/30"}`}>Penjumlahan · a + b</button>
@@ -325,7 +325,7 @@ const SmaOperasiVektorPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block" aria-label="Ringkasan navigasi materi">
+          <aside className="hidden desktop:block" aria-label="Ringkasan navigasi materi">
             <div className="sticky top-6 rounded-2xl border border-white/10 bg-[#0d1728]/90 p-4 backdrop-blur" data-testid="lesson-outline">
               <p className="mb-4 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta materi</p>
               <ol className="space-y-3 font-body text-xs text-slate-300">

@@ -105,7 +105,7 @@ const ScalarLab = () => {
       <div><p className="font-body text-[10px] font-black uppercase tracking-[.18em] text-violet-100/70">Meja eksperimen</p><h3 className="font-display text-lg font-extrabold text-white">Tarik, balik, atau nolkan</h3></div>
       <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 py-2 font-body text-xs font-bold text-slate-200 hover:bg-white/[.09] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-200" data-testid="reset-scalar-lab"><RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />Atur ulang</button>
     </div>
-    <div className="grid lg:grid-cols-[1fr_290px]">
+    <div className="grid desktop:grid-cols-[1fr_290px] phone-land:grid-cols-2">
       <div className="min-w-0 p-3 sm:p-5"><div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><ScalarDiagram x={x} y={y} k={k} /></div>
         <div className="mt-3 flex flex-wrap gap-4 font-body text-xs text-slate-300"><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-cyan-300" />Vektor asal <InlineMath math="\vec v" /></span><span className="flex items-center gap-2"><i className={`h-2.5 w-2.5 rounded-full ${k < 0 ? "bg-amber-300" : "bg-violet-300"}`} />Hasil <InlineMath math="k\vec v" /></span></div>
       </div>
@@ -168,7 +168,7 @@ const DotLab = () => {
   return <div className="overflow-hidden rounded-[2rem] border border-cyan-200/20 bg-[linear-gradient(145deg,rgba(11,48,61,.8),rgba(10,20,37,.98))]" data-testid="dot-lab">
     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4"><div><p className="font-body text-[10px] font-black uppercase tracking-[.18em] text-cyan-100/70">Meja eksperimen</p><h3 className="font-display text-lg font-extrabold text-white">Baca sudut lewat proyeksi</h3></div>
       <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 py-2 font-body text-xs font-bold text-slate-200 hover:bg-white/[.09] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200" data-testid="reset-dot-lab"><RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />Atur ulang</button></div>
-    <div className="grid lg:grid-cols-[1fr_290px]"><div className="min-w-0 p-3 sm:p-5"><div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><DotDiagram magnitudeA={a} magnitudeB={b} angle={angle} /></div>
+    <div className="grid desktop:grid-cols-[1fr_290px] phone-land:grid-cols-2"><div className="min-w-0 p-3 sm:p-5"><div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><DotDiagram magnitudeA={a} magnitudeB={b} angle={angle} /></div>
       <div className="mt-3 flex flex-wrap gap-4 font-body text-xs text-slate-300"><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-cyan-300" /><InlineMath math="\vec a" /></span><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-amber-300" /><InlineMath math="\vec b" /></span><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-violet-300" />proyeksi</span></div></div>
       <aside className="border-t border-white/10 bg-black/10 p-4 sm:p-5 lg:border-l lg:border-t-0" aria-label="Kontrol hasil kali titik"><p className="mb-3 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Atur besar dan sudut</p>
         <div className="space-y-2"><RangeControl label="Besar vektor a" value={a} min={1} max={5} step={0.5} onChange={setA} testId="dot-input-a" /><RangeControl label="Besar vektor b" value={b} min={1} max={5} step={0.5} onChange={setB} testId="dot-input-b" accent="amber" /><RangeControl label="Sudut apit θ (derajat)" value={angle} min={0} max={180} step={5} onChange={setAngle} testId="dot-input-angle" accent="violet" /></div>
@@ -215,7 +215,7 @@ const CrossLab = () => {
   return <div className="overflow-hidden rounded-[2rem] border border-violet-200/20 bg-[linear-gradient(145deg,rgba(41,27,66,.78),rgba(10,20,37,.98))]" data-testid="cross-lab">
     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4"><div><p className="font-body text-[10px] font-black uppercase tracking-[.18em] text-violet-100/70">Meja eksperimen</p><h3 className="font-display text-lg font-extrabold text-white">Putar b, baca arah z</h3></div>
       <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 py-2 font-body text-xs font-bold text-slate-200 hover:bg-white/[.09] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-200" data-testid="reset-cross-lab"><RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />Atur ulang</button></div>
-    <div className="grid lg:grid-cols-[1fr_290px]"><div className="min-w-0 p-3 sm:p-5"><div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><CrossDiagram a={a} b={b} angle={angle} /></div>
+    <div className="grid desktop:grid-cols-[1fr_290px] phone-land:grid-cols-2"><div className="min-w-0 p-3 sm:p-5"><div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><CrossDiagram a={a} b={b} angle={angle} /></div>
       <div className="mt-3 flex flex-wrap gap-4 font-body text-xs text-slate-300"><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-cyan-300" /><InlineMath math="\vec a" /></span><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-amber-300" /><InlineMath math="\vec b" /></span></div></div>
       <aside className="border-t border-white/10 bg-black/10 p-4 sm:p-5 lg:border-l lg:border-t-0" aria-label="Kontrol hasil kali silang"><p className="mb-3 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Atur besar dan rotasi</p>
         <div className="space-y-2"><RangeControl label="Besar vektor a" value={a} min={1} max={5} step={0.5} onChange={setA} testId="cross-input-a" /><RangeControl label="Besar vektor b" value={b} min={1} max={5} step={0.5} onChange={setB} testId="cross-input-b" accent="amber" /><RangeControl label="Rotasi bertanda (derajat)" value={angle} min={-180} max={180} step={15} onChange={setAngle} testId="cross-input-angle" accent="violet" /></div>
@@ -292,7 +292,7 @@ const SmaVektorPadaSistemKoordinatKartesiusPage = () => {
             </article>
             <ScalarLab />
           </div>
-          <div className="grid gap-3 lg:grid-cols-3">
+          <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
             <Example id="scalar-easy" level="Mudah" question={<>Hitung <InlineMath math="3(2,-1)" /> dan nyatakan perubahan panjangnya.</>} steps={[
               <>Kalikan tiap komponen dengan <InlineMath math="3" />: <InlineMath math="3(2,-1)=(3\cdot2,3\cdot(-1))" />.</>,
               <>Hasil komponennya adalah <InlineMath math="(6,-3)" />.</>,
@@ -324,7 +324,7 @@ const SmaVektorPadaSistemKoordinatKartesiusPage = () => {
             </article>
             <DotLab />
           </div>
-          <div className="grid gap-3 lg:grid-cols-3">
+          <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
             <Example id="dot-easy" level="Mudah" question={<>Hitung hasil kali titik <InlineMath math="(2,-1,3)\cdot(1,4,2)" />.</>} steps={[
               <>Kalikan pasangan komponen sejenis: <InlineMath math="2\cdot1,\;(-1)\cdot4,\;3\cdot2" />.</>,
               <>Jumlahkan hasilnya: <InlineMath math="2-4+6" />.</>,
@@ -355,7 +355,7 @@ const SmaVektorPadaSistemKoordinatKartesiusPage = () => {
             </article>
             <CrossLab />
           </div>
-          <div className="grid gap-3 lg:grid-cols-3">
+          <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
             <Example id="cross-easy" level="Mudah" question={<>Gunakan basis satuan untuk menentukan <InlineMath math="\mathbf i\times\mathbf j" />.</>} steps={[
               <>Vektor <InlineMath math="\mathbf i=(1,0,0)" /> mengarah ke sumbu <InlineMath math="x" />, sedangkan <InlineMath math="\mathbf j=(0,1,0)" /> mengarah ke sumbu <InlineMath math="y" />.</>,
               <>Dengan urutan tangan kanan dari <InlineMath math="x" /> ke <InlineMath math="y" />, arah tegak lurusnya adalah sumbu <InlineMath math="z" /> positif.</>,
@@ -380,7 +380,7 @@ const SmaVektorPadaSistemKoordinatKartesiusPage = () => {
         <section className="rounded-[2rem] border border-cyan-200/15 bg-[linear-gradient(135deg,rgba(9,79,100,.18),rgba(16,24,43,.94))] p-5 sm:p-7" data-testid="lesson-summary">
           <div className="mb-4 flex items-center gap-2 text-amber-200"><Sparkles className="h-4 w-4" aria-hidden="true" /><p className="font-body text-xs font-black uppercase tracking-[.2em]">Bekal yang dibawa</p></div>
           <h2 className="font-display text-2xl font-extrabold text-white">Tiga operasi, tiga jenis petunjuk</h2>
-          <ol className="mt-5 grid gap-3 md:grid-cols-3">
+          <ol className="mt-5 grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
             <li className="rounded-2xl border border-cyan-200/10 bg-[#0b1424]/70 p-4"><span className="font-display text-lg font-black text-cyan-200">01</span><p className="mt-2 font-body text-sm leading-relaxed text-slate-300">Skalar mengubah besar; tanda negatif membalik arah.</p></li>
             <li className="rounded-2xl border border-amber-200/10 bg-[#0b1424]/70 p-4"><span className="font-display text-lg font-black text-amber-200">02</span><p className="mt-2 font-body text-sm leading-relaxed text-slate-300">Dot product adalah skalar yang membaca kesearahan melalui cosinus sudut.</p></li>
             <li className="rounded-2xl border border-violet-200/10 bg-[#0b1424]/70 p-4"><span className="font-display text-lg font-black text-violet-200">03</span><p className="mt-2 font-body text-sm leading-relaxed text-slate-300">Cross product adalah vektor tegak lurus; urutan menentukan arahnya.</p></li>

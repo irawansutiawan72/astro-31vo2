@@ -8,7 +8,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { startGlobalAmbient } from "@/hooks/useAudio";
+import { DESKTOP_SIDEBAR_QUERY, useResponsiveSidebarVisibility } from "@/hooks/useResponsiveSidebarVisibility";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { SoundProvider } from "@/contexts/SoundContext";
@@ -17,7 +20,6 @@ import { FontProvider } from "@/contexts/FontContext";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import PageLoader from "@/components/PageLoader";
 import MenuSidebar from "@/components/MenuSidebar";
-import type { MenuSidebarTab } from "@/components/MenuSidebar";
 import { MENU_ITEMS } from "@/data/menuConfig";
 // Sidebar destinations load eagerly so desktop navigation does not suspend on route changes.
 import BankSoalPage from "./pages/BankSoalPage";
@@ -283,7 +285,7 @@ const NumatikMetropolisPage = lazy(() => import("./games/numatik-metropolis/Numa
 const NumatikCityRiderPage = lazy(() => import("./pages/ruang-untuk-guru/NumatikCityRiderPage"));
 const NumatikKartPage = lazy(() => import("./pages/ruang-untuk-guru/NumatikKartPage"));
 const NumatikRunnerPage = lazy(() => import("./games/numatik-runner/NumatikRunnerPage"));
-const ObbyMatematikaPage = lazy(() => import("./games/obby-matematika/ObbyPage"));
+const ObbyNumatik3DPage = lazy(() => import("./games/obby-numatik-3d/ObbyNumatik3DPage"));
 const NumatikStrikeGamePage = lazy(() => import("./pages/numatik-gamez/umum/GamePage"));
 const NumatikWorldPage = lazy(() => import("./pages/numatik-gamez/umum/NumatikWorldPage"));
 const KeyakinanKelasPage = lazy(() => import("./pages/ruang-untuk-guru/KeyakinanKelasPage"));
@@ -1036,6 +1038,8 @@ const hidePracticeGradeLabels = () => {
 
 const AppInner = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+  const [isSidebarVisible, setIsSidebarVisible] = useResponsiveSidebarVisibility();
   useEffect(() => {
     const handleInteraction = () => {
       startGlobalAmbient();
@@ -1052,18 +1056,14 @@ const AppInner = () => {
 
   // GA4: track route changes
   const { pathname } = useLocation();
+  useEffect(() => {
+    if (!window.matchMedia(DESKTOP_SIDEBAR_QUERY).matches) setIsSidebarVisible(false);
+  }, [pathname, setIsSidebarVisible]);
   const sidebarMenuItems = MENU_ITEMS.filter((item) => item.group !== "featured");
   const activeMenuItem = sidebarMenuItems.find((item) => pathname === item.path)
     ?? sidebarMenuItems
       .filter((item) => pathname.startsWith(`${item.path}/`))
       .sort((left, right) => right.path.length - left.path.length)[0];
-  const activeMenuTab: MenuSidebarTab = activeMenuItem?.group === "learn"
-    || activeMenuItem?.group === "practice"
-    || activeMenuItem?.group === "games"
-    || activeMenuItem?.group === "tools"
-    || activeMenuItem?.group === "more"
-    ? activeMenuItem.group
-    : "home";
 
   useEffect(() => {
     trackPageView(pathname);
@@ -1084,13 +1084,38 @@ const AppInner = () => {
           /^\/buku-animasi-matematika\/kelas-[789](?:\/.*)?$/.test(pathname) ? "animation-submaterial-route" : "",
           pathname.startsWith("/tugas-latihan-mandiri") ? "tugas-latihan-mandiri-route" : "",
           activeMenuItem ? "menu-route-layout" : "",
+          activeMenuItem && isSidebarVisible ? "menu-sidebar-visible" : "",
         ].filter(Boolean).join(" ") || undefined}>
         {activeMenuItem && (
-          <MenuSidebar
-            activeTab={activeMenuTab}
-            activePath={activeMenuItem.path}
-            onHomeClick={() => navigate("/menu")}
-          />
+          <>
+            <MenuSidebar
+              activePath={activeMenuItem.path}
+              onBrandClick={() => navigate("/")}
+              onHomeClick={() => navigate("/menu")}
+              onToggleVisibility={() => setIsSidebarVisible(false)}
+              isVisible={isSidebarVisible}
+            />
+            {isSidebarVisible && (
+              <button
+                type="button"
+                aria-label={t("menu.hideSidebar")}
+                onClick={() => setIsSidebarVisible(false)}
+                className="menu-sidebar-mobile-backdrop"
+              />
+            )}
+            {!isSidebarVisible && (
+              <button
+                type="button"
+                onClick={() => setIsSidebarVisible(true)}
+                aria-label={t("menu.showSidebar")}
+                aria-expanded={isSidebarVisible}
+                title={t("menu.showSidebar")}
+                className="menu-sidebar-toggle menu-sidebar-toggle-floating menu-focusable"
+              >
+                <Menu aria-hidden="true" className="h-5 w-5" />
+              </button>
+            )}
+          </>
         )}
         <div className={activeMenuItem ? "menu-route-content" : undefined}>
         <Routes>
@@ -1496,7 +1521,7 @@ const AppInner = () => {
             <Route path="/ruang-untuk-guru/numatik-game/city-ride" element={<NumatikCityRiderPage />} />
             <Route path="/ruang-untuk-guru/numatik-game/kart" element={<NumatikKartPage />} />
             <Route path="/game/numatik-runner" element={<NumatikRunnerPage />} />
-            <Route path="/game/obby-matematika" element={<ObbyMatematikaPage />} />
+            <Route path="/game/obby-numatik-3d" element={<ObbyNumatik3DPage />} />
             <Route path="/numatik-gamez/umum/numatik-strike" element={<NumatikStrikeGamePage />} />
             <Route path="/numatik-gamez/umum/numatik-world" element={<NumatikWorldPage />} />
             <Route path="/ruang-untuk-guru/keyakinan-kelas" element={<KeyakinanKelasPage />} />

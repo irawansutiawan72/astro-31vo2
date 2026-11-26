@@ -157,7 +157,7 @@ const TriangleExplorer = () => {
   ] as const;
 
   return (
-    <div className="grid items-center gap-4 lg:grid-cols-[1.15fr_0.85fr]">
+    <div className="grid items-center gap-4 desktop:grid-cols-[1.15fr_0.85fr] phone-land:grid-cols-2">
       <div className="overflow-hidden rounded-2xl border border-cyan-200/20 bg-[#07152b] p-2 sm:p-4">
         <svg viewBox="0 0 360 290" role="img" aria-label="Segitiga siku-siku interaktif dengan sisi depan, samping, dan miring berwarna berbeda" className="mx-auto block w-full max-w-lg">
           <defs>
@@ -355,7 +355,7 @@ const SmaPerbandinganTrigonometriSegitigaPage = () => {
               </blockquote>
             </ColorCard>
 
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
               <ExampleCard number="1" difficulty="Mudah" tone="cyan" question={<>Segitiga <InlineMath math="KLM" /> siku-siku di <InlineMath math="L" />. Terhadap sudut <InlineMath math="K" />, panjang sisi depan <InlineMath math="LM=6\\text{ cm}" />, sisi samping <InlineMath math="KL=8\\text{ cm}" />, dan sisi miring <InlineMath math="KM=10\\text{ cm}" />. Tentukan keenam perbandingan trigonometri.</>}>
                 <Step number={1}>Cocokkan letak sisi dengan sudut acuan <InlineMath math="K" />: depan <InlineMath math="6" />, samping <InlineMath math="8" />, miring <InlineMath math="10" />.</Step>
                 <Step number={2}>Hitung rasio dasar dan sederhanakan pecahannya.</Step>
@@ -389,7 +389,7 @@ const SmaPerbandinganTrigonometriSegitigaPage = () => {
               </p>
               <Formula>{"\\sin\\theta=\\frac{\\text{depan}}{\\text{miring}},\\qquad \\cos\\theta=\\frac{\\text{samping}}{\\text{miring}},\\qquad \\tan\\theta=\\frac{\\text{depan}}{\\text{samping}}"}</Formula>
             </ColorCard>
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
               <ExampleCard number="1" difficulty="Mudah" tone="emerald" question={<>Sebuah segitiga siku-siku memiliki sisi miring <InlineMath math="14\\text{ cm}" /> dan sudut acuan <InlineMath math="30^\\circ" />. Tentukan sisi di depan sudut itu.</>}>
                 <Step number={1}>Sisi yang diketahui adalah sisi miring, sedangkan yang dicari adalah sisi depan. Gunakan sinus.</Step>
                 <Step number={2}><Formula>{"\\sin30^\\circ=\\frac{\\text{depan}}{14}=\\frac12"}</Formula></Step>
@@ -465,7 +465,7 @@ const SmaPerbandinganTrigonometriSegitigaPage = () => {
                 <strong className="text-amber-200">Catatan:</strong> nilai <InlineMath math="\\operatorname{cosec}" />, <InlineMath math="\\sec" />, dan <InlineMath math="\\operatorname{cotan}" /> untuk sudut-sudut ini diperoleh dengan membalik nilai <InlineMath math="\\sin" />, <InlineMath math="\\cos" />, dan <InlineMath math="\\tan" /> yang bersesuaian.
               </blockquote>
             </ColorCard>
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
               <ExampleCard number="1" difficulty="Mudah" tone="amber" question={<>Segitiga siku-siku memiliki sisi miring <InlineMath math="12\\text{ cm}" /> dan sudut <InlineMath math="30^\\circ" />. Tentukan sisi depan dan sisi samping sudut tersebut.</>}>
                 <Step number={1}>Dari tabel, <InlineMath math="\\sin30^\\circ=\\frac12" />. Maka sisi depan adalah setengah sisi miring.</Step>
                 <Step number={2}><Formula>{"\\text{depan}=12\\times\\frac12=6\\text{ cm}"}</Formula></Step>
@@ -503,7 +503,7 @@ const SmaPerbandinganTrigonometriSegitigaPage = () => {
               </div>
             </ColorCard>
 
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
               <ExampleCard number="1" difficulty="Mudah" tone="rose" question={<>Benang layang-layang sepanjang <InlineMath math="20\\text{ m}" /> membentuk sudut <InlineMath math="30^\\circ" /> terhadap tanah. Abaikan tinggi tangan. Seberapa tinggi layang-layang dari tanah, dan seberapa jauh jaraknya secara mendatar?</>}>
                 <Step number={1}>Benang adalah sisi miring. Ketinggian merupakan sisi depan, dan jarak di tanah merupakan sisi samping.</Step>
                 <Step number={2}>Gunakan sinus untuk ketinggian.</Step>

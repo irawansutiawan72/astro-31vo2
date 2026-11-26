@@ -123,7 +123,7 @@ function TrigExplorer() {
   }).join(" ");
 
   return (
-    <div className="grid min-w-0 gap-4 lg:grid-cols-[1.35fr_0.65fr] lg:items-center">
+    <div className="grid min-w-0 gap-4 desktop:grid-cols-[1.35fr_0.65fr] phone-land:grid-cols-2 lg:items-center">
       <div className="min-w-0 rounded-2xl border border-cyan-200/15 bg-[#08112b] p-2 sm:p-3">
         <svg
           viewBox="0 0 360 400"

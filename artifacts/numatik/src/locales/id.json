@@ -20,21 +20,42 @@
   "languageContinue": "🌏 Lanjut ke Menu Utama",
   "changeLanguageHint": "Bisa ganti bahasa kapan saja di",
   "settingsLanguage": "Pengaturan → Bahasa",
+  "themePreview": "Pratinjau tema",
+  "themeStepProgress": "Langkah 1 dari 2: Pilih tema",
+  "languageStepProgress": "Langkah 2 dari 2: Pilih bahasa",
+  "closeThemePicker": "Tutup pemilihan tema",
+  "closeLanguagePicker": "Tutup pemilihan bahasa",
   "languages": {
     "id": "Bahasa Indonesia",
     "en": "English",
-    "ja": "日本語"
+    "ms-MY": "Bahasa Melayu (Malaysia)",
+    "ja": "日本語",
+    "zh-CN": "简体中文",
+    "ru": "Русский"
   },
   "languageNative": {
     "id": "Bahasa Indonesia",
     "en": "English",
-    "ja": "日本語"
+    "ms-MY": "Bahasa Melayu (Malaysia)",
+    "ja": "日本語",
+    "zh-CN": "简体中文",
+    "ru": "Русский"
   },
   "nav": {
     "back": "Kembali",
     "next": "Halaman berikutnya",
     "home": "Menu Utama",
     "backToHome": "Layar Awal"
+  },
+  "exitDialog": {
+    "button": "Keluar",
+    "confirmTitle": "Keluar dari aplikasi?",
+    "confirmMessage": "Apakah kamu yakin ingin keluar dari NUMATIK?",
+    "cancel": "Tidak",
+    "confirm": "Ya, Keluar",
+    "unavailableTitle": "Fitur Tidak Tersedia",
+    "unavailableMessage": "Keluar dari aplikasi hanya bisa dilakukan jika NUMATIK berjalan sebagai aplikasi mobile yang mendukung fitur ini. Jika dibuka lewat browser atau iOS, aplikasi tidak bisa ditutup otomatis.",
+    "understood": "Mengerti"
   },
   "menu": {
     "title": "MENU UTAMA",
@@ -55,6 +76,8 @@
     "matchingMenuItems": "Menu yang cocok",
     "lastOpened": "Terakhir dibuka",
     "homeTab": "Beranda",
+    "hideSidebar": "Sembunyikan menu samping",
+    "showSidebar": "Tampilkan menu samping",
     "learnTab": "Belajar",
     "practiceTab": "Latihan",
     "gamesTab": "Permainan",
@@ -106,7 +129,19 @@
     "donate": "DONASI",
     "guide": "PETUNJUK",
     "settings": "Pengaturan",
-    "reference": "Referensi"
+    "reference": "Referensi",
+    "musicTracks": {
+      "mp3-numatik-theme": "Disco Space",
+      "mp3-dreams": "Mimpi",
+      "mp3-happy-day": "Hari Ceria",
+      "mp3-motivation": "Motivasi",
+      "mp3-optimistic": "Optimistis",
+      "mp3-soft-presentation": "Presentasi Lembut",
+      "mp3-tech-ambient": "Suasana Teknologi",
+      "mp3-tech-corporate": "Teknologi Korporat",
+      "mp3-architect-tech": "Arsitek",
+      "mp3-tech-news": "Berita Teknologi"
+    }
   },
   "menuItems": {
     "guide": {

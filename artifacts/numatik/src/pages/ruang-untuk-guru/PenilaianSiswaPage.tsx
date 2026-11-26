@@ -284,7 +284,7 @@ const PenilaianSiswaPage = () => {
           {/* Identitas */}
           <div className="bg-card/70 backdrop-blur border border-white/10 rounded-2xl p-5 mb-5 animate-slide-up">
             <p className="text-violet-300 text-xs font-bold uppercase tracking-wider mb-4">📋 Identitas Kelas</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2 gap-3">
               {([
                 ["satuanPendidikan", "Satuan Pendidikan", "SMPN ..."],
                 ["mataPelajaran", "Mata Pelajaran", "Matematika"],
@@ -332,7 +332,7 @@ const PenilaianSiswaPage = () => {
           {/* Kolom Editor */}
           <div className="bg-card/50 border border-white/10 rounded-2xl p-4 mb-4 animate-slide-up">
             <p className="text-white/40 text-[11px] mb-3">Edit nama, jenis, dan bobot setiap kolom penilaian:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 desktop:grid-cols-3 phone-land:grid-cols-2 gap-2">
               {state.kolomList.map((k) => (
                 <div key={k.id} className="bg-white/3 border border-white/10 rounded-xl p-3 flex flex-col gap-2">
                   <div className="flex items-center gap-2">
@@ -472,7 +472,7 @@ const PenilaianSiswaPage = () => {
           </div>
 
           {/* Summary stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 animate-slide-up">
+          <div className="grid grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2 gap-3 mb-6 animate-slide-up">
             {(() => {
               const avgs = state.siswaList.map(s => getAvg(s.id)).filter((v): v is number => v !== null);
               const tuntas = avgs.filter(v => v >= kktp).length;

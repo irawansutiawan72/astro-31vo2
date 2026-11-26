@@ -245,7 +245,7 @@ const SmaKuasaTitikLingkaranDanGarisPage = () => (
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
         <div className="min-w-0 space-y-12">
           <section id="arti-kuasa">
             <SectionHeading
@@ -374,7 +374,7 @@ const SmaKuasaTitikLingkaranDanGarisPage = () => (
             />
             <div className="space-y-4">
               <Equation math="\Delta=B^2-4AC" label="Diskriminan persamaan kuadrat Ax²+Bx+C=0" />
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-2xl border border-amber-200/15 bg-amber-200/[.045] p-4 text-sm leading-relaxed text-amber-100">Δ &gt; 0 <span className="block text-slate-300">Dua titik potong</span></div>
                 <div className="rounded-2xl border border-emerald-200/15 bg-emerald-200/[.045] p-4 text-sm leading-relaxed text-emerald-100">Δ = 0 <span className="block text-slate-300">Satu titik singgung</span></div>
                 <div className="rounded-2xl border border-orange-200/15 bg-orange-200/[.045] p-4 text-sm leading-relaxed text-orange-100">Δ &lt; 0 <span className="block text-slate-300">Tidak ada titik real</span></div>
@@ -426,7 +426,7 @@ const SmaKuasaTitikLingkaranDanGarisPage = () => (
           </section>
         </div>
 
-        <aside className="hidden lg:block">
+        <aside className="hidden desktop:block">
           <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#101b2d]/90 p-4 backdrop-blur">
             <p className="mb-3 flex items-center gap-2 font-display text-sm font-bold text-cyan-100">
               <Target className="h-4 w-4" aria-hidden="true" /> Peta belajar

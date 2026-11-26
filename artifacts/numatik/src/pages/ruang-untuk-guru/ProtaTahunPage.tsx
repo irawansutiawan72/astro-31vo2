@@ -423,7 +423,7 @@ const ProtaTahunPage = () => {
         </div>
 
         {/* Info Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5 animate-slide-up">
+        <div className="grid grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2 gap-3 mb-5 animate-slide-up">
           {[
             { label: "Mata Pelajaran", value: "Matematika" },
             { label: "Kelas", value: `Kelas ${kelasNum} (${kelasRom})` },

@@ -298,7 +298,7 @@ const SmaPersamaanEksponenPage = () => {
                 <strong>Tips:</strong> jangan buru-buru memakai logaritma. Cek dulu apakah kedua ruas bisa ditulis dengan <strong>basis yang sama</strong>.
               </blockquote>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan penyelesaian dari <InlineMath math="2^x=16" />.</>}>
                 <p>Ubah <InlineMath math="16" /> menjadi pangkat berbasis <InlineMath math="2" />:</p>
                 <Formula tone="emerald">2^x=16=2^4</Formula>
@@ -366,7 +366,7 @@ const SmaPersamaanEksponenPage = () => {
                 </ul>
               </div>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan <InlineMath math="x" /> dari <InlineMath math="5^{2x-1}=5^7" />.</>}>
                 <Formula tone="emerald">2x-1=7</Formula>
                 <p>Tambahkan <InlineMath math="1" /> pada kedua ruas: <InlineMath math="2x=8" />.</p>
@@ -394,7 +394,7 @@ const SmaPersamaanEksponenPage = () => {
               <Formula tone="violet">{"(a^m)^n=a^{mn}\\qquad\\text{dan}\\qquad a^m\\cdot a^n=a^{m+n}"}</Formula>
             </ColorCard>
             <EquationBridge />
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="cyan" question={<>Tentukan <InlineMath math="x" /> dari <InlineMath math="4^x=32" />.</>}>
                 <p>Tulis semua bilangan sebagai pangkat <InlineMath math="2" />:</p>
                 <Formula tone="cyan">{"2^{2x}=2^5\\Rightarrow2x=5\\Rightarrow x=\\frac52"}</Formula>
@@ -428,7 +428,7 @@ const SmaPersamaanEksponenPage = () => {
                 <strong>Catatan penting:</strong> untuk <InlineMath math="a>0" />, nilai <InlineMath math="y=a^x" /> selalu positif. Akar <InlineMath math="y\le0" /> harus ditolak.
               </blockquote>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Selesaikan <InlineMath math="2^{2x}-5\cdot2^x+6=0" />.</>}>
                 <p>Misalkan <InlineMath math="y=2^x" />, sehingga <InlineMath math="2^{2x}=y^2" />:</p>
                 <Formula tone="emerald">y^2-5y+6=0\Rightarrow(y-2)(y-3)=0</Formula>
@@ -459,7 +459,7 @@ const SmaPersamaanEksponenPage = () => {
               <Formula tone="rose">{"N(t)=N_0\\cdot r^{t/p}"}</Formula>
               <p className="font-body text-xs text-white/65"><InlineMath math="N_0" /> = nilai awal, <InlineMath math="r" /> = faktor perubahan tiap periode, dan <InlineMath math="p" /> = panjang satu periode.</p>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="cyan" question={<>Sebuah koloni berisi 200 bakteri dan berlipat dua setiap 3 jam. Kapan jumlahnya menjadi 1.600 bakteri?</>}>
                 <p>Modelnya <InlineMath math="N(t)=200\cdot2^{t/3}" />. Masukkan target:</p>
                 <Formula tone="cyan">{"200\\cdot2^{t/3}=1.600\\Rightarrow2^{t/3}=8=2^3"}</Formula>
@@ -504,7 +504,7 @@ const SmaPersamaanEksponenPage = () => {
                 </tbody>
               </table>
             </div>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ColorCard tone="amber"><p className="font-bold text-amber-100">Jangan mencoret basis sembarangan</p><p className="mt-2 text-sm leading-relaxed text-white/70">Basis harus positif dan tidak sama dengan <InlineMath math="1" /> agar aturan penyamaan pangkat berlaku.</p></ColorCard>
               <ColorCard tone="rose"><p className="font-bold text-rose-100">Jangan lupa syarat substitusi</p><p className="mt-2 text-sm leading-relaxed text-white/70">Karena <InlineMath math="a^x>0" />, akar substitusi yang nol atau negatif harus dibuang.</p></ColorCard>
               <ColorCard tone="emerald"><p className="font-bold text-emerald-100">Selalu lakukan cek</p><p className="mt-2 text-sm leading-relaxed text-white/70">Masukkan kembali nilai <InlineMath math="x" /> ke persamaan awal untuk memastikan tidak ada langkah yang keliru.</p></ColorCard>

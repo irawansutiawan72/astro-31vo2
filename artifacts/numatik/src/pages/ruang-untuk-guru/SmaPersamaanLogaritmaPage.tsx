@@ -282,7 +282,7 @@ const SmaPersamaanLogaritmaPage = () => {
                 </div>
               </div>
               <Formula tone="cyan">{"\\log_a f(x)=c\\quad\\Longleftrightarrow\\quad f(x)=a^c\\qquad(a>0,\\ a\\ne1,\\ f(x)>0)"}</Formula>
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-xl border border-white/10 bg-slate-950/30 p-3 text-center"><p className="text-xs font-bold text-cyan-100">Basis</p><p className="my-1 font-display text-2xl font-black text-cyan-200"><InlineMath math="a" /></p><p className="text-xs text-white/55"><InlineMath math="a>0,\ a\ne1" /></p></div>
                 <div className="rounded-xl border border-white/10 bg-slate-950/30 p-3 text-center"><p className="text-xs font-bold text-violet-100">Numerus</p><p className="my-1 font-display text-2xl font-black text-violet-200"><InlineMath math="f(x)" /></p><p className="text-xs text-white/55"><InlineMath math="f(x)>0" /></p></div>
                 <div className="rounded-xl border border-white/10 bg-slate-950/30 p-3 text-center"><p className="text-xs font-bold text-amber-100">Target</p><p className="my-1 font-display text-2xl font-black text-amber-200"><InlineMath math="x" /></p><p className="text-xs text-white/55">nilai yang dicari</p></div>
@@ -291,7 +291,7 @@ const SmaPersamaanLogaritmaPage = () => {
                 <strong>Tips:</strong> tulis “domain dahulu, operasi kemudian”. Calon akar yang membuat numerus nol atau negatif wajib ditolak.
               </blockquote>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan penyelesaian <InlineMath math="\log_2 x=3" />.</>}>
                 <p>Ubah ke bentuk eksponen:</p>
                 <Formula tone="emerald">{"\\log_2x=3\\Longleftrightarrow x=2^3=8"}</Formula>
@@ -318,7 +318,7 @@ const SmaPersamaanLogaritmaPage = () => {
               <Formula tone="emerald">{"\\log_a f(x)=p\\quad\\Longleftrightarrow\\quad f(x)=a^p"}</Formula>
             </ColorCard>
             <EquationAnimation />
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan <InlineMath math="x" /> dari <InlineMath math="\log_2(3x-1)=3" />.</>}>
                 <p>Gunakan hubungan logaritma dan eksponen:</p>
                 <Formula tone="emerald">{"3x-1=2^3=8\\Longrightarrow3x=9\\Longrightarrow x=3"}</Formula>
@@ -346,7 +346,7 @@ const SmaPersamaanLogaritmaPage = () => {
               <Formula tone="blue">{"\\log_a f(x)=\\log_a g(x)\\quad\\Longleftrightarrow\\quad f(x)=g(x)\\qquad(f(x)>0,\\ g(x)>0)"}</Formula>
               <blockquote className="rounded-xl border-l-4 border-yellow-300 bg-yellow-300/10 px-4 py-3 font-body text-sm leading-relaxed text-yellow-50"><strong>Catatan:</strong> menyamakan numerus bukan berarti boleh melewati pemeriksaan domain. Akar persamaan aljabar belum tentu menjadi solusi logaritma.</blockquote>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan HP dari <InlineMath math="\log(x^2+5x-7)=\log(x-2)" />.</>}>
                 <p>Samakan numerus:</p>
                 <Formula tone="emerald">{"x^2+5x-7=x-2\\Longrightarrow x^2+4x-5=0\\Longrightarrow x=-5\\text{ atau }x=1"}</Formula>
@@ -374,7 +374,7 @@ const SmaPersamaanLogaritmaPage = () => {
               <Formula tone="amber">{"\\log_a f(x)=\\log_b f(x)\\quad(a\\ne b)\\quad\\Longrightarrow\\quad f(x)=1"}</Formula>
               <p className="font-body text-sm text-white/70">Pastikan <InlineMath math="a>0,\ a\ne1,\ b>0,\ b\ne1" /> dan <InlineMath math="f(x)>0" />.</p>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan HP dari <InlineMath math="\log_2(x+4)=\log_8(x+4)" />.</>}>
                 <p>Basis berbeda, maka numerus harus <InlineMath math="1" />:</p>
                 <Formula tone="emerald">{"x+4=1\\Longrightarrow x=-3"}</Formula>
@@ -401,7 +401,7 @@ const SmaPersamaanLogaritmaPage = () => {
               <Formula tone="violet">{"A(\\log_a x)^2+B\\log_a x+C=0\\quad\\xrightarrow{\\ p=\\log_a x\\ }\\quad Ap^2+Bp+C=0"}</Formula>
               <blockquote className="rounded-xl border-l-4 border-rose-300 bg-rose-300/10 px-4 py-3 font-body text-sm leading-relaxed text-rose-50"><TriangleAlert className="mr-2 inline h-4 w-4 align-text-bottom" /> <strong>Catatan penting:</strong> setelah menemukan <InlineMath math="p" />, jangan berhenti. Ubah kembali ke <InlineMath math="x" /> dan pastikan <InlineMath math="x>0" />.</blockquote>
             </ColorCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan HP dari <InlineMath math="(\log x)^2-2\log x-24=0" />.</>}>
                 <p>Misalkan <InlineMath math="p=\log x" />:</p>
                 <Formula tone="emerald">{"p^2-2p-24=0\\Longrightarrow(p-6)(p+4)=0\\Longrightarrow p=6\\text{ atau }p=-4"}</Formula>
@@ -435,7 +435,7 @@ const SmaPersamaanLogaritmaPage = () => {
                 </tbody>
               </table>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Cek cepat" tone="emerald" question={<>Apakah <InlineMath math="\log_2(-3)" /> terdefinisi?</>}>
                 <p>Tidak, karena numerus harus positif. <InlineMath math="-3\not>0" />.</p>
               </ExampleCard>

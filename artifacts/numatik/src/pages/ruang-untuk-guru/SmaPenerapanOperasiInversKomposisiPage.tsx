@@ -127,7 +127,7 @@ const SmaPenerapanOperasiInversKomposisiPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_250px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="membentuk-model" className="scroll-mt-6">
               <SectionHeading number="1" title="Dari cerita ke model fungsi" intro="Mulailah dengan mengenali apa yang diketahui dan apa yang ingin dicari. Beri nama pada setiap tahap, tulis aturan matematikanya, lalu susun fungsi sesuai urutan proses dalam cerita." />
@@ -217,7 +217,7 @@ const SmaPenerapanOperasiInversKomposisiPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#0b1628]/90 p-5 backdrop-blur-md">
               <p className="font-display text-sm font-bold text-white">Peta perjalanan</p>
               <p className="mt-1 text-xs leading-relaxed text-slate-400">Pilih bagian untuk melompat.</p>

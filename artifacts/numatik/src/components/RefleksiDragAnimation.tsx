@@ -230,7 +230,7 @@ export default function RefleksiDragAnimation() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-0">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-0">
 
         {/* SVG Canvas */}
         <div className="flex-1 p-3 min-w-0">

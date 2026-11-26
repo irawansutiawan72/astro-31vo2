@@ -173,13 +173,13 @@ export default function SmaKonsepJenisKesamaanTransposeMatriksPage() {
           </div>
         </header>
 
-        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Peta materi">
+        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 desktop:hidden" aria-label="Peta materi">
           {outline.map(([label, id]) => (
             <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-xs text-slate-200 hover:border-cyan-200/40 hover:text-cyan-100">{label}</a>
           ))}
         </nav>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_245px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_245px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="dasar" className="scroll-mt-8 space-y-5">
               <Heading
@@ -332,7 +332,7 @@ export default function SmaKonsepJenisKesamaanTransposeMatriksPage() {
 
               <Example number={4} title="Memeriksa kesamaan beberapa matriks">
                 <p className="text-sm text-slate-300">Perhatikan tiga matriks berikut. Apakah ada yang sama?</p>
-                <div className="grid gap-3 md:grid-cols-3">
+                <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/[.025] p-4"><p className="mb-2 font-bold text-cyan-100">A · ordo 2 × 3</p><Matrix rows={[[-2, 4, 1], [6, 0, 5]]} label="Matriks A, ordo dua kali tiga" /></div>
                   <div className="rounded-2xl border border-white/10 bg-white/[.025] p-4"><p className="mb-2 font-bold text-cyan-100">B · ordo 2 × 3</p><Matrix rows={[[2, 4, 1], [6, 0, 5]]} label="Matriks B, ordo dua kali tiga" /></div>
                   <div className="rounded-2xl border border-white/10 bg-white/[.025] p-4"><p className="mb-2 font-bold text-cyan-100">C · ordo 2 × 3</p><Matrix rows={[[-2, 4, 1], [6, 0, 5]]} label="Matriks C, ordo dua kali tiga" /></div>
@@ -428,7 +428,7 @@ export default function SmaKonsepJenisKesamaanTransposeMatriksPage() {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <nav aria-label="Daftar isi materi" className="sticky top-6 rounded-2xl border border-white/10 bg-[#0b1628]/90 p-4 backdrop-blur">
               <h2 className="mb-3 font-display text-sm font-bold text-cyan-100">Peta petualangan</h2>
               <ul className="space-y-1">

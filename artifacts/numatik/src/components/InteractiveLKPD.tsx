@@ -643,7 +643,7 @@ const InteractiveLKPD = ({
           <p className="mt-4 text-sm md:text-base text-white/70 max-w-3xl mx-auto font-body">{intro}</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 mb-6">
+        <div className="grid desktop:grid-cols-3 phone-land:grid-cols-2 gap-4 mb-6">
           {resolvedSteps.map((item) => {
             const Icon = stepIcons[item.icon];
             return (
@@ -668,7 +668,7 @@ const InteractiveLKPD = ({
           </div>
 
           {situations.length > 0 && (
-            <div className="grid lg:grid-cols-2 gap-5 mb-6">
+            <div className="grid desktop:grid-cols-2 phone-land:grid-cols-2 gap-5 mb-6">
               {situations.map((situation) => (
                 <div key={situation.title} className="rounded-2xl bg-black/20 border border-white/10 p-5">
                   <h3 className="font-display font-bold text-yellow-200 mb-3">{situation.title}</h3>
@@ -705,7 +705,7 @@ const InteractiveLKPD = ({
                 <p className="text-sm text-white/70 font-body">{t.summaryDesc}</p>
               </div>
             </div>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid desktop:grid-cols-3 phone-land:grid-cols-2 gap-4">
               {summaryCards.map((card) => (
                 <div key={card.title} className={`rounded-2xl border p-4 text-white ${toneClass[card.tone ?? "cyan"]}`}>
                   <h4 className="font-bold mb-2">{card.title}</h4>

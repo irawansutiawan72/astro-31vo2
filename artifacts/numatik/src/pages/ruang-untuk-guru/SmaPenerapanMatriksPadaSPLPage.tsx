@@ -140,11 +140,11 @@ export default function SmaPenerapanMatriksPadaSPLPage() {
           </div>
         </header>
 
-        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Peta materi">
+        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 desktop:hidden" aria-label="Peta materi">
           {outline.map(([label, id]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-xs text-slate-200 hover:border-cyan-200/40 hover:text-cyan-100">{label}</a>)}
         </nav>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_245px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_245px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section className="scroll-mt-8 space-y-5">
               <Heading number="4.2.4" title="Menerapkan konsep matriks untuk menyelesaikan SPL" intro="Siap berpetualang dengan matriks? Kita akan mengubah SPLDV dan SPLTV ke bentuk yang lebih rapi, lalu menemukan solusinya lewat invers, eliminasi Gauss–Jordan, dan aturan Cramer. Kita mulai dari yang sederhana, kemudian menaklukkan tantangan berikutnya bersama-sama!" />
@@ -201,7 +201,7 @@ export default function SmaPenerapanMatriksPadaSPLPage() {
 
               <Example number={23} title="Mengenali jenis penyelesaian SPLDV">
                 <p className="text-sm text-slate-300">Yuk, jadi detektif solusi! Kita periksa tiga kemungkinan berikut dengan menghitung D, Dₓ, dan Dᵧ.</p>
-                <div className="grid gap-4 lg:grid-cols-3">
+                <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/[.025] p-4">
                     <h4 className="font-display font-bold text-emerald-100">a · Tepat satu solusi</h4>
                     <div className="mt-3"><EquationSystem equations={[<span>2x + y = 8</span>, <span>x − y = 1</span>]} /></div>
@@ -321,7 +321,7 @@ export default function SmaPenerapanMatriksPadaSPLPage() {
 
                 <div className="rounded-2xl border border-amber-200/15 bg-amber-200/[.045] p-4">
                   <h4 className="font-display font-bold text-amber-100">Yuk, baca bentuk akhir Gauss–Jordan!</h4>
-                  <div className="mt-3 grid gap-3 md:grid-cols-3">
+                  <div className="mt-3 grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                     <div className="rounded-xl border border-white/10 bg-white/[.025] p-3">
                       <p className="font-bold text-emerald-100">Bentuk 1 · Solusi tunggal</p>
                       <Formula><Matrix rows={[[1, 0, "|", "m"], [0, 1, "|", "n"]]} label="Bentuk akhir dengan solusi tunggal m dan n" /></Formula>
@@ -484,7 +484,7 @@ export default function SmaPenerapanMatriksPadaSPLPage() {
                   <summary className="cursor-pointer font-display font-bold text-amber-100">Tugas mandiri · Klasifikasikan tiga SPLTV</summary>
                   <div className="mt-3 space-y-4 text-sm leading-relaxed text-slate-300">
                     <p>Semangat berlatih! Selesaikan setiap sistem dengan eliminasi Gauss–Jordan, lalu tentukan apakah solusinya tunggal, tak terhingga banyak, atau tidak ada.</p>
-                    <div className="grid gap-3 md:grid-cols-3">
+                    <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                       <div className="rounded-xl border border-white/10 bg-white/[.025] p-3"><p className="mb-2 font-bold text-cyan-100">a</p><EquationSystem equations={[<span>x + y + z = 6</span>, <span>2x − y + z = 3</span>, <span>x + 2y − z = 2</span>]} /></div>
                       <div className="rounded-xl border border-white/10 bg-white/[.025] p-3"><p className="mb-2 font-bold text-cyan-100">b</p><EquationSystem equations={[<span>x + 2y + z = 4</span>, <span>2x + 4y + 2z = 10</span>, <span>x − y + z = 1</span>]} /></div>
                       <div className="rounded-xl border border-white/10 bg-white/[.025] p-3"><p className="mb-2 font-bold text-cyan-100">c</p><EquationSystem equations={[<span>x + 2y − z = 3</span>, <span>2x + 4y − 2z = 6</span>, <span>3x + 6y − 3z = 9</span>]} /></div>
@@ -541,7 +541,7 @@ export default function SmaPenerapanMatriksPadaSPLPage() {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <nav aria-label="Daftar isi materi" className="sticky top-6 rounded-2xl border border-white/10 bg-[#0b1628]/90 p-4 backdrop-blur">
               <h2 className="mb-3 font-display text-sm font-bold text-cyan-100">Peta petualangan</h2>
               <ul className="space-y-1">{outline.map(([label, id]) => <li key={id}><a href={`#${id}`} className="block rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-cyan-200/[.08] hover:text-cyan-100">{label}</a></li>)}</ul>

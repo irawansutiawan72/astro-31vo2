@@ -14,19 +14,79 @@
  * Semua CSS di-scope ke .nmw sehingga tidak mengubah gaya halaman lain.
  */
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { normalizeLanguage } from "@/lib/pickLang";
+import type { Language } from "@/contexts/LanguageContext";
 import "./numatik-welcome.css";
 
-export type WelcomeLang = "id" | "en" | "ms" | "ja" | "zh" | "ru";
-type Dict = { n: string; g: string; s: string; y: string; b: string; h: string; t: string };
+export type WelcomeLang = Language;
+type Dict = {
+  n: string;
+  g: string;
+  s: string;
+  y: string;
+  b: string;
+  h: string;
+  t: string;
+  languageNavLabel: string;
+  languageButtonLabel: string;
+  soundOnLabel: string;
+  soundOffLabel: string;
+  closeLabel: string;
+  replayLabel: string;
+};
 
-// Terjemahan ms/zh/ru masih DRAF dan perlu direview penutur asli.
 const L: Record<WelcomeLang, Dict> = {
-  id: { n: "ID", g: "Selamat Datang di Aplikasi", s: "Numerasi Aktif dengan Teknologi Informasi dan Komunikasi", y: "Tahun Ajaran {y}", b: "MULAI", h: "Selamat belajar!", t: "APLIKASI MULTIMEDIA PEMBELAJARAN INTERAKTIF MATEMATIKA" },
-  en: { n: "EN", g: "Welcome to the App", s: "Active Numeracy with Information and Communication Technology", y: "Academic Year {y}", b: "START", h: "Happy learning!", t: "INTERACTIVE MULTIMEDIA LEARNING APP FOR JUNIOR HIGH MATHEMATICS" },
-  ms: { n: "MS", g: "Selamat Datang ke Aplikasi", s: "Numerasi Aktif dengan Teknologi Maklumat dan Komunikasi", y: "Tahun Akademik {y}", b: "MULA", h: "Selamat belajar!", t: "APLIKASI MULTIMEDIA PEMBELAJARAN INTERAKTIF MATEMATIK SEKOLAH MENENGAH" },
-  ja: { n: "日本語", g: "アプリへようこそ", s: "情報通信技術で学ぶアクティブ・ニューメラシー", y: "{y}年度", b: "スタート", h: "いっしょに学ぼう！", t: "中学数学のインタラクティブ・マルチメディア学習アプリ" },
-  zh: { n: "中文", g: "欢迎使用应用", s: "借助信息通信技术的主动数感学习", y: "{y} 学年", b: "开始", h: "开始学习吧！", t: "初中数学互动多媒体学习应用" },
-  ru: { n: "RU", g: "Добро пожаловать в приложение", s: "Активная математическая грамотность с помощью ИКТ", y: "{y} учебный год", b: "НАЧАТЬ", h: "Учимся вместе!", t: "ИНТЕРАКТИВНОЕ МУЛЬТИМЕДИЙНОЕ ПРИЛОЖЕНИЕ ДЛЯ ИЗУЧЕНИЯ МАТЕМАТИКИ" },
+  id: {
+    n: "ID", g: "Selamat Datang di Numatik", s: "Numerasi Aktif melalui Teknologi Informasi dan Komunikasi",
+    y: "Tahun Ajaran {y}", b: "MULAI", h: "Selamat belajar!", t: "APLIKASI MULTIMEDIA PEMBELAJARAN MATEMATIKA INTERAKTIF",
+    languageNavLabel: "Pilih bahasa", languageButtonLabel: "Ganti bahasa ke {name}",
+    soundOnLabel: "Aktifkan suara", soundOffLabel: "Matikan suara",
+    closeLabel: "Tutup layar sambutan", replayLabel: "Ulangi animasi sambutan",
+  },
+  en: {
+    n: "EN", g: "Welcome to Numatik", s: "Active numeracy through information and communication technology",
+    y: "Academic Year {y}", b: "START", h: "Happy learning!", t: "INTERACTIVE MULTIMEDIA MATHEMATICS LEARNING APP",
+    languageNavLabel: "Choose language", languageButtonLabel: "Switch language to {name}",
+    soundOnLabel: "Turn sound on", soundOffLabel: "Turn sound off",
+    closeLabel: "Close welcome screen", replayLabel: "Replay welcome animation",
+  },
+  "ms-MY": {
+    n: "MS", g: "Selamat datang ke Numatik", s: "Numerasi aktif melalui teknologi maklumat dan komunikasi",
+    y: "Tahun Akademik {y}", b: "MULA", h: "Selamat belajar!", t: "APLIKASI MULTIMEDIA PEMBELAJARAN MATEMATIK INTERAKTIF",
+    languageNavLabel: "Pilih bahasa", languageButtonLabel: "Tukar bahasa kepada {name}",
+    soundOnLabel: "Hidupkan bunyi", soundOffLabel: "Matikan bunyi",
+    closeLabel: "Tutup skrin alu-aluan", replayLabel: "Ulang animasi alu-aluan",
+  },
+  ja: {
+    n: "日本語", g: "Numatikへようこそ", s: "情報通信技術を活用した主体的な数的思考力の育成",
+    y: "{y}年度", b: "スタート", h: "楽しく学びましょう！", t: "中学校数学のインタラクティブなマルチメディア学習アプリ",
+    languageNavLabel: "言語を選択", languageButtonLabel: "言語を{name}に切り替える",
+    soundOnLabel: "音声をオンにする", soundOffLabel: "音声をオフにする",
+    closeLabel: "ウェルカム画面を閉じる", replayLabel: "ウェルカムアニメーションを再生",
+  },
+  "zh-CN": {
+    n: "中文", g: "欢迎来到 Numatik", s: "借助信息与通信技术培养主动数学素养",
+    y: "{y}学年", b: "开始", h: "祝你学习愉快！", t: "初中数学互动多媒体学习应用",
+    languageNavLabel: "选择语言", languageButtonLabel: "切换为{name}",
+    soundOnLabel: "开启声音", soundOffLabel: "关闭声音",
+    closeLabel: "关闭欢迎页面", replayLabel: "重播欢迎动画",
+  },
+  ru: {
+    n: "RU", g: "Добро пожаловать в Numatik", s: "Развитие математической грамотности с помощью информационных технологий",
+    y: "{y} учебный год", b: "НАЧАТЬ", h: "Успехов в учёбе!", t: "ИНТЕРАКТИВНОЕ МУЛЬТИМЕДИЙНОЕ ПРИЛОЖЕНИЕ ДЛЯ ИЗУЧЕНИЯ МАТЕМАТИКИ",
+    languageNavLabel: "Выберите язык", languageButtonLabel: "Переключить язык на «{name}»",
+    soundOnLabel: "Включить звук", soundOffLabel: "Выключить звук",
+    closeLabel: "Закрыть приветственный экран", replayLabel: "Повторить приветственную анимацию",
+  },
+};
+
+const LANGUAGE_NAMES: Record<WelcomeLang, string> = {
+  id: "Bahasa Indonesia",
+  en: "English",
+  "ms-MY": "Bahasa Melayu (Malaysia)",
+  ja: "日本語",
+  "zh-CN": "简体中文",
+  ru: "Русский",
 };
 
 const store = {
@@ -37,50 +97,15 @@ const buzz = (p: number | number[]) => { try { navigator.vibrate?.(p); } catch {
 const S = (o: Record<string, string | number>) => o as CSSProperties;
 
 function detectLang(key: string): WelcomeLang {
-  const q = new URLSearchParams(window.location.search).get("lang");
-  const dev = (navigator.language || "id").slice(0, 2).toLowerCase();
-  return ([q, store.get(key), dev, "id"].find((k) => k && k in L) as WelcomeLang) || "id";
+  const normalize = (value: string | null) =>
+    normalizeLanguage(value) ??
+    normalizeLanguage(value?.split("-")[0].toLowerCase());
+  return normalize(new URLSearchParams(window.location.search).get("lang"))
+    ?? normalize(store.get(key))
+    ?? normalize(navigator.language)
+    ?? "id";
 }
 
-/* ===== tekstur planet (noise SVG yang tersambung mulus), dibuat sekali di level modul ===== */
-const SV = (inner: string, defs: string) =>
-  'url("data:image/svg+xml,' +
-  encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='256' height='256'><defs>${defs}</defs>${inner}</svg>`) +
-  '")';
-function band(fx: number, fy: number, oct: number, seed: number, k: number, c: number, r: string, g: string, b: string) {
-  const m = `${k} 0 0 0 ${c} ${k} 0 0 0 ${c} ${k} 0 0 0 ${c} 0 0 0 0 1`;
-  return SV(
-    "<rect width='256' height='256' filter='url(#f)'/>",
-    `<filter id='f' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='${fx} ${fy}' numOctaves='${oct}' seed='${seed}' stitchTiles='stitch'/><feColorMatrix values='${m}'/><feComponentTransfer><feFuncR type='table' tableValues='${r}'/><feFuncG type='table' tableValues='${g}'/><feFuncB type='table' tableValues='${b}'/></feComponentTransfer></filter>`
-  );
-}
-const earthSurf = SV(
-  "<rect width='256' height='256' fill='url(#o)'/><rect width='256' height='256' filter='url(#l)'/>",
-  "<linearGradient id='o' x2='0' y2='1'><stop offset='0' stop-color='#e8f3ff'/><stop offset='.1' stop-color='#2f78d6'/><stop offset='.5' stop-color='#123f9c'/><stop offset='.9' stop-color='#2f78d6'/><stop offset='1' stop-color='#e8f3ff'/></linearGradient><filter id='l' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.012 .02' numOctaves='5' seed='11' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .26 0 0 0 0 .5 0 0 0 0 .2 7 0 0 0 -3.3'/></filter>"
-);
-const clouds = SV(
-  "<rect width='256' height='256' filter='url(#c)'/>",
-  "<filter id='c' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='.018 .05' numOctaves='5' seed='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 3.2 0 0 0 -1.5'/></filter>"
-);
-const spot = SV(
-  "<ellipse cx='150' cy='170' rx='26' ry='15' fill='url(#g)'/>",
-  "<radialGradient id='g'><stop offset='0' stop-color='#a8321f'/><stop offset='.6' stop-color='#cf6a45'/><stop offset='1' stop-color='#cf6a45' stop-opacity='0'/></radialGradient>"
-);
-const TEX: Record<string, string> = {
-  mercury: band(0.05, 0.05, 5, 2, 2.2, -0.55, ".28 .55 .4 .72 .5", ".27 .53 .39 .7 .48", ".25 .5 .37 .66 .45"),
-  venus: band(0.012, 0.04, 4, 5, 2, -0.45, ".86 .96 .78 .94", ".66 .82 .56 .78", ".3 .46 .24 .42"),
-  earth: clouds + "," + earthSurf,
-  mars: band(0.02, 0.02, 5, 9, 2.4, -0.7, ".42 .8 .6 .86 .5", ".15 .33 .22 .4 .17", ".07 .15 .1 .2 .07"),
-  jupiter: spot + "," + band(0.003, 0.07, 4, 4, 2.6, -0.8, ".52 .88 .62 .95 .56 .84", ".32 .67 .42 .85 .36 .62", ".2 .45 .27 .7 .22 .42"),
-  saturn: band(0.002, 0.09, 3, 6, 2.6, -0.8, ".74 .93 .68 .9 .6", ".62 .82 .56 .76 .5", ".4 .55 .34 .5 .3"),
-  uranus: band(0.004, 0.03, 2, 8, 1.5, -0.2, ".6 .72 .66", ".84 .94 .88", ".9 .97 .93"),
-  neptune: band(0.004, 0.05, 3, 3, 1.8, -0.4, ".1 .22 .12", ".22 .4 .3", ".66 .92 .72"),
-};
-const RINGS = [
-  { k: "mercury", r: 22, t: 8, d: -3 }, { k: "venus", r: 31, t: 14, d: -9 }, { k: "earth", r: 40, t: 22, d: -6 },
-  { k: "mars", r: 49, t: 30, d: -20 }, { k: "belt", r: 56, t: 90, d: 0 }, { k: "jupiter", r: 67, t: 48, d: -14 },
-  { k: "saturn", r: 79, t: 66, d: -40 }, { k: "uranus", r: 89, t: 90, d: -30 }, { k: "neptune", r: 99, t: 120, d: -70 },
-];
 const SYMBOLS = ["π", "√", "∑", "∞", "△", "□", "∠", "÷", "×", "%", "≈", "x²", "∫", "θ"];
 
 export interface NumatikWelcomeProps {
@@ -262,13 +287,27 @@ export default function NumatikWelcome({
       </div>
 
       <main className="app">
-        <nav className="langs" aria-label="Language">
+        <nav className="langs" aria-label={d.languageNavLabel}>
           {(Object.keys(L) as WelcomeLang[]).map((k) => (
-            <button key={k} aria-pressed={k === lang} onClick={() => setLang(k)}>{L[k].n}</button>
+            <button
+              key={k}
+              aria-label={d.languageButtonLabel.replace("{name}", LANGUAGE_NAMES[k])}
+              aria-pressed={k === lang}
+              onClick={() => setLang(k)}
+            >
+              {L[k].n}
+            </button>
           ))}
         </nav>
-        <button className="mute" aria-label="Sound" onClick={toggleMute}>{muted ? "🔇" : "🔊"}</button>
-        <button className="close" aria-label="Close" onClick={onClose}>✕</button>
+        <button
+          className="mute"
+          aria-label={muted ? d.soundOnLabel : d.soundOffLabel}
+          aria-pressed={!muted}
+          onClick={toggleMute}
+        >
+          {muted ? "🔇" : "🔊"}
+        </button>
+        <button className="close" aria-label={d.closeLabel} onClick={onClose}>✕</button>
 
         <section className="stage">
           <div className="copy">
@@ -284,25 +323,7 @@ export default function NumatikWelcome({
           </div>
 
           <div className="space" aria-hidden="true">
-            <div className="scene">
-              {RINGS.map((rg) =>
-                rg.k === "belt" ? (
-                  <div key={rg.k} className="ring belt" style={S({ "--r": rg.r + "%" })}>
-                    <div className="spin" style={S({ "--t": rg.t + "s" })} />
-                  </div>
-                ) : (
-                  <div key={rg.k} className="ring" style={S({ "--r": rg.r + "%" })}>
-                    <div className="spin" style={S({ "--t": rg.t + "s", "--d": rg.d + "s" })}>
-                      <span className={"pl " + rg.k} style={S({ "--tex": TEX[rg.k] })}>
-                        <i className="bd"><b className="gl" /></i>
-                        {rg.k === "earth" && <b className="moonorb" />}
-                      </span>
-                    </div>
-                  </div>
-                )
-              )}
-              <div className="sun"><i /></div>
-            </div>
+            <img className="sun-image" src="/sun.png" alt="" />
           </div>
         </section>
 
@@ -312,7 +333,7 @@ export default function NumatikWelcome({
       {!onStart && (
         <div className={"arrive" + (arrived ? " show" : "")}>
           <p>{d.h}</p>
-          <button onClick={replay}>⟲</button>
+          <button aria-label={d.replayLabel} onClick={replay}>⟲</button>
         </div>
       )}
     </div>

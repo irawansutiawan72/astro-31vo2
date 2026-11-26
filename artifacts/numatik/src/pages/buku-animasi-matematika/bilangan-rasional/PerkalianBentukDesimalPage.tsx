@@ -235,37 +235,37 @@ const translations = {
     usage4: "Currency conversion",
     sec3Tips: [] as string[],
 
-    ex7Q: "A shop sells apples for $15,500 per kg. How much must be paid for 2.5 kg of apples?",
+    ex7Q: "A shop sells apples for $15.50 per kg. How much must be paid for 2.5 kg of apples?",
     ex7s1: "Write the mathematical equation",
-    ex7katex1: "\\text{Total price} = 15,500 \\times 2.5",
+    ex7katex1: "\\text{Total price} = 15.50 \\times 2.5",
     ex7s2: "Calculate the multiplication",
-    ex7s2a: "15,500 has 0 decimal places",
+    ex7s2a: "15.50 has 2 decimal places",
     ex7s2b: "2.5 has 1 decimal place",
-    ex7s2c: "15500 × 25 = 387,500",
-    ex7s2d: "Place decimal (1 digit from right): 38,750.0",
-    ex7ans: <>The amount to be paid is <strong>$38,750</strong></>,
+    ex7s2c: "1550 × 25 = 38,750",
+    ex7s2d: "Place the decimal point (3 digits from the right): 38.750 = 38.75",
+    ex7ans: <>The amount to be paid is <strong>$38.75</strong></>,
 
-    ex8Q: "A car uses 8.5 litres of petrol for 100 km. If petrol costs $12,650 per litre, what is the petrol cost for a 350 km journey?",
+    ex8Q: "A car uses 8.5 litres of petrol for 100 km. If petrol costs $1.26 per litre, what is the petrol cost for a 350 km journey?",
     ex8s1: "Calculate fuel needed for 350 km",
-    ex8katex1: "\\text{Fuel} = \\frac{350}{100} \\times 8,5 = 3,5 \\times 8,5 = 29,75 \\text{ litres}",
+    ex8katex1: "\\text{Fuel} = \\frac{350}{100} \\times 8.5 = 3.5 \\times 8.5 = 29.75 \\text{ litres}",
     ex8s2: "Calculate total cost",
-    ex8katex2: "\\text{Cost} = 29,75 \\times 12{,}650",
+    ex8katex2: "\\text{Cost} = 29.75 \\times 1.26",
     ex8s3: "Calculate the decimal multiplication",
-    ex8s3a: "29.75 (2 decimal places) × 12,650 (0 decimal places)",
-    ex8s3b: "2975 × 12650 = 37,633,750",
-    ex8s3c: "Total = 2 decimal places = 376,337.50",
-    ex8ans: <>The petrol cost is <strong>$376,337.50</strong></>,
+    ex8s3a: "29.75 (2 decimal places) × 1.26 (2 decimal places)",
+    ex8s3b: "2,975 × 126 = 374,850",
+    ex8s3c: "4 decimal places = 37.4850; rounded to the nearest cent = $37.49",
+    ex8ans: <>The petrol cost is <strong>$37.49</strong></>,
 
-    ex9Q: "Mr Ahmad has a rectangular plot of land 12.75 m long and 8.4 m wide. He wants to lay tiles measuring 0.3 m × 0.3 m. If each tile costs $25,000, what is the total cost of buying the tiles?",
+    ex9Q: "Mr Ahmad has a rectangular plot of land 12.75 m long and 8.4 m wide. He wants to lay tiles measuring 0.3 m × 0.3 m. If each tile costs $25, what is the total cost of buying the tiles?",
     ex9s1: "Calculate the land area",
-    ex9katex1: "\\text{Land area} = 12,75 \\times 8,4 = 107,1 \\text{ m}^2",
+    ex9katex1: "\\text{Land area} = 12.75 \\times 8.4 = 107.1 \\text{ m}^2",
     ex9s2: "Calculate the area of one tile",
-    ex9katex2: "\\text{Tile area} = 0,3 \\times 0,3 = 0,09 \\text{ m}^2",
+    ex9katex2: "\\text{Tile area} = 0.3 \\times 0.3 = 0.09 \\text{ m}^2",
     ex9s3: "Calculate the number of tiles needed",
-    ex9katex3: "\\text{Quantity} = \\frac{107,1}{0,09} = 1190 \\text{ tiles}",
+    ex9katex3: "\\text{Quantity} = \\frac{107.1}{0.09} = 1{,}190 \\text{ tiles}",
     ex9s4: "Calculate the total cost",
-    ex9katex4: "\\text{Cost} = 1190 \\times 25{,}000 = 29{,}750{,}000",
-    ex9ans: <>The total cost of tiles is <strong>$29,750,000</strong></>,
+    ex9katex4: "\\text{Cost} = 1{,}190 \\times 25 = 29{,}750",
+    ex9ans: <>The total cost of tiles is <strong>$29,750</strong></>,
 
     sumTitle: "✖️ COMPLETE SUMMARY",
     sumSubtitle: "Decimal Multiplication — Grade 7",
@@ -375,37 +375,37 @@ const translations = {
     usage4: "通貨換算",
     sec3Tips: [] as string[],
 
-    ex7Q: "あるお店でリンゴが1 kgあたり$15,500で売られています。2.5 kgのリンゴを買うといくらになりますか？",
+    ex7Q: "あるお店でリンゴが1 kgあたり$15.50で売られています。2.5 kgのリンゴを買うといくらになりますか？",
     ex7s1: "数式を書く",
-    ex7katex1: "\\text{合計金額} = 15,500 \\times 2.5",
+    ex7katex1: "\\text{合計金額} = 15.50 \\times 2.5",
     ex7s2: "掛け算を計算する",
-    ex7s2a: "15,500は小数0桁",
+    ex7s2a: "15.50は小数2桁",
     ex7s2b: "2.5は小数1桁",
-    ex7s2c: "15500 × 25 = 387,500",
-    ex7s2d: "小数点を配置（右から1桁）：38,750.0",
-    ex7ans: <>支払う金額は<strong>$38,750</strong>です。</>,
+    ex7s2c: "1550 × 25 = 38,750",
+    ex7s2d: "小数点を配置（右から3桁）：38.750 = 38.75",
+    ex7ans: <>支払う金額は<strong>$38.75</strong>です。</>,
 
-    ex8Q: "ある車は100 kmを走るのに8.5リットルのガソリンを消費します。ガソリンが1リットル$12,650の場合、350 kmの旅行のガソリン代はいくらですか？",
+    ex8Q: "ある車は100 kmを走るのに8.5リットルのガソリンを消費します。ガソリンが1リットル$1.26の場合、350 kmの旅行のガソリン代はいくらですか？",
     ex8s1: "350 kmに必要なガソリン量を計算する",
-    ex8katex1: "\\text{燃料} = \\frac{350}{100} \\times 8,5 = 3,5 \\times 8,5 = 29,75 \\text{ リットル}",
+    ex8katex1: "\\text{燃料} = \\frac{350}{100} \\times 8.5 = 3.5 \\times 8.5 = 29.75 \\text{ リットル}",
     ex8s2: "合計費用を計算する",
-    ex8katex2: "\\text{費用} = 29,75 \\times 12{,}650",
+    ex8katex2: "\\text{費用} = 29.75 \\times 1.26",
     ex8s3: "小数の掛け算を計算する",
-    ex8s3a: "29.75（小数2桁）× 12,650（小数0桁）",
-    ex8s3b: "2975 × 12650 = 37,633,750",
-    ex8s3c: "合計 = 小数2桁 = 376,337.50",
-    ex8ans: <>ガソリン代は<strong>$376,337.50</strong>です。</>,
+    ex8s3a: "29.75（小数2桁）× 1.26（小数2桁）",
+    ex8s3b: "2,975 × 126 = 374,850",
+    ex8s3c: "小数4桁の結果は37.4850。セント単位に四捨五入すると$37.49です。",
+    ex8ans: <>ガソリン代は<strong>$37.49</strong>です。</>,
 
-    ex9Q: "アフマドさんは縦12.75 m、横8.4 mの長方形の土地を持っています。0.3 m × 0.3 mのタイルを敷こうとしています。タイルが1枚$25,000の場合、タイルの購入総費用はいくらですか？",
+    ex9Q: "アフマドさんは縦12.75 m、横8.4 mの長方形の土地を持っています。0.3 m × 0.3 mのタイルを敷こうとしています。タイルが1枚$25の場合、タイルの購入総費用はいくらですか？",
     ex9s1: "土地の面積を計算する",
-    ex9katex1: "\\text{土地の面積} = 12,75 \\times 8,4 = 107,1 \\text{ m}^2",
+    ex9katex1: "\\text{土地の面積} = 12.75 \\times 8.4 = 107.1 \\text{ m}^2",
     ex9s2: "タイル1枚の面積を計算する",
-    ex9katex2: "\\text{タイルの面積} = 0,3 \\times 0,3 = 0,09 \\text{ m}^2",
+    ex9katex2: "\\text{タイルの面積} = 0.3 \\times 0.3 = 0.09 \\text{ m}^2",
     ex9s3: "必要なタイルの枚数を計算する",
-    ex9katex3: "\\text{枚数} = \\frac{107,1}{0,09} = 1190 \\text{ 枚}",
+    ex9katex3: "\\text{枚数} = \\frac{107.1}{0.09} = 1{,}190 \\text{ 枚}",
     ex9s4: "総費用を計算する",
-    ex9katex4: "\\text{費用} = 1190 \\times 25{,}000 = 29{,}750{,}000",
-    ex9ans: <>タイルの総費用は<strong>$29,750,000</strong>です。</>,
+    ex9katex4: "\\text{費用} = 1{,}190 \\times 25 = 29{,}750",
+    ex9ans: <>タイルの総費用は<strong>$29,750</strong>です。</>,
 
     sumTitle: "✖️ 完全まとめ",
     sumSubtitle: "小数の掛け算 — 中学1年",
@@ -706,7 +706,7 @@ const PerkalianBentukDesimalPage = () => {
                   <div className="pl-4">
                     <p>{t.ex7s2a}</p>
                     <p>{t.ex7s2b}</p>
-                    <p><InlineMath math={language === "id" ? "15500 \\times 25 = 387.500" : "15500 \\times 25 = 387{,}500"} /></p>
+                    <p><InlineMath math={language === "id" ? "15500 \\times 25 = 387.500" : "1550 \\times 25 = 38{,}750"} /></p>
                     <p>{t.ex7s2d}</p>
                   </div>
                   <p className="text-cyan-300 mt-2"><strong>{t.answer}</strong> {t.ex7ans}</p>
@@ -730,7 +730,7 @@ const PerkalianBentukDesimalPage = () => {
                   <p><strong>{t.step(3)}</strong> {t.ex8s3}</p>
                   <div className="pl-4">
                     <p>{t.ex8s3a}</p>
-                    <p><InlineMath math={language === "id" ? "2975 \\times 12650 = 37.633.750" : "2975 \\times 12650 = 37{,}633{,}750"} /></p>
+                    <p><InlineMath math={language === "id" ? "2975 \\times 12650 = 37.633.750" : "2{,}975 \\times 126 = 374{,}850"} /></p>
                     <p>{t.ex8s3c}</p>
                   </div>
                   <p className="text-cyan-300 mt-2"><strong>{t.answer}</strong> {t.ex8ans}</p>

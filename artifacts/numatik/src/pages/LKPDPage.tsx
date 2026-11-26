@@ -259,7 +259,7 @@ const LKPDPage = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 mb-6">
+        <div className="grid desktop:grid-cols-3 phone-land:grid-cols-2 gap-4 mb-6">
           {[
             { icon: Compass, title: "Amati", text: "Baca situasi, urutan besaran, dan satuannya." },
             { icon: Lightbulb, title: "Temukan", text: "Isi bagian kosong untuk menemukan konsep dan rumus." },
@@ -282,7 +282,7 @@ const LKPDPage = () => {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-5 mb-6">
+          <div className="grid desktop:grid-cols-2 phone-land:grid-cols-2 gap-5 mb-6">
             <div className="rounded-2xl bg-black/20 border border-white/10 p-5">
               <h3 className="font-display font-bold text-yellow-200 mb-3">Situasi 1: Membandingkan Banyak Benda</h3>
               <div className="flex items-center justify-center gap-4 rounded-xl bg-white/5 p-4 mb-4">
@@ -347,7 +347,7 @@ const LKPDPage = () => {
                 <p className="text-sm text-white/70 font-body">Gunakan hasil isian di atas sebagai ringkasan sebelum mengerjakan soal.</p>
               </div>
             </div>
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid desktop:grid-cols-3 phone-land:grid-cols-2 gap-4">
               <div className="rounded-2xl bg-cyan-500/10 border border-cyan-200/20 p-4">
                 <h4 className="font-bold text-cyan-100 mb-2">Perbandingan Umum</h4>
                 <p className="text-sm text-white/70">Membandingkan dua besaran. Jika satuan berbeda, ubah dahulu agar satuannya sama.</p>

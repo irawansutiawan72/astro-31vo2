@@ -283,7 +283,7 @@ function AnimasiRotasiTitik({ lang = "id" }: { lang?: "id" | "en" | "ja" }) {
       </div>
 
       {/* Grid + panel */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start w-full overflow-hidden">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-4 items-start w-full overflow-hidden">
 
         {/* SVG Grid */}
         <div className="w-full max-w-[360px] mx-auto lg:mx-0 flex-shrink-0">
@@ -584,7 +584,7 @@ function AnimasiRotasi({ lang = "id" }: { lang?: "id" | "en" | "ja" }) {
       </div>
 
       {/* Grid + info */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start w-full overflow-hidden">
+      <div className="flex flex-col desktop:flex-row phone-land:flex-row gap-4 items-start w-full overflow-hidden">
 
         {/* SVG Grid — responsif */}
         <div className="w-full max-w-[360px] mx-auto lg:mx-0 flex-shrink-0">

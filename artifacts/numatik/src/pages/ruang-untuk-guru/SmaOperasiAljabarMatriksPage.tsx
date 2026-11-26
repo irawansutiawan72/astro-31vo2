@@ -122,11 +122,11 @@ export default function SmaOperasiAljabarMatriksPage() {
           </div>
         </header>
 
-        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Peta materi">
+        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 desktop:hidden" aria-label="Peta materi">
           {outline.map(([label, id]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-white/10 bg-white/[.04] px-3 py-2 text-xs text-slate-200 hover:border-cyan-200/40 hover:text-cyan-100">{label}</a>)}
         </nav>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_245px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_245px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="transpose" className="scroll-mt-8 space-y-5">
               <Heading number="3.2.1" title="Transpose sebuah matriks" intro="Transpose mengubah posisi baris menjadi kolom dan kolom menjadi baris. Operasi ini akan berguna lagi saat kita mempelajari operasi matriks yang lain." />
@@ -349,7 +349,7 @@ export default function SmaOperasiAljabarMatriksPage() {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <nav aria-label="Daftar isi materi" className="sticky top-6 rounded-2xl border border-white/10 bg-[#0b1628]/90 p-4 backdrop-blur">
               <h2 className="mb-3 font-display text-sm font-bold text-cyan-100">Peta petualangan</h2>
               <ul className="space-y-1">{outline.map(([label, id]) => <li key={id}><a href={`#${id}`} className="block rounded-lg px-3 py-2 text-sm text-slate-300 transition hover:bg-cyan-200/[.08] hover:text-cyan-100">{label}</a></li>)}</ul>

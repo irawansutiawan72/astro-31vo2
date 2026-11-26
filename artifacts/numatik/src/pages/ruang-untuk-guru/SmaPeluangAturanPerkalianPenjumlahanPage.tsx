@@ -157,7 +157,7 @@ const SmaPeluangAturanPerkalianPenjumlahanPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-10">
             <section id="hasil-percobaan" data-testid="section-outcomes" className="scroll-mt-6">
               <SectionHeading number="3.1.1" title="Hasil percobaan, ruang sampel, dan titik contoh" intro="Yuk, mulai dari dasar! Setiap percobaan menghasilkan satu keluaran yang mungkin. Kumpulan semua keluaran yang mungkin disebut ruang sampel, sedangkan satu keluaran tertentu disebut titik contoh." />
@@ -276,7 +276,7 @@ const SmaPeluangAturanPerkalianPenjumlahanPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block" aria-label="Daftar bagian materi">
+          <aside className="hidden desktop:block" aria-label="Daftar bagian materi">
             <div className="sticky top-6 rounded-2xl border border-white/10 bg-[#0d1728]/90 p-4 backdrop-blur" data-testid="lesson-outline">
               <p className="mb-4 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta materi</p>
               <ol className="space-y-3 font-body text-xs text-slate-300">

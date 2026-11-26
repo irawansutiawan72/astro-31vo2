@@ -147,12 +147,16 @@ const createLabelTexture = (text: string, color: string) => {
 
 export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}): ObbyGame => {
   const callbacks: ObbyCallbacks = options;
+  const defaultStartZone = OBBY_ZONES.find((zone) => !zone.finish) ?? OBBY_ZONES[0]!;
+  let startZoneId = OBBY_ZONES.some((zone) => zone.id === options.startZoneId && !zone.finish)
+    ? options.startZoneId!
+    : defaultStartZone.id;
   let quality: ObbyQuality = options.settings?.quality ?? "auto";
   const isMobile = window.matchMedia("(max-width: 768px), (pointer: coarse)").matches;
   const initialPreset = QUALITY_PRESETS[quality];
   callbacks.onLoading?.(0);
   const canvas = host.ownerDocument.createElement("canvas");
-  canvas.setAttribute("aria-label", "Obby Matematika 3D platform game");
+  canvas.setAttribute("aria-label", "Obby Numatik 3D platform game");
   canvas.tabIndex = 0;
   const webgl2 = canvas.getContext("webgl2", { antialias: initialPreset.antialias, alpha: false });
   if (!webgl2) {
@@ -263,7 +267,10 @@ export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}):
   const propGeo = rememberGeometry(new THREE.CylinderGeometry(0.1, 0.12, 1, 8));
   const fallback = createProceduralPlayer();
   scene.add(fallback.root);
-  const controller = new CharacterController(new THREE.Vector3(0, 0, 0));
+  const initialZone = OBBY_ZONES.find((zone) => zone.id === startZoneId)!;
+  const initialPlatform = initialZone.platforms.find((platform) => platform.checkpoint) ?? initialZone.platforms[0]!;
+  const initialPosition = new THREE.Vector3(initialPlatform.x, initialPlatform.y, initialPlatform.z);
+  const controller = new CharacterController(initialPosition);
   const playerVisual = new THREE.Group();
   fallback.root.position.y = 0;
   playerVisual.add(fallback.root);
@@ -272,8 +279,8 @@ export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}):
   const junctions: Junction[] = [];
   const obstacleMeshes: Array<{ mesh: THREE.Object3D; type: string; phase: number; origin: THREE.Vector3 }> = [];
   const decorativeMeshes: THREE.Object3D[] = [];
-  let checkpoint = new THREE.Vector3(0, 0, 0);
-  let currentZone = OBBY_ZONES[0]!.id;
+  let checkpoint = initialPosition.clone();
+  let currentZone = initialZone.id;
   let pendingRetry: Junction | null = null;
   let elapsed = 0;
   let fallStartHeight = 0;
@@ -500,6 +507,11 @@ export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}):
         addPart(decorationGeometries.block, "#526d79", 1.3, 1.1);
         addPart(decorationGeometries.pipe, "#ffd04e", 1.2, 0.72, 0.56);
         addPart(decorationGeometries.pipe, "#46c7ce", 1.2, 0.72, -0.56);
+      } else if (zone.theme === "snow-mountain") {
+        addPart(decorationGeometries.rock, "#dff7ff", 0.65, 1.35);
+        addPart(decorationGeometries.cone, "#4e9bb8", 1.8, 1.15);
+        addPart(decorationGeometries.cone, "#8bd5ed", 2.45, 0.8);
+        addPart(decorationGeometries.sphere, "#f5fcff", 2.8, 0.45);
       } else {
         addPart(decorationGeometries.block, "#8c78d8", 1.1, 1.1);
         addPart(decorationGeometries.sphere, "#effaff", 2.1, 1, 0.48);
@@ -669,7 +681,7 @@ export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}):
     await Promise.all([characterPromise, ...animationPromises]);
     if (missingAssets.length > 0 && !warnedMissingModelAssets && !disposed) {
       warnedMissingModelAssets = true;
-      console.warn("Obby Matematik: optional character/animation assets could not be loaded; using procedural visuals.", missingAssets);
+      console.warn("Obby Numatik 3D: optional character/animation assets could not be loaded; using procedural visuals.", missingAssets);
     }
     if (!disposed) callbacks.onLoading?.(1);
   };
@@ -1030,8 +1042,10 @@ export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}):
     results = [];
     pendingRetry = null;
     hasWon = false;
-    currentZone = OBBY_ZONES[0]!.id;
-    checkpoint.set(0, 0, 0);
+    const zone = OBBY_ZONES.find((entry) => entry.id === startZoneId && !entry.finish) ?? defaultStartZone;
+    const spawn = zone.platforms.find((platform) => platform.checkpoint) ?? zone.platforms[0]!;
+    currentZone = zone.id;
+    checkpoint.set(spawn.x, spawn.y, spawn.z);
     controller.teleport(checkpoint);
     junctions.forEach((junction) => {
       junction.resolved = false;
@@ -1124,6 +1138,12 @@ export const mountObbyGame = (host: HTMLElement, options: ObbyGameOptions = {}):
     setSensitivity: (value) => { sensitivity = THREE.MathUtils.clamp(value, 0.001, 0.02); },
     setMuted: (value) => { muted = value; },
     setQuality,
+    setStartZone: (zoneId) => {
+      if (started && !paused) return;
+      if (!OBBY_ZONES.some((zone) => zone.id === zoneId && !zone.finish)) return;
+      startZoneId = zoneId;
+      reset();
+    },
     dispose,
   };
 };

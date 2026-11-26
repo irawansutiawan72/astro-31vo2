@@ -285,7 +285,7 @@ const SmaEksponenLogaritmaPage = () => {
           </Accordion>
 
           <Accordion id="examples" title="Contoh pengertian bilangan berpangkat" eyebrow="Bagian 2 · latihan bertahap" icon={<Calculator className="h-5 w-5" />} tone="blue" open={open("examples")} onToggle={toggle}>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} tone="emerald" question={<>Nyatakan <InlineMath math={"7\\times7\\times7\\times7"} /> dalam notasi pangkat.</>}>
                 <Formula tone="emerald">{"7\\times7\\times7\\times7=7^4"}</Formula><p>Basis = 7 dan eksponen = 4. Nilainya <InlineMath math="2.401" />.</p>
               </ExampleCard>
@@ -304,7 +304,7 @@ const SmaEksponenLogaritmaPage = () => {
               <Formula tone="violet">{"\\left(\\frac pq\\right)^n=\\frac pq\\times\\cdots\\times\\frac pq=\\frac{p^n}{q^n}"}</Formula>
               <p className="font-body text-sm text-yellow-100"><strong>Tips:</strong> pangkatkan pembilang dan penyebutnya secara terpisah.</p>
             </InfoCard>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} tone="violet" question={<>Hitung <InlineMath math={"\\left(\\frac35\\right)^3"} />.</>}><Formula>{"\\left(\\frac35\\right)^3=\\frac{3^3}{5^3}=\\frac{27}{125}"}</Formula></ExampleCard>
               <ExampleCard number={2} tone="blue" question={<>Hitung <InlineMath math={"\\left(\\frac23\\right)^4"} />.</>}><Formula>{"\\left(\\frac23\\right)^4=\\frac{16}{81}"}</Formula></ExampleCard>
               <ExampleCard number={3} tone="rose" question={<>Sederhanakan <InlineMath math={"\\left(\\frac{x^3}{y^2}\\right)^4"} />.</>}><Formula>{"\\frac{x^{12}}{y^8}"}</Formula></ExampleCard>
@@ -349,7 +349,7 @@ const SmaEksponenLogaritmaPage = () => {
           </Accordion>
 
           <Accordion id="practice" title="Contoh soal gabungan" eyebrow="Bagian 7 · terapkan beberapa sifat" icon={<Calculator className="h-5 w-5" />} tone="amber" open={open("practice")} onToggle={toggle}>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} tone="emerald" question={<>Hitung <InlineMath math={"5^0+3^{-2}"} />.</>}><Formula>{"5^0+3^{-2}=1+\\frac19=\\frac{10}{9}"}</Formula></ExampleCard>
               <ExampleCard number={2} tone="violet" question={<>Sederhanakan <InlineMath math={"\\frac{(-2)^3\\times3^{-2}}{6^0}"} />.</>}><Formula>{"\\frac{-8\\times\\frac19}{1}=-\\frac89"}</Formula></ExampleCard>
               <ExampleCard number={3} tone="rose" question={<>Jika <InlineMath math={"a=2^{-3}"} />, tentukan <InlineMath math={"a^{-2}"} />.</>}><Formula>{"a^{-2}=(2^{-3})^{-2}=2^6=64"}</Formula></ExampleCard>

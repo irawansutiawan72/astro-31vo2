@@ -83,6 +83,7 @@ export const OBBY_ZONES: ObbyZoneData[] = [
   createZone("gurun-batu", "Gurun Batu", "rocky-desert", "#dda04b", -200, ["moving-platform", "pillars", "trampoline"]),
   createZone("pabrik", "Pabrik", "factory", "#7d9ca5", -300, ["conveyor", "rotating-bar"]),
   createZone("menara-langit", "Menara Langit", "sky-tower", "#a889ff", -400, ["collapse", "trampoline"]),
+  createZone("gunung-salju", "Gunung Salju", "snow-mountain", "#76c9e8", -500, ["moving-platform", "swinging-bridge", "pillars"]),
   {
     id: "finish",
     name: "Garis Finish",
@@ -92,8 +93,8 @@ export const OBBY_ZONES: ObbyZoneData[] = [
     junctions: [],
     finish: true,
     platforms: [
-      { x: 0, z: -500, width: 6, depth: 10, y: 0.25, checkpoint: true },
-      { x: 0, z: -510, width: 8, depth: 16, y: 0.25 },
+      { x: 0, z: -600, width: 6, depth: 10, y: 0.25, checkpoint: true },
+      { x: 0, z: -610, width: 8, depth: 16, y: 0.25 },
     ],
   },
 ];

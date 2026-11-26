@@ -387,7 +387,7 @@ const SmaPertidaksamaanEksponenPage = () => {
 
             <CurveComparisonIllustration />
 
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Tentukan penyelesaian dari <InlineMath math="2^{x+1}>8" />.</>}>
                 <p>Karena <InlineMath math="2>1" />, tanda tidak berubah. Ubah <InlineMath math="8=2^3" />:</p>
                 <Formula tone="emerald">{"2^{x+1}>2^3\\Rightarrow x+1>3\\Rightarrow x>2"}</Formula>
@@ -413,7 +413,7 @@ const SmaPertidaksamaanEksponenPage = () => {
                 Saat bentuk <InlineMath math="a^{2f(x)}" /> dan <InlineMath math="a^{f(x)}" /> muncul bersama, jadikan pangkat itu variabel baru. Misalkan <InlineMath math="y=a^{f(x)}" /> sehingga <InlineMath math="a^{2f(x)}=y^2" />. Ingat: karena <InlineMath math="a^{f(x)}>0" />, nilai <InlineMath math="y" /> wajib positif.
               </p>
               <Formula tone="amber">{"p\\left(a^{f(x)}\\right)^2+q\\,a^{f(x)}+r\\gtreqless0\\quad\\xrightarrow{\\ y=a^{f(x)}>0\\ }\\quad py^2+qy+r\\gtreqless0"}</Formula>
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-xl border border-white/10 bg-slate-950/25 p-3 text-sm text-white/75"><strong className="text-amber-100">1. Substitusi:</strong> tetapkan <InlineMath math="y=a^{f(x)}" />.</div>
                 <div className="rounded-xl border border-white/10 bg-slate-950/25 p-3 text-sm text-white/75"><strong className="text-amber-100">2. Cari interval y:</strong> gunakan faktorisasi atau rumus kuadrat.</div>
                 <div className="rounded-xl border border-white/10 bg-slate-950/25 p-3 text-sm text-white/75"><strong className="text-amber-100">3. Kembali ke x:</strong> terjemahkan <InlineMath math="y" /> dengan syarat <InlineMath math="y>0" />.</div>
@@ -423,7 +423,7 @@ const SmaPertidaksamaanEksponenPage = () => {
               </blockquote>
             </ColorCard>
             <SignChart />
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number={1} difficulty="Mudah" tone="emerald" question={<>Selesaikan <InlineMath math="3^{2x}-10\cdot3^x+9\le0" />.</>}>
                 <p>Misalkan <InlineMath math="y=3^x>0" />. Maka:</p>
                 <Formula tone="emerald">{"y^2-10y+9\\le0\\Rightarrow(y-1)(y-9)\\le0\\Rightarrow1\\le y\\le9"}</Formula>
@@ -462,7 +462,7 @@ const SmaPertidaksamaanEksponenPage = () => {
                 </tbody>
               </table>
             </div>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ColorCard tone="rose"><p className="font-bold text-rose-100">Jangan lupa membalik tanda</p><p className="mt-2 text-sm leading-relaxed text-white/70">Khusus untuk <InlineMath math="0<a<1" />, arah perbandingan eksponen berubah.</p></ColorCard>
               <ColorCard tone="amber"><p className="font-bold text-amber-100">Jangan menerima semua akar</p><p className="mt-2 text-sm leading-relaxed text-white/70">Substitusi <InlineMath math="y=a^{f(x)}" /> hanya menerima <InlineMath math="y>0" />.</p></ColorCard>
               <ColorCard tone="emerald"><p className="font-bold text-emerald-100">Selalu cek interval</p><p className="mt-2 text-sm leading-relaxed text-white/70">Untuk pertidaksamaan kuadrat, uji tanda di setiap interval akar sebelum menulis jawaban.</p></ColorCard>

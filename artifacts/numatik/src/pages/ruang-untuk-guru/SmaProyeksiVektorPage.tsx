@@ -130,7 +130,7 @@ const ProjectionLab = () => {
         <div><p className="font-body text-[10px] font-black uppercase tracking-[.18em] text-violet-100/75">Meja eksperimen</p><h3 className="font-display text-lg font-extrabold text-white">Jatuhkan bayangan vektor b</h3></div>
         <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 py-2 font-body text-xs font-bold text-slate-100 hover:bg-white/[.09] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-200" data-testid="reset-projection-lab"><RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />Atur ulang</button>
       </div>
-      <div className="grid items-start lg:grid-cols-[1fr_320px]">
+      <div className="grid items-start desktop:grid-cols-[1fr_320px] phone-land:grid-cols-2">
         <div className="min-w-0 p-3 sm:p-5">
           <div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><ProjectionDiagram magnitudeA={magnitudeA} magnitudeB={magnitudeB} angle={angle} /></div>
           <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 font-body text-xs text-slate-200">
@@ -254,7 +254,7 @@ const SmaProyeksiVektorPage = () => (
 
         <section id="contoh-proyeksi" className="scroll-mt-6" data-testid="projection-examples-section">
           <SectionTitle index="03" kicker="Tiga tingkat tantangan" title="Dari rumus ke komponen" description="Untuk setiap soal, cari hasil kali titik dan panjang a dahulu. Lalu hitung skalar bertanda, bentuk vektor proyeksi, dan ambil sisanya." />
-          <div className="grid gap-3 lg:grid-cols-3">
+          <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
             <Example id="projection-easy" level="Mudah" question={<>Diketahui <InlineMath math="\\vec a=(3,4)" /> dan <InlineMath math="\\vec b=(4,0)" />. Tentukan komponen skalar proyeksi b pada a, proyeksi vektor, dan <InlineMath math="\\vec b_{\\perp}" />.</>} steps={[
               <>Hasil kali titik <InlineMath math="\\vec a\\cdot\\vec b=3(4)+4(0)=12" />, dan <InlineMath math="\\|\\vec a\\|=\\sqrt{3^2+4^2}=5" />.</>,
               <>Skalarnya bertanda <InlineMath math="\\operatorname{comp}_{\\vec a}(\\vec b)=\\frac{12}{5}" />.</>,

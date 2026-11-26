@@ -239,7 +239,7 @@ const SmaSudutIstimewaPage = () => {
           ))}
         </nav>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_230px] lg:gap-12">
+        <div className="grid gap-10 desktop:grid-cols-[minmax(0,1fr)_230px] phone-land:grid-cols-2 lg:gap-12">
           <div className="min-w-0 space-y-14">
             <section id="rasio-dasar" className="scroll-mt-8">
               <SectionHeading index="01" kicker="Mulai dari segitiga siku-siku" title="Tiga rasio, satu sudut acuan" description="Pilih sudut lancip θ. Nama sisi depan dan sisi samping ditentukan dari posisi θ; sisi miring selalu berada di seberang sudut siku-siku." />
@@ -410,7 +410,7 @@ const SmaSudutIstimewaPage = () => {
 
             <section id="contoh-soal" className="scroll-mt-8">
               <SectionHeading index="05" kicker="Coba langkahnya satu per satu" title="Tiga contoh soal bertingkat" description="Kenali sisi yang diketahui dan sisi yang dicari, lalu pilih sinus, cosinus, atau tangen yang menghubungkannya." />
-              <div className="grid min-w-0 gap-4 xl:grid-cols-2">
+              <div className="grid min-w-0 gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
                 <ExampleCard
                   level="Mudah"
                   title="Cari sisi di depan sudut 30°"
@@ -446,7 +446,7 @@ const SmaSudutIstimewaPage = () => {
 
             <section id="ringkasan-tips" className="scroll-mt-8">
               <SectionHeading index="06" kicker="Bawa pulang pola utamanya" title="Rangkuman, tips, dan trik" description="Kalau lupa satu nilai, kembali ke bentuk segitiga dan pilih rasio berdasarkan sisi yang diketahui." />
-              <div className="grid min-w-0 gap-4 lg:grid-cols-2">
+              <div className="grid min-w-0 gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
                 <article className="min-w-0 rounded-3xl border border-cyan-200/15 bg-cyan-200/[.045] p-4 sm:p-5">
                   <div className="mb-3 flex items-center gap-2">
                     <Sparkles className="h-4 w-4 shrink-0 text-cyan-200" />
@@ -501,7 +501,7 @@ const SmaSudutIstimewaPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-8 rounded-2xl border border-white/10 bg-[#101b2d]/75 p-4">
               <p className="mb-3 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta belajar</p>
               <ol className="space-y-3 font-body text-xs text-slate-300">

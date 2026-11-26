@@ -20,14 +20,25 @@
   "languageContinue": "🌏 Continue to Main Menu",
   "changeLanguageHint": "You can change the language anytime in",
   "settingsLanguage": "Settings → Language",
+  "themePreview": "Theme preview",
+  "themeStepProgress": "Step 1 of 2: Choose a theme",
+  "languageStepProgress": "Step 2 of 2: Choose a language",
+  "closeThemePicker": "Close theme selection",
+  "closeLanguagePicker": "Close language selection",
   "languages": {
     "id": "Bahasa Indonesia",
     "en": "English",
+    "ms-MY": "Bahasa Melayu (Malaysia)",
+    "zh-CN": "简体中文",
+    "ru": "Русский",
     "ja": "日本語"
   },
   "languageNative": {
     "id": "Bahasa Indonesia",
     "en": "English",
+    "ms-MY": "Bahasa Melayu (Malaysia)",
+    "zh-CN": "简体中文",
+    "ru": "Русский",
     "ja": "日本語"
   },
   "nav": {
@@ -35,6 +46,16 @@
     "next": "Next page",
     "home": "Main Menu",
     "backToHome": "Start Screen"
+  },
+  "exitDialog": {
+    "button": "Exit",
+    "confirmTitle": "Exit the app?",
+    "confirmMessage": "Are you sure you want to exit NUMATIK?",
+    "cancel": "Cancel",
+    "confirm": "Yes, Exit",
+    "unavailableTitle": "Feature Unavailable",
+    "unavailableMessage": "You can exit only when NUMATIK runs as a mobile app that supports this feature. When opened in a browser or on iOS, the app cannot close automatically.",
+    "understood": "Got it"
   },
   "menu": {
     "title": "MAIN MENU",
@@ -55,6 +76,8 @@
     "matchingMenuItems": "Matching menu items",
     "lastOpened": "Recently opened",
     "homeTab": "Home",
+    "hideSidebar": "Hide sidebar",
+    "showSidebar": "Show sidebar",
     "learnTab": "Learn",
     "practiceTab": "Practice",
     "gamesTab": "Games",
@@ -106,7 +129,19 @@
     "donate": "DONATE",
     "guide": "GUIDE",
     "settings": "Settings",
-    "reference": "References"
+    "reference": "References",
+    "musicTracks": {
+      "mp3-numatik-theme": "Disco Space",
+      "mp3-dreams": "Dreams",
+      "mp3-happy-day": "Happy Day",
+      "mp3-motivation": "Motivation",
+      "mp3-optimistic": "Optimistic",
+      "mp3-soft-presentation": "Soft Presentation",
+      "mp3-tech-ambient": "Tech Ambient",
+      "mp3-tech-corporate": "Tech Corporate",
+      "mp3-architect-tech": "Architect",
+      "mp3-tech-news": "Tech News"
+    }
   },
   "menuItems": {
     "guide": {

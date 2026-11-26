@@ -124,7 +124,7 @@ const SmaFungsiInversPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_250px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="membalik-aturan" className="scroll-mt-6">
               <SectionHeading number="1" title="Membalik aturan: dari hasil kembali ke asal" intro="Fungsi invers membalik proses suatu fungsi. Jika f mengubah x menjadi y, maka f⁻¹ mengubah y kembali menjadi x. Agar perjalanan pulang selalu jelas, setiap output harus menunjuk balik ke satu input saja." />
@@ -269,7 +269,7 @@ const SmaFungsiInversPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#0b1628]/90 p-5 backdrop-blur-md">
               <p className="font-display text-sm font-bold text-white">Peta perjalanan</p>
               <p className="mt-1 text-xs leading-relaxed text-slate-400">Pilih bagian untuk melompat. Kamu bisa kembali ke sini kapan saja.</p>

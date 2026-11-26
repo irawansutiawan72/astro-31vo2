@@ -172,7 +172,7 @@ const SmaRelasiDanFungsiPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_250px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="kenalan-fungsi" className="scroll-mt-6">
               <SectionHeading number="1" title="Kenalan dengan fungsi: mesin input-output" intro="Bayangkan sebuah mesin yang menerima masukan, menjalankan satu aturan, lalu mengeluarkan hasil. Fungsi adalah aturan yang memasangkan setiap masukan yang diizinkan dengan tepat satu keluaran. Satu masukan tidak boleh menghasilkan dua keluaran berbeda." />
@@ -328,7 +328,7 @@ const SmaRelasiDanFungsiPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#0b1628]/90 p-5 backdrop-blur-md">
               <p className="font-display text-sm font-bold text-white">Peta perjalanan</p>
               <p className="mt-1 text-xs leading-relaxed text-slate-400">Pilih bagian untuk melompat. Kamu bisa kembali ke sini kapan saja.</p>

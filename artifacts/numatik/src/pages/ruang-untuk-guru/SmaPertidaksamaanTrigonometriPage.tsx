@@ -161,7 +161,7 @@ function InequalityVisualizer() {
   const selectedLabel = kind === "sin" ? "sin x" : kind === "cos" ? "cos x" : "tan x";
 
   return (
-    <div className="grid min-w-0 gap-4 lg:grid-cols-[1.25fr_0.75fr]">
+    <div className="grid min-w-0 gap-4 desktop:grid-cols-[1.25fr_0.75fr] phone-land:grid-cols-2">
       <div className="min-w-0 rounded-2xl border border-cyan-200/15 bg-[#08112b] p-2 sm:p-3">
         <svg viewBox="0 0 360 256" role="img" aria-label={`Grafik ${selectedLabel} pada 0 sampai 360 derajat. Area hijau menunjukkan sudut yang memenuhi ${selectedLabel} ${comparator} ${fmt(threshold)}.`} className="block h-auto w-full" data-testid="visual-inequality-graph">
           <defs><clipPath id="ineq-plot-clip"><rect x={plot.left} y={plot.top} width={plot.right - plot.left} height={plot.bottom - plot.top} /></clipPath></defs>

@@ -251,7 +251,7 @@ const SmaPeluangFrekuensiHarapanKomplemenPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-10">
             <section id="frekuensi-harapan" className="scroll-mt-6" data-testid="section-expected-frequency">
               <SectionHeading
@@ -463,7 +463,7 @@ const SmaPeluangFrekuensiHarapanKomplemenPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#0a1424]/80 p-4 backdrop-blur">
               <p className="font-display text-sm font-bold text-white">Jelajahi materi</p>
               <nav className="mt-3 space-y-1" aria-label="Navigasi bagian materi">

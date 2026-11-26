@@ -133,7 +133,7 @@ const SmaPolinomialKonsepPage = () => (
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
         <div className="min-w-0 space-y-12">
           <section id="polinomial-konsep" data-testid="section-polynomial-concept">
             <SectionHeading
@@ -284,7 +284,7 @@ const SmaPolinomialKonsepPage = () => (
               description="Polinomial dapat dijumlahkan, dikurangkan, dan dikalikan. Saat menjumlahkan atau mengurangkan, kelompokkan suku sejenis; saat mengalikan, gunakan sifat distributif hingga semua pasangan suku sudah dikalikan."
             />
             <div className="space-y-4">
-              <article className="grid gap-3 md:grid-cols-3">
+              <article className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-2xl border border-cyan-200/15 bg-cyan-200/[.045] p-4">
                   <h3 className="mb-2 font-display font-bold text-cyan-100">Penjumlahan</h3>
                   <p className="text-sm leading-relaxed text-slate-300">Jumlahkan koefisien pada pangkat yang sama. Pangkat yang tidak memiliki pasangan tetap ditulis.</p>
@@ -421,7 +421,7 @@ const SmaPolinomialKonsepPage = () => (
           </section>
         </div>
 
-        <aside className="hidden lg:block">
+        <aside className="hidden desktop:block">
           <div className="sticky top-8 rounded-3xl border border-white/10 bg-[#101b2d]/80 p-4 backdrop-blur">
             <p className="mb-3 flex items-center gap-2 font-body text-xs font-black uppercase tracking-[.17em] text-cyan-100"><Target className="h-4 w-4" aria-hidden="true" /> Peta belajar</p>
             <nav aria-label="Navigasi materi polinomial" className="space-y-1">

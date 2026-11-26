@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Nunito:wght@500;700;900&family=Noto+Sans+JP:wght@500;700&family=Noto+Sans+SC:wght@500;700&display=swap");
 .nmw{position:fixed;inset:0;z-index:9999;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Nunito","Noto Sans JP","Noto Sans SC",system-ui,sans-serif;-webkit-text-size-adjust:100%}
 .nmw{
-  --bg:#020816; --cyan:#22d3ee; --gold:#facc15; --gold-d:#a16207; --ink:#e0f7ff; --ax:62deg;
+  --bg:#020816; --cyan:#22d3ee; --gold:#facc15; --gold-d:#a16207; --ink:#e0f7ff;
   color-scheme: dark; --rx:0deg; --ry:0deg; box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   --shade:radial-gradient(circle at 30% 26%,rgba(255,255,255,.4),transparent 34%),radial-gradient(circle at 72% 74%,transparent 28%,rgba(0,0,12,.82) 100%),radial-gradient(circle,transparent 52%,rgba(0,0,10,.5) 100%);
@@ -41,43 +41,8 @@
 .nmw .go::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);background-size:250% 100%;animation:nw-sheen 3.4s ease-in-out infinite}
 @keyframes nw-sheen{from{background-position:150% 0}to{background-position:-50% 0}}
 .nmw .space{flex:1;min-height:0;min-width:0;width:100%;display:flex;justify-content:center;align-items:center;transform-style:preserve-3d;pointer-events:none}
-.nmw .scene{--sw:min(100vw,520px);flex:none;width:var(--sw);aspect-ratio:1;position:relative;transform-style:preserve-3d;transform:rotateX(9deg)}
-.nmw .sun{position:absolute;left:50%;top:50%;width:10%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;
-  box-shadow:0 0 30px 10px rgba(255,170,40,.75),0 0 110px 40px rgba(255,110,20,.4),0 0 260px 90px rgba(255,80,10,.18);animation:nw-pulse 4s ease-in-out infinite}
-@keyframes nw-pulse{50%{box-shadow:0 0 40px 14px rgba(255,190,60,.85),0 0 140px 52px rgba(255,110,20,.46),0 0 300px 110px rgba(255,80,10,.2)}}
-.nmw .sun i{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 40% 38%,#fff6b0,#ffc83a 35%,#ff8a1c 70%,#c2410c)}
-.nmw .sun i::before{content:"";position:absolute;inset:-30%;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .35 0 0 0 0 0 0 0 0 1.7 -.42'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23f)'/%3E%3C/svg%3E");background-size:130px;animation:nw-sun-spin 36s linear infinite}
-.nmw .sun i::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle,transparent 52%,rgba(120,30,0,.55) 100%)}
-@keyframes nw-sun-spin{to{background-position:130px 0}}
-@keyframes nw-turn{to{transform:rotate(360deg)}}
-.nmw .ring{position:absolute;left:50%;top:50%;width:var(--r);height:var(--r);border-radius:50%;border:1px solid rgba(160,220,255,.15);translate:-50% -50%;transform-style:preserve-3d;transform:rotateX(var(--ax))}
-.nmw .ring.belt{border:3px dotted rgba(190,170,140,.55)}
-.nmw .spin{position:absolute;inset:0;transform-style:preserve-3d;animation:nw-spin var(--t) linear var(--d,0s) infinite}
-@keyframes nw-spin{to{transform:rotateZ(360deg)}}
-.nmw .pl{position:absolute;left:100%;top:50%;width:var(--s);aspect-ratio:1;margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);border-radius:50%}
-@keyframes nw-face{from{transform:rotateZ(0) rotateX(calc(var(--ax)*-1))}to{transform:rotateZ(-360deg) rotateX(calc(var(--ax)*-1))}}
-.nmw .pl{background:none;box-shadow:0 0 10px var(--glow,transparent);animation:nw-face var(--t) linear var(--d,0s) infinite}
-.nmw .bd{position:absolute;inset:0;border-radius:50%;overflow:hidden;z-index:1;display:block}
-.nmw .bd::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 28% 24%,rgba(255,255,255,.42),rgba(255,255,255,.08) 14%,transparent 34%),radial-gradient(ellipse at 76% 74%,rgba(0,0,0,.6),transparent 58%),var(--shade);box-shadow:inset -4px -3px 8px rgba(0,0,0,.65),inset 2px 2px 5px 1px var(--rim,rgba(255,255,255,.18))}
-.nmw .gl{position:absolute;inset:-30%;display:block;background:var(--tex);background-size:200% 100%;transform:rotate(var(--tilt,0deg));animation:nw-roll var(--rt,60s) linear infinite var(--rd,normal);filter:saturate(1.12) contrast(1.12)}
-@keyframes nw-roll{to{background-position:200% 0}}
-@keyframes nw-roll2{to{background-position:400% 0,200% 0}}
-@keyframes nw-rolls{to{background-position:200% 0,200% 0}}
-.nmw .mercury{--t:8s;--d:-3s;--s:10%;--rt:70s}
-.nmw .venus{--t:14s;--d:-9s;--s:11.6%;--glow:rgba(255,205,130,.55);--rim:rgba(255,220,150,.65);--rt:110s;--rd:reverse;--tilt:3deg}
-.nmw .earth{--t:22s;--d:-6s;--s:9.5%;--glow:rgba(90,170,255,.8);--rim:rgba(130,200,255,.95);--tilt:-23deg}
-.nmw .earth .gl{animation:nw-roll2 26s linear infinite}
-.nmw .mars{--t:30s;--d:-20s;--s:6.5%;--glow:rgba(255,120,70,.45);--rt:30s;--tilt:25deg}
-.nmw .jupiter{--t:48s;--d:-14s;--s:12%;--glow:rgba(235,190,140,.35);--tilt:3deg}
-.nmw .jupiter .gl{animation:nw-rolls 16s linear infinite}
-.nmw .saturn{--t:66s;--d:-40s;--s:8.2%;box-shadow:none;--rt:18s;--tilt:-20deg}
-.nmw .uranus{--t:90s;--d:-30s;--s:5%;--glow:rgba(150,240,240,.5);--rim:rgba(170,245,245,.85);--rt:34s;--tilt:98deg}
-.nmw .neptune{--t:120s;--d:-70s;--s:4.6%;--glow:rgba(70,110,255,.6);--rim:rgba(110,150,255,.9);--rt:26s;--tilt:28deg}
-.nmw .saturn::before,.nmw .saturn::after{content:"";position:absolute;left:50%;top:50%;width:250%;aspect-ratio:1;margin-left:-125%;margin-top:-125%;border-radius:50%;
-  background:radial-gradient(circle,transparent 0 37%,rgba(150,128,96,.6) 38% 41%,rgba(230,212,170,.95) 42% 50%,rgba(210,190,150,.85) 51% 54%,rgba(40,30,20,.35) 55% 56%,rgba(222,202,158,.9) 57% 66%,rgba(190,170,130,.6) 67% 70%,transparent 71%);transform:rotate(-20deg) rotateX(74deg);box-shadow:none}
-.nmw .saturn::after{clip-path:inset(50% 0 0 0);z-index:2}
-.nmw .moonorb{position:absolute;inset:-45%;z-index:3;animation:nw-turn 6s linear infinite}
-.nmw .moonorb::before{content:"";position:absolute;left:100%;top:50%;width:22%;aspect-ratio:1;margin:-11% 0 0 -11%;border-radius:50%;background:radial-gradient(circle at 35% 32%,#fafafa,#8a8a8a 75%)}
+.nmw .sun-image{display:block;width:min(74vw,350px);height:auto;object-fit:contain;filter:drop-shadow(0 0 22px rgba(255,170,40,.72)) drop-shadow(0 0 72px rgba(255,110,20,.38));animation:nw-sun-rotate 48s linear infinite}
+@keyframes nw-sun-rotate{to{transform:rotate(360deg)}}
 .nmw .ticker{overflow:hidden;white-space:nowrap;border-top:1px solid rgba(34,211,238,.25);background:rgba(2,8,22,.6);backdrop-filter:blur(6px);padding:clamp(8px,1.4vh,12px) 0 calc(clamp(8px,1.4vh,12px) + env(safe-area-inset-bottom,0px));margin:0 -16px;position:relative;z-index:4}
 .nmw .ticker div{display:inline-block;padding-left:100%;animation:nw-marq 45s linear infinite;font:700 clamp(11px,3vw,14px)/1 "Exo 2",sans-serif;letter-spacing:.08em;color:#67e8f9}
 @keyframes nw-marq{to{transform:translateX(-100%)}}
@@ -94,7 +59,6 @@
 .nmw .arrive.show p{transform:none}
 .nmw .arrive button{font:700 14px/1 "Nunito",sans-serif;color:var(--ink);min-height:44px;padding:0 22px;border-radius:999px;border:1px solid rgba(103,232,249,.5);background:rgba(8,20,48,.55);cursor:pointer;backdrop-filter:blur(6px)}
 @media (min-width:860px){
-.nmw{--ax:64deg}
 .nmw .close{display:none}
 .nmw .app{padding:clamp(8px,2vh,24px) clamp(20px,4vw,64px) 0}
 .nmw .ticker{margin:0 calc(clamp(20px,4vw,64px)*-1)}
@@ -109,8 +73,7 @@
 .nmw .year{font-size:clamp(12px,1.6vh,15px)}
 .nmw .go{font-size:clamp(17px,min(1.8vw,3.4vh),26px)}
 .nmw .space{grid-column:2;grid-row:1;height:100%}
-.nmw .scene{--sw:min(66vw,170vh)}
-.nmw .scene{transform:rotateX(8deg) rotateY(-8deg)}
+.nmw .sun-image{width:min(36vw,520px)}
 .nmw .ticker div,.nmw .ticker{font-size:14px}
 }
 @media (max-width:370px){
@@ -120,8 +83,9 @@
 @media (orientation:landscape) and (max-height:600px) and (max-width:859px){
 .nmw .close{display:none}
 .nmw .app{padding:8px 14px 0}
-.nmw .langs{right:auto}
-.nmw .stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;text-align:left;padding-top:44px;column-gap:1vw;gap:0}
+.nmw .langs{top:calc(2px + env(safe-area-inset-top,0px));left:8px;right:auto;gap:4px}
+.nmw .langs button{min-height:32px;padding:0 6px;font-size:10px}
+.nmw .stage{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;text-align:left;padding-top:60px;column-gap:1vw;gap:0}
 .nmw .copy{display:flex;min-width:0;flex-direction:column;justify-content:center;align-items:flex-start;gap:clamp(4px,1.2vh,8px);position:relative;z-index:3;padding-bottom:0}
 .nmw .head,.nmw .dock{order:0;transform:translateZ(30px)}
 .nmw .greet{font-size:clamp(12px,2.1vw,18px);letter-spacing:.08em}
@@ -131,7 +95,14 @@
 .nmw .year{font-size:11px;padding:6px 12px}
 .nmw .go{font-size:clamp(13px,2.1vw,17px);padding:10px 24px;border-radius:14px}
 .nmw .space{grid-column:2;grid-row:1;height:100%}
-.nmw .scene{--sw:min(49vw,76vh)}
+.nmw .sun-image{width:min(36vw,280px)}
+}
+@media (max-width:859px) and (orientation:portrait){
+.nmw .stage{display:grid;height:100%;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);align-content:stretch;align-items:center;justify-items:center;gap:clamp(4px,1vh,8px);padding-top:60px;padding-bottom:4px}
+.nmw .head{grid-row:1}
+.nmw .dock{grid-row:2}
+.nmw .space{grid-row:3;min-height:0;width:100%;overflow:hidden}
+.nmw .sun-image{width:auto;height:auto;min-width:0;min-height:0;max-width:min(64vw,300px);max-height:100%}
 }
 @media (prefers-reduced-motion:reduce){
 .nmw *{animation:none!important;transition:none!important}

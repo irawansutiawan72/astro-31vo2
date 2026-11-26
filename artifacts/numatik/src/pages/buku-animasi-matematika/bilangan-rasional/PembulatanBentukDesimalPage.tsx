@@ -279,7 +279,7 @@ const translations = {
     sec3Summary: <>Rounding is not just a classroom concept! In daily life, rounding is often used to <strong>estimate prices</strong>, <strong>measure distances</strong>, <strong>calculate time</strong>, and much more. Rounding makes numbers easier to understand and communicate!</>,
     sec3UsageTitle: "Everyday Examples:",
     usage: [
-      { title: "Shopping", desc: "Total of $49,750 rounded to $50,000" },
+      { title: "Shopping", desc: "A total of $49.75 rounded to the nearest dollar is $50.00" },
       { title: "Distance", desc: "12.3 km rounded to \"about 12 km\"" },
       { title: "Body Weight", desc: "65.7 kg often stated as \"about 66 kg\"" },
       { title: "Time", desc: "Journey of 2 hours 45 minutes = \"about 3 hours\"" },
@@ -447,7 +447,7 @@ const translations = {
     sec3Summary: <>四捨五入は授業の計算だけではありません！日常生活では<strong>価格の見積もり</strong>、<strong>距離の測定</strong>、<strong>時間の計算</strong>などでよく使われます。四捨五入によって数値が理解しやすくなります！</>,
     sec3UsageTitle: "日常の使用例：",
     usage: [
-      { title: "買い物", desc: "合計$49,750を$50,000に四捨五入" },
+      { title: "買い物", desc: "合計$49.75を最も近いドルに四捨五入すると$50.00です" },
       { title: "距離", desc: "12.3 kmを「約12 km」に四捨五入" },
       { title: "体重", desc: "65.7 kgを「約66 kg」と表現" },
       { title: "時間", desc: "2時間45分の旅 = 「約3時間」" },

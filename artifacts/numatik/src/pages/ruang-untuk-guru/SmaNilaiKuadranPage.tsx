@@ -204,7 +204,7 @@ const SmaNilaiKuadranPage = () => {
           ))}
         </nav>
 
-        <div className="grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1fr)_230px] lg:gap-12">
+        <div className="grid min-w-0 gap-10 desktop:grid-cols-[minmax(0,1fr)_230px] phone-land:grid-cols-2 lg:gap-12">
           <div className="min-w-0 space-y-14">
             <section id="peta-tanda" className="scroll-mt-8">
               <SectionHeading index="01" kicker="Baca arah sebelum menghitung" title="Tiga rasio, empat wilayah" description="Pada lingkaran satuan, koordinat titik sudut θ adalah (cos θ, sin θ). Jadi cos mengikuti arah mendatar (x), sedangkan sin mengikuti arah tegak (y). Tangen adalah sin dibagi cos." />
@@ -469,7 +469,7 @@ const SmaNilaiKuadranPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-8 rounded-3xl border border-white/10 bg-[#101b2d]/75 p-5">
               <p className="mb-3 font-body text-[10px] font-black uppercase tracking-[.2em] text-cyan-200/65">Bekal sesi ini</p>
               <p className="font-display text-3xl font-black text-white">4 <span className="text-sm font-bold text-slate-400">langkah</span></p>

@@ -306,7 +306,7 @@ ul,ol{margin:4pt 0;padding-left:20pt}li{margin:2pt 0;font-size:10pt}
         >
           <div className="mb-4">
             <h3 className="font-display text-sm font-bold text-emerald-200 mb-2">{data.topicTitle} - Jenis Pengetahuan</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3">
               {data.jenisPengetahuan.map((jp, i) => (
                 <div key={i} className={`${jp.bg} ${jp.border} border rounded-xl p-3`}>
                   <div className={`text-xs font-bold ${jp.color} uppercase tracking-wide mb-1`}>{jp.label}</div>
@@ -390,7 +390,7 @@ ul,ol{margin:4pt 0;padding-left:20pt}li{margin:2pt 0;font-size:10pt}
           borderColor="border-cyan-300/40"
           bgColor="linear-gradient(135deg, rgba(6,182,212,0.10) 0%, rgba(15,23,42,0.65) 100%)"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          <div className="grid grid-cols-1 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3 mb-4">
             {data.praktikPedagogis.map((p, i) => (
               <div key={i} className="bg-white/5 rounded-lg p-3 border border-cyan-300/30">
                 <div className="text-xs font-bold text-cyan-200 uppercase tracking-wide mb-1">{p.label}</div>

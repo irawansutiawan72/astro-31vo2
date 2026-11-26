@@ -41,6 +41,7 @@ export interface ObbySettings {
 
 export interface ObbyGameOptions extends ObbyCallbacks {
   settings?: ObbySettings;
+  startZoneId?: string;
 }
 
 export interface ObbyGame {
@@ -56,5 +57,6 @@ export interface ObbyGame {
   setSensitivity(value: number): void;
   setMuted(muted: boolean): void;
   setQuality(quality: ObbyQuality): void;
+  setStartZone(zoneId: string): void;
   dispose(): void;
 }

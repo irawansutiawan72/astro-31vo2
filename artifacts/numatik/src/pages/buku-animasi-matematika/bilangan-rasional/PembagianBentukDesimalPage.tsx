@@ -205,7 +205,7 @@ const translations = {
     sec3Summary: <>Decimal division is not just classroom theory! You will encounter it often in real life — for example when <strong>calculating unit prices</strong>, <strong>dividing food</strong>, or <strong>finding average speed</strong>. Let's practise with practical examples!</>,
     sec3UsageTitle: "Everyday Examples:",
     usage1: "Unit price",
-    usage1desc: "$15,750 ÷ 2.5 kg",
+    usage1desc: "$15.75 ÷ 2.5 kg",
     usage2: "Fuel consumption",
     usage2desc: "125.5 km ÷ 8.5 litres",
     usage3: "Length division",
@@ -215,13 +215,13 @@ const translations = {
       "Pay attention to units in the problem (currency, kg, metres, litres)",
       "Use the technique of making the divisor a whole number to simplify",
     ],
-    ex7Q: "Andi buys 2.5 kg of sugar for $37,500. What is the price of sugar per kilogram?",
-    ex7given1: "Total price = $37,500",
+    ex7Q: "Andi buys 2.5 kg of sugar for $37.50. What is the price of sugar per kilogram?",
+    ex7given1: "Total price = $37.50",
     ex7given2: "Weight of sugar = 2.5 kg",
     ex7find: "Price per kilogram",
     ex7pricePerKg: "Price per kg = ",
     ex7multiply: "Multiply by 10:",
-    ex7ans: <>The price of sugar per kilogram is <strong>$15,000</strong></>,
+    ex7ans: <>The price of sugar per kilogram is <strong>$15.00</strong></>,
 
     ex8Q: "A car travels 187.5 km using 12.5 litres of petrol. How many kilometres can the car travel per litre of petrol?",
     ex8given1: "Distance travelled = 187.5 km",
@@ -332,7 +332,7 @@ const translations = {
     sec3Summary: <>小数の割り算は授業の理論だけではありません！日常生活でよく使われます。例えば<strong>単価の計算</strong>、<strong>食べ物を分ける</strong>、<strong>平均速度の計算</strong>などです。実用的な例題で練習しましょう！</>,
     sec3UsageTitle: "日常の使用例：",
     usage1: "単価",
-    usage1desc: "$15,750 ÷ 2.5 kg",
+    usage1desc: "$15.75 ÷ 2.5 kg",
     usage2: "燃費",
     usage2desc: "125.5 km ÷ 8.5リットル",
     usage3: "長さの分割",
@@ -342,13 +342,13 @@ const translations = {
       "問題の単位に注意する（通貨、kg、メートル、リットル）",
       "除数を整数にするテクニックを使って簡単にする",
     ],
-    ex7Q: "Andiは砂糖2.5 kgを$37,500で買いました。砂糖1 kgあたりの価格はいくらですか？",
-    ex7given1: "合計金額 = $37,500",
+    ex7Q: "Andiは砂糖2.5 kgを$37.50で買いました。砂糖1 kgあたりの価格はいくらですか？",
+    ex7given1: "合計金額 = $37.50",
     ex7given2: "砂糖の重量 = 2.5 kg",
     ex7find: "1 kgあたりの価格",
     ex7pricePerKg: "1 kgの価格 = ",
     ex7multiply: "10倍する：",
-    ex7ans: <>砂糖1 kgの価格は<strong>$15,000</strong>です。</>,
+    ex7ans: <>砂糖1 kgの価格は<strong>$15.00</strong>です。</>,
 
     ex8Q: "車が12.5リットルのガソリンで187.5 kmを走りました。1リットルあたり何km走れますか？",
     ex8given1: "走行距離 = 187.5 km",
@@ -629,7 +629,7 @@ const PembagianBentukDesimalPage = () => {
             </div>
             <div className="bg-slate-700/50 border border-slate-600 rounded-lg p-4">
               <h4 className="text-slate-300 font-semibold text-sm mb-3">{t.sec3UsageTitle}</h4>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+              <div className="grid grid-cols-1 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3 text-sm">
                 <div className="bg-black/30 rounded p-3 text-center">
                   <span className="text-2xl mb-2 block">🛒</span>
                   <p className="text-cyan-300">{t.usage1}</p>
@@ -670,8 +670,8 @@ const PembagianBentukDesimalPage = () => {
                   <p><strong>{t.find}</strong> {t.ex7find}</p>
                   <p><strong>{t.solve}</strong></p>
                   <div className="pl-4">
-                    <p>{t.ex7pricePerKg}<InlineMath math="\frac{37500}{2,5}" /></p>
-                    <p className="mt-1">{t.ex7multiply} <InlineMath math="= \frac{375000}{25} = 15000" /></p>
+                    <p>{t.ex7pricePerKg}<InlineMath math={language === "id" ? "\\frac{37500}{2,5}" : "\\frac{37.50}{2.5}"} /></p>
+                    <p className="mt-1">{t.ex7multiply} <InlineMath math={language === "id" ? "= \\frac{375000}{25} = 15000" : "= \\frac{375}{25} = 15"} /></p>
                   </div>
                   <p className="text-cyan-300 mt-2"><strong>{t.answer}</strong> {t.ex7ans}</p>
                 </div>

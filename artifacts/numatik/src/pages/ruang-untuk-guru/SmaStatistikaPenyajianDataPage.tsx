@@ -532,7 +532,7 @@ const SmaStatistikaPenyajianDataPage = () => (
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_250px]">
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_250px] phone-land:grid-cols-2">
         <div className="min-w-0 space-y-12">
           <section id="diagram-garis" data-testid="section-line-graph">
             <SectionHeading number="2.1.1" title="Diagram garis" intro="Diagram garis cocok untuk melihat perubahan yang berlangsung berurutan atau terus-menerus. Kita sering memakainya untuk perkembangan jumlah penduduk, suhu, curah hujan, penjualan, dan tinggi permukaan air." />
@@ -761,7 +761,7 @@ const SmaStatistikaPenyajianDataPage = () => (
 
           <section id="histogram-poligon-ogive" data-testid="section-histogram-polygon-ogive">
             <SectionHeading number="2.2.2" title="Histogram, poligon frekuensi, dan ogive" intro="Histogram menampilkan distribusi frekuensi sebagai batang-batang yang saling berdempetan. Dari histogram, kita dapat membentuk poligon frekuensi atau poligon frekuensi kumulatif untuk membaca pola data dengan cara berbeda." />
-            <div className="mb-5 grid gap-3 md:grid-cols-3">
+            <div className="mb-5 grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
               <div className="rounded-2xl border border-orange-200/15 bg-orange-200/[.045] p-4"><h3 className="font-display font-bold text-orange-100">Histogram</h3><p className="mt-2 text-xs leading-relaxed text-slate-300">Batang menempel karena kelas-kelas data bersambung. Sumbu mendatar menunjukkan interval kelas dan sumbu tegak menunjukkan frekuensi.</p></div>
               <div className="rounded-2xl border border-cyan-200/15 bg-cyan-200/[.045] p-4"><h3 className="font-display font-bold text-cyan-100">Poligon frekuensi</h3><p className="mt-2 text-xs leading-relaxed text-slate-300">Hubungkan titik tengah sisi atas batang histogram. Bentuk garisnya memperlihatkan perubahan frekuensi antarkelas.</p></div>
               <div className="rounded-2xl border border-violet-200/15 bg-violet-200/[.045] p-4"><h3 className="font-display font-bold text-violet-100">Ogive</h3><p className="mt-2 text-xs leading-relaxed text-slate-300">Hubungkan titik-titik frekuensi kumulatif. “Kurang dari” membentuk ogive positif yang naik; “lebih dari” membentuk ogive negatif yang turun.</p></div>
@@ -787,7 +787,7 @@ const SmaStatistikaPenyajianDataPage = () => (
                   `${formatNumber((examScores240Cumulative[index] / 240) * 100, 1)}%`,
                 ]).concat([["Jumlah", 240, 240, "100%"]])} />
                 <p className="text-sm leading-relaxed text-slate-300">Untuk menggambar ogive kurang dari, pasangkan setiap frekuensi kumulatif dengan batas nyata atas kelasnya, mulai dari titik awal (−0,5; 0). Untuk ogive lebih dari, gunakan batas nyata bawah dan jumlah yang masih berada di atas batas tersebut.</p>
-                <div className="grid gap-4 lg:grid-cols-2">
+                <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-[#101b2d]/75 p-3"><h4 className="mb-2 font-display font-bold text-cyan-100">Ogive positif · kurang dari</h4><PolygonChart labels={["−0,5", "9,5", "19,5", "29,5", "39,5", "49,5", "59,5", "69,5", "79,5", "89,5", "99,5"]} values={[0, ...examScores240Cumulative]} maxY={240} ariaLabel="Ogive positif frekuensi kumulatif kurang dari untuk nilai ujian" /></div>
                   <div className="rounded-2xl border border-white/10 bg-[#101b2d]/75 p-3"><h4 className="mb-2 font-display font-bold text-violet-100">Ogive negatif · lebih dari</h4><PolygonChart labels={["−0,5", "9,5", "19,5", "29,5", "39,5", "49,5", "59,5", "69,5", "79,5", "89,5", "99,5"]} values={[240, 234, 220, 200, 170, 128, 80, 42, 18, 6, 0]} maxY={240} ariaLabel="Ogive negatif frekuensi kumulatif lebih dari untuk nilai ujian" /></div>
                 </div>
@@ -836,7 +836,7 @@ const SmaStatistikaPenyajianDataPage = () => (
           </section>
         </div>
 
-        <aside className="hidden lg:block" aria-label="Daftar bagian materi">
+        <aside className="hidden desktop:block" aria-label="Daftar bagian materi">
           <div className="sticky top-6 rounded-2xl border border-white/10 bg-[#0d1728]/90 p-4 backdrop-blur" data-testid="lesson-outline">
             <p className="mb-4 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta materi</p>
             <ol className="space-y-3 font-body text-xs text-slate-300">

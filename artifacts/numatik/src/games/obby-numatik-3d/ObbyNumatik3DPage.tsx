@@ -43,7 +43,7 @@ const formatTime = (seconds: number) => {
   return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
 };
 
-const ObbyPage = () => {
+const ObbyNumatik3DPage = () => {
   const hostRef = useRef<HTMLDivElement>(null);
   const gameRef = useRef<ObbyGame | null>(null);
   const navigate = useNavigate();
@@ -51,6 +51,8 @@ const ObbyPage = () => {
   const { isDark } = useTheme();
   const t = getObbyTranslations(language);
   const [settings, setSettings] = useState<SavedSettings>(readSettings);
+  const [selectedZoneId, setSelectedZoneId] = useState("taman");
+  const selectedZoneRef = useRef("taman");
   const [screen, setScreen] = useState<Screen>("menu");
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [hud, setHud] = useState<ObbyHud>(emptyHud);
@@ -137,6 +139,7 @@ const ObbyPage = () => {
     if (!host) return undefined;
     try {
       const game = mountObbyGame(host, {
+        startZoneId: selectedZoneRef.current,
         onLoading: (progress) => {
           setLoadingProgress(Math.round(progress * 100));
           if (startRequestedRef.current && progress >= 1) setScreen("playing");
@@ -174,7 +177,7 @@ const ObbyPage = () => {
   }, [handleWin, playSound]);
 
   useEffect(() => {
-    const pushGuard = () => history.pushState({ obbyMatematika: true }, "");
+    const pushGuard = () => history.pushState({ obbyNumatik3D: true }, "");
     pushGuard();
     const onPopState = () => {
       if (screen === "playing") {
@@ -292,6 +295,19 @@ const ObbyPage = () => {
     gameRef.current?.pause();
     navigate("/ruang-untuk-guru/numatik-game");
   };
+  const returnToPlaces = () => {
+    gameRef.current?.pause();
+    gameRef.current?.setStartZone(selectedZoneRef.current);
+    gameRef.current?.pause();
+    gameRef.current?.setJoystick({ x: 0, y: 0 });
+    setJoystick({ x: 0, y: 0 });
+    setLeftPointer(null);
+    setRightPointer(null);
+    setQuestionResult(null);
+    setNotice("");
+    setSummary(null);
+    setScreen("menu");
+  };
 
   const updateJoystick = (event: React.PointerEvent<HTMLDivElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -333,6 +349,14 @@ const ObbyPage = () => {
     { key: "high", label: t.high },
     { key: "ultra", label: t.ultra },
   ] as const;
+  const placeOptions = [
+    { id: "taman", label: t.garden, description: t.gardenDescription, emoji: "🌿" },
+    { id: "hutan", label: t.forest, description: t.forestDescription, emoji: "🌲" },
+    { id: "gurun-batu", label: t.desert, description: t.desertDescription, emoji: "🏜️" },
+    { id: "pabrik", label: t.factory, description: t.factoryDescription, emoji: "🏭" },
+    { id: "menara-langit", label: t.tower, description: t.towerDescription, emoji: "🗼" },
+    { id: "gunung-salju", label: t.snow, description: t.snowDescription, emoji: "🏔️" },
+  ] as const;
   const surfaceClass = isDark
     ? "border-white/15 bg-slate-950/90 text-white"
     : "border-slate-300 bg-white/95 text-slate-900";
@@ -342,9 +366,10 @@ const ObbyPage = () => {
     "Gurun Batu": t.desert,
     Pabrik: t.factory,
     "Menara Langit": t.tower,
+    "Gunung Salju": t.snow,
     "Garis Finish": t.finishZone,
   };
-  const zoneLabel = zoneNames[hud.zone] ?? (hud.zone || `${t.zone} 1 / 5`);
+  const zoneLabel = zoneNames[hud.zone] ?? (hud.zone || `${t.zone} 1 / 6`);
 
   return (
     <main className="fixed inset-0 overflow-hidden bg-sky-200 text-white" style={{ touchAction: "none", overscrollBehavior: "none" }}>
@@ -362,13 +387,42 @@ const ObbyPage = () => {
 
       {screen === "menu" && !gameError && (
         <div className="absolute inset-0 z-30 grid place-items-center bg-slate-950/25 p-4 backdrop-blur-sm">
-          <div className={`w-full max-w-lg rounded-3xl border p-6 shadow-2xl backdrop-blur-xl ${surfaceClass}`}>
+          <div className={`max-h-[min(92dvh,900px)] w-full max-w-lg overflow-y-auto rounded-3xl border p-5 shadow-2xl backdrop-blur-xl sm:p-6 ${surfaceClass}`}>
             <div className="text-center">
               <span className="text-5xl" role="img" aria-label="flag">🏁</span>
               <h1 className="mt-3 font-display text-3xl font-black text-cyan-500">{t.title}</h1>
               <p className="mt-2 text-sm opacity-75">{t.subtitle}</p>
             </div>
             <div className="mt-4 rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4 text-sm leading-relaxed">{t.instructions}</div>
+            <section className="mt-4" aria-labelledby="obby-place-title">
+              <h2 id="obby-place-title" className="mb-2 text-sm font-bold">{t.choosePlace}</h2>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+                {placeOptions.map((place) => {
+                  const selected = selectedZoneId === place.id;
+                  return (
+                    <button
+                      key={place.id}
+                      type="button"
+                      aria-pressed={selected}
+                      onClick={() => {
+                        selectedZoneRef.current = place.id;
+                        setSelectedZoneId(place.id);
+                        gameRef.current?.setStartZone(place.id);
+                        gameRef.current?.pause();
+                      }}
+                      className={`min-h-24 rounded-xl border p-2 text-left transition-colors ${
+                        isDark
+                          ? selected ? "border-cyan-300 bg-cyan-400/20 text-white" : "border-white/15 bg-white/5 text-slate-100 hover:bg-white/10"
+                          : selected ? "border-cyan-500 bg-cyan-50 text-slate-900 ring-2 ring-cyan-200" : "border-slate-300 bg-white/80 text-slate-800 hover:bg-slate-50"
+                      }`}
+                    >
+                      <span className="flex items-center gap-1.5 text-sm font-bold"><span aria-hidden="true">{place.emoji}</span>{place.label}</span>
+                      <span className={`mt-1 block text-[10px] leading-snug ${isDark ? "text-slate-300" : "text-slate-600"}`}>{place.description}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </section>
             <div className="mt-4 flex items-center justify-between rounded-xl bg-black/5 px-4 py-3">
               <span className="text-sm">{t.time} · {formatTime(best)}</span>
               <button type="button" onClick={() => applySettings({ ...settings, sound: !settings.sound })} aria-label={t.sound} className="rounded-lg p-2 text-cyan-600">
@@ -381,7 +435,7 @@ const ObbyPage = () => {
             <button type="button" onClick={start} className="mt-3 flex min-h-14 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 font-display text-lg font-black text-slate-950 shadow-[0_5px_0_#0f766e] active:translate-y-1 active:shadow-none">
               <Play className="h-5 w-5 fill-current" /> {t.play}
             </button>
-            <button type="button" onClick={toMenu} className="mx-auto mt-4 flex items-center gap-2 text-xs opacity-70 hover:opacity-100"><ArrowLeft className="h-4 w-4" /> {t.menu}</button>
+            <button type="button" onClick={toMenu} className={`mx-auto mt-4 flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-bold transition-colors ${isDark ? "text-slate-200 hover:bg-white/10" : "border border-slate-300 bg-white/90 text-slate-700 hover:bg-slate-100"}`}><ArrowLeft className="h-4 w-4" /> {t.menu}</button>
           </div>
         </div>
       )}
@@ -423,9 +477,21 @@ const ObbyPage = () => {
       {(screen === "playing" || screen === "paused") && (
         <>
           <header className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-2 p-3">
-            <div className="rounded-xl border border-white/20 bg-slate-950/65 px-3 py-2 text-xs shadow-lg backdrop-blur">
-              <p className="font-bold">{formatTime(hud.elapsed)}</p>
-              <p className="text-cyan-200">{zoneLabel}</p>
+            <div className="flex items-start gap-2">
+              <button
+                type="button"
+                onClick={returnToPlaces}
+                aria-label={t.choosePlace}
+                title={t.choosePlace}
+                className="pointer-events-auto flex min-h-10 items-center gap-1 rounded-xl border border-white/20 bg-slate-950/75 px-2 text-[10px] font-bold shadow-lg backdrop-blur"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                <span>{t.choosePlace}</span>
+              </button>
+              <div className="rounded-xl border border-white/20 bg-slate-950/65 px-3 py-2 text-xs shadow-lg backdrop-blur">
+                <p className="font-bold">{formatTime(hud.elapsed)}</p>
+                <p className="text-cyan-200">{zoneLabel}</p>
+              </div>
             </div>
             <div className="max-w-[52%] rounded-xl border border-amber-100/30 bg-slate-950/80 px-3 py-2 text-center text-xs shadow-lg backdrop-blur">
               {hud.question ? <><b>{hud.question.prompt}</b><div className="mt-1 flex justify-center gap-2">{hud.question.choices.map((option, index) => <span key={index}>{index + 1}. {option}</span>)}</div></> : <span className="text-slate-300">{t.subtitle}</span>}
@@ -483,6 +549,7 @@ const ObbyPage = () => {
             <Pause className="mx-auto h-8 w-8 text-cyan-500" />
             <h2 className="mt-2 font-display text-2xl font-black">{t.pause}</h2>
             <button type="button" onClick={resume} className="mt-5 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-cyan-400 font-bold text-slate-950"><Play className="h-5 w-5" /> {t.resume}</button>
+            <button type="button" onClick={returnToPlaces} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-slate-400/30 bg-black/5 font-bold"><ArrowLeft className="h-5 w-5" /> {t.choosePlace}</button>
             <button type="button" onClick={toMenu} className="mt-3 flex min-h-12 w-full items-center justify-center gap-2 rounded-xl border border-slate-400/30 bg-black/5 font-bold"><ArrowLeft className="h-5 w-5" /> {t.menu}</button>
           </section>
         </div>
@@ -524,4 +591,4 @@ const ObbyPage = () => {
   );
 };
 
-export default ObbyPage;
+export default ObbyNumatik3DPage;

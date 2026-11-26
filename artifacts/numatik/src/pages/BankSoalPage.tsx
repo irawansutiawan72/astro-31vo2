@@ -87,7 +87,7 @@ const BankSoalPage = () => {
           Koleksi lengkap soal-soal matematika SMP
         </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 desktop:grid-cols-4 phone-land:grid-cols-3 gap-3 md:gap-4">
           {bankSoalTopics.map((topic, i) => (
             <button
               key={topic.label}

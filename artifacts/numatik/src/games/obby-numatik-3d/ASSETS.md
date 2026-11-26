@@ -1,4 +1,4 @@
-# Obby Matematika assets
+# Obby Numatik 3D assets
 
 The game runs without downloaded assets. The procedural humanoid, environment, and animations are always available as a fallback. To replace the player fallback with a Mixamo-rigged character, place the following files at these exact paths:
 

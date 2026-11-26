@@ -13,7 +13,7 @@ import { markGuideSeen } from "@/lib/guideVisit";
 type Picker = "language" | "music" | "theme" | null;
 
 const LANGUAGES: ReadonlyArray<{ id: Language; name: string }> = [
-  { id: "id", name: "Indonesia" },
+  { id: "id", name: "Bahasa Indonesia" },
   { id: "en", name: "English" },
   { id: "ms-MY", name: "Bahasa Melayu (Malaysia)" },
   { id: "ja", name: "日本語" },
@@ -150,27 +150,30 @@ const MenuHeaderControls = () => {
               aria-label={t("menu.musicList")}
               className="menu-music-list"
             >
-              {MUSIC_TRACKS.map((track) => (
-                <button
-                  key={track.id}
-                  type="button"
-                  aria-pressed={trackId === track.id}
-                  title={track.id === "none" ? t("menu.musicNone") : track.name}
-                  onClick={() => {
-                    playPopSound();
-                    setTrackId(track.id);
-                    if (!musicOn && track.id !== "none") toggleMusic(track.id);
-                    setOpenPicker(null);
-                  }}
-                  className="menu-popover-option menu-focusable flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm"
-                >
-                  <span aria-hidden="true" className="shrink-0">{track.emoji}</span>
-                  <span className="min-w-0 flex-1 truncate">
-                    {track.id === "none" ? t("menu.musicNone") : track.name}
-                  </span>
-                  {trackId === track.id && <Check aria-hidden="true" className="h-4 w-4 shrink-0" />}
-                </button>
-              ))}
+              {MUSIC_TRACKS.map((track) => {
+                const label = track.id === "none"
+                  ? t("menu.musicNone")
+                  : t(`menu.musicTracks.${track.id}`);
+                return (
+                  <button
+                    key={track.id}
+                    type="button"
+                    aria-pressed={trackId === track.id}
+                    title={label}
+                    onClick={() => {
+                      playPopSound();
+                      setTrackId(track.id);
+                      if (!musicOn && track.id !== "none") toggleMusic(track.id);
+                      setOpenPicker(null);
+                    }}
+                    className="menu-popover-option menu-focusable flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-sm"
+                  >
+                    <span aria-hidden="true" className="shrink-0">{track.emoji}</span>
+                    <span className="min-w-0 flex-1 truncate">{label}</span>
+                    {trackId === track.id && <Check aria-hidden="true" className="h-4 w-4 shrink-0" />}
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}

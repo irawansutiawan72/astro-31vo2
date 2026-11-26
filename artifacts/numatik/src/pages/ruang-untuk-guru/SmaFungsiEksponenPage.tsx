@@ -326,7 +326,7 @@ const SmaFungsiEksponenPage = () => {
                 </p>
               </div>
             </ColorCard>
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 desktop:grid-cols-2 phone-land:grid-cols-2">
               <div className="rounded-2xl border border-cyan-300/20 bg-cyan-400/5 p-4">
                 <div className="mb-3 flex items-center gap-2">
                   <CircleDot className="h-5 w-5 text-cyan-200" />
@@ -390,7 +390,7 @@ const SmaFungsiEksponenPage = () => {
           </Accordion>
 
           <Accordion id="graph" title="Laboratorium grafik: ubah basisnya!" eyebrow="Bagian 2 · visualisasi interaktif" icon={<BarChart3 className="h-5 w-5" />} tone="blue" open={expanded.includes("graph")} onToggle={toggle}>
-            <div className="grid gap-5 lg:grid-cols-[1fr_1.35fr]">
+            <div className="grid gap-5 desktop:grid-cols-[1fr_1.35fr] phone-land:grid-cols-2">
               <div className="rounded-2xl border border-blue-300/20 bg-blue-400/5 p-4">
                 <p className="font-body text-sm leading-relaxed text-white/80">Geser nilai basis <InlineMath math="a" />. Perhatikan bahwa titik <InlineMath math="(0,1)" /> tetap dilalui, tetapi arah kurva berubah.</p>
                 <label htmlFor="basis-range" className="mt-5 block font-display text-sm font-bold text-blue-100">Basis <span className="text-2xl text-yellow-200">{base.toFixed(1)}</span></label>
@@ -403,7 +403,7 @@ const SmaFungsiEksponenPage = () => {
               </div>
               <ExponentialGraph base={base} />
             </div>
-            <div className="grid gap-3 md:grid-cols-3">
+            <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
               {[
                 ["Titik potong sumbu-Y", "(0,b)", "Saat x=0, y=b."],
                 ["Asimtot horizontal", "y=0", "Kurva mendekati, tidak menyentuh."],
@@ -451,7 +451,7 @@ const SmaFungsiEksponenPage = () => {
           </Accordion>
 
           <Accordion id="practice" title="Ruang uji pemahaman" eyebrow="Bagian 5 · coba jelaskan dengan kata-katamu" icon={<CheckCircle2 className="h-5 w-5" />} tone="rose" open={expanded.includes("practice")} onToggle={toggle}>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ChallengeCard number="1" tone="cyan" question={<><p>Diketahui kurva <InlineMath math="y=b\cdot a^x" /> melalui titik <InlineMath math="(0,5)" /> dan <InlineMath math="(3,40)" />. Tentukan <InlineMath math="b" />, <InlineMath math="a" />, dan persamaannya.</p></>} answer={<><p>Dari <InlineMath math="x=0" />, diperoleh <InlineMath math="b=5" />. Lalu <InlineMath math="40=5a^3" />, sehingga <InlineMath math="a^3=8" /> dan <InlineMath math="a=2" />.</p><Formula>y=5\cdot2^x</Formula></>} />
               <ChallengeCard number="2" tone="violet" question={<p>Aktivitas Iodium-131 adalah 16 mCi. Waktu paruhnya 8 hari. Berapa sisa aktivitas setelah 32 hari?</p>} answer={<><p>Empat waktu paruh berlalu: <InlineMath math="n=\frac{32}{8}=4" />.</p><Formula>{"m=16\\left(\\frac12\\right)^4=1\\text{ mCi}"}</Formula></>} />
               <ChallengeCard number="3" tone="amber" question={<p>Mengapa kurva <InlineMath math="y=2^x" /> tidak pernah memotong garis <InlineMath math="y=0" />? Jelaskan berdasarkan definisi pemangkatan.</p>} answer={<p>Untuk setiap bilangan real <InlineMath math="x" />, <InlineMath math="2^x" /> selalu positif. Nilainya dapat mendekati nol ketika <InlineMath math="x" /> semakin negatif, tetapi tidak pernah sama dengan nol.</p>} />

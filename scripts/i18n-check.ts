@@ -624,6 +624,7 @@ function prepareNumberText(text: string, language: Language): string {
   };
   return text
     .replace(/[①②③]/gu, (digit) => `${circledDigits[digit]};`)
+    .replace(/(?<=\d)(?=cm²)/giu, " ")
     .replace(/\bRp(?=\s*[+-]?\d)/gi, " ")
     .replace(/\\,/g, " ")
     .replace(/\{,\}/g, ",")

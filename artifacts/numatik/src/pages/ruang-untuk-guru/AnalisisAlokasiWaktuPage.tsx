@@ -545,7 +545,7 @@ const AnalisisAlokasiWaktuPage = () => {
           <p className="text-xs text-teal-300/60 text-center mb-4">Perhitungan Jam Efektif</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 animate-slide-up">
+        <div className="grid grid-cols-1 desktop:grid-cols-2 phone-land:grid-cols-2 gap-4 mb-4 animate-slide-up">
           {/* Table I – Jumlah Minggu */}
           <div className="bg-cyan-900/20 border border-cyan-500/20 rounded-xl overflow-hidden">
             <p className="px-3 py-2 text-cyan-300 text-xs font-bold bg-cyan-900/40">I. Jumlah Minggu</p>

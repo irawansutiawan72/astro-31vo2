@@ -53,7 +53,7 @@ const ExamBrowserComingSoonPage = () => {
           <div className="pointer-events-none absolute -right-28 -top-28 h-72 w-72 rounded-full bg-cyan-400/15 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-36 -left-24 h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
 
-          <div className="relative grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div className="relative grid gap-10 desktop:grid-cols-[1.05fr_0.95fr] phone-land:grid-cols-2 lg:items-center">
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-200">
                 <LockKeyhole className="h-3.5 w-3.5" aria-hidden="true" />
@@ -113,7 +113,7 @@ const ExamBrowserComingSoonPage = () => {
             <ShieldCheck className="hidden h-9 w-9 text-cyan-300/70 sm:block" aria-hidden="true" />
           </div>
 
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
             {protections.map(({ icon: Icon, title, description, accent }) => (
               <article
                 key={title}

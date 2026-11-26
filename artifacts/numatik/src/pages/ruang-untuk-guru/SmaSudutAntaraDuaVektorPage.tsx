@@ -116,7 +116,7 @@ const AngleLab = () => {
         <div><p className="font-body text-[10px] font-black uppercase tracking-[.18em] text-violet-100/75">Meja eksperimen</p><h3 className="font-display text-lg font-extrabold text-white">Putar arah, amati hasil</h3></div>
         <button type="button" onClick={reset} className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[.04] px-3 py-2 font-body text-xs font-bold text-slate-100 hover:bg-white/[.09] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-200" data-testid="reset-angle-lab"><RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />Atur ulang</button>
       </div>
-      <div className="grid items-start lg:grid-cols-[1fr_300px]">
+      <div className="grid items-start desktop:grid-cols-[1fr_300px] phone-land:grid-cols-2">
         <div className="min-w-0 p-3 sm:p-5">
           <div className="rounded-2xl border border-white/10 bg-[#081426]/90 p-2 sm:p-3"><VectorDiagram magnitudeA={a} magnitudeB={b} angle={angle} /></div>
           <div className="mt-3 flex flex-wrap gap-4 font-body text-xs text-slate-200"><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-cyan-300" />Vektor a</span><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-amber-300" />Vektor b</span><span className="flex items-center gap-2"><i className="h-2.5 w-2.5 rounded-full bg-rose-300" />Sudut apit</span></div>
@@ -217,7 +217,7 @@ const SmaSudutAntaraDuaVektorPage = () => (
 
         <section id="contoh" className="scroll-mt-6" data-testid="angle-examples-section">
           <SectionTitle index="03" kicker="Tiga tingkat tantangan" title="Dari gambar ke perhitungan" description="Kita hitung sudut dengan langkah yang sama: temukan dot product, cari panjang, lalu gunakan invers kosinus." />
-          <div className="grid gap-3 lg:grid-cols-3">
+          <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
             <Example id="angle-easy" level="Mudah" question={<>Tentukan sudut antara <InlineMath math="\vec a=(1,0)" /> dan <InlineMath math="\vec b=(1,1)" />.</>} steps={[
               <>Hasil kali titiknya <InlineMath math="\vec a\cdot\vec b=1(1)+0(1)=1" />.</>,
               <>Panjangnya <InlineMath math="|\vec a|=1" /> dan <InlineMath math="|\vec b|=\sqrt{1^2+1^2}=\sqrt2" />.</>,

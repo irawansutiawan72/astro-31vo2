@@ -206,7 +206,7 @@ const SmaLogaritmaPage = () => {
           </Accordion>
 
           <Accordion id="definition" title="Pengertian dan contoh dasar" eyebrow="Bagian 1 · Fondasi konsep" icon={<Target className="h-5 w-5" />} tone="cyan" open={isOpen("definition")} onToggle={toggle}>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number="1" tone="cyan" question={<><InlineMath math="5^2=25" /> dapat diubah menjadi bentuk logaritma.</>}>
                 <Formula>{"\\log_5 25=2"}</Formula>
                 <p>Basisnya 5, numerusnya 25, dan pangkat yang dicari adalah 2.</p>
@@ -224,7 +224,7 @@ const SmaLogaritmaPage = () => {
 
           <Accordion id="basic" title="Tiga sifat dasar yang wajib diingat" eyebrow="Sebelum masuk ke 7 sifat" icon={<CheckCircle2 className="h-5 w-5" />} tone="emerald" open={isOpen("basic")} onToggle={toggle}>
             <ColorCard tone="emerald">
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 {[
                   ["Sifat dasar 1", "\\log_a a^n=n", "Pangkat turun menjadi hasil."],
                   ["Sifat dasar 2", "\\log_a a=1", "Karena a^1=a."],
@@ -252,7 +252,7 @@ const SmaLogaritmaPage = () => {
           <Accordion id="addition" title="Sifat 1 · Penjumlahan" eyebrow="Log ditambah · numerus dikali" icon={<span className="font-display text-lg font-black">+</span>} tone="blue" open={isOpen("addition")} onToggle={toggle}>
             <Formula>{"\\log_a b+\\log_a c=\\log_a(b\\times c)"}</Formula>
             <p className="font-body text-sm text-white/70">Syarat penting: basisnya harus sama.</p>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number="1" tone="blue" question={<><InlineMath math="\log_2 4+\log_2 8" /></>}>
                 <Formula>{"\\log_2(4\\times8)=\\log_2 32=5"}</Formula>
                 <p>Gabungkan numerus, lalu cari pangkat 2 yang menghasilkan 32.</p>
@@ -270,7 +270,7 @@ const SmaLogaritmaPage = () => {
 
           <Accordion id="subtraction" title="Sifat 2 · Pengurangan" eyebrow="Log dikurang · numerus dibagi" icon={<span className="font-display text-lg font-black">−</span>} tone="rose" open={isOpen("subtraction")} onToggle={toggle}>
             <Formula>{"\\log_a b-\\log_a c=\\log_a\\left(\\frac{b}{c}\\right)"}</Formula>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number="1" tone="rose" question={<><InlineMath math="\log_7 217-\log_7 31" /></>}>
                 <Formula>{"\\log_7\\frac{217}{31}=\\log_7 7=1"}</Formula>
                 <p><InlineMath math="217\div31=7" />, lalu gunakan sifat dasar <InlineMath math="\log_7 7=1" />.</p>
@@ -319,7 +319,7 @@ const SmaLogaritmaPage = () => {
             <Formula>{"\\log_a b=\\frac{\\log_p b}{\\log_p a}=\\frac{1}{\\log_b a}"}</Formula>
             <Formula>{"\\log_a b\\times\\log_b c=\\log_a c"}</Formula>
             <p className="font-body text-sm text-white/70">Pilih basis baru <InlineMath math="p" /> yang membuat perhitungan lebih mudah.</p>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number="1" tone="amber" question={<><InlineMath math="\log_4 32" /></>}>
                 <Formula>{"\\frac{\\log_2 32}{\\log_2 4}=\\frac{5}{2}"}</Formula>
                 <p>Pindah ke basis 2 karena <InlineMath math="32=2^5" /> dan <InlineMath math="4=2^2" />.</p>
@@ -352,7 +352,7 @@ const SmaLogaritmaPage = () => {
 
           <Accordion id="cancel" title="Sifat 7 · Pangkat dan log saling menghapus" eyebrow="Basis sama · kembali ke numerus" icon={<Sparkles className="h-5 w-5" />} tone="emerald" open={isOpen("cancel")} onToggle={toggle}>
             <Formula>{"a^{\\log_a b}=b"}</Formula>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 desktop:grid-cols-3 phone-land:grid-cols-2">
               <ExampleCard number="1" tone="emerald" question={<><InlineMath math="2^{\log_2 5}" /></>}>
                 <Formula>{"=5"}</Formula>
               </ExampleCard>

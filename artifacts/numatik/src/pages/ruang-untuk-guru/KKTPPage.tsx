@@ -828,7 +828,7 @@ const KKTPPage = () => {
         </div>
 
         {/* Interval Legend */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6 animate-slide-up">
+        <div className="grid grid-cols-2 desktop:grid-cols-4 phone-land:grid-cols-2 gap-3 mb-6 animate-slide-up">
           {[
             { label: "Perlu Bimbingan", rentang: "0 – 40", desc: "Belum mencapai TP → Remedial", color: "bg-rose-500/15 border-rose-400/30", text: "text-rose-300" },
             { label: "Cukup", rentang: "41 – 65", desc: "Belum mencapai TP → Remedial", color: "bg-amber-500/15 border-amber-400/30", text: "text-amber-300" },

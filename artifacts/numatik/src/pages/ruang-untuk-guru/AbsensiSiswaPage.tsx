@@ -289,7 +289,7 @@ ${signBlock}
           {/* Identitas */}
           <div className="bg-card/70 backdrop-blur border border-white/10 rounded-2xl p-5 mb-5 animate-slide-up">
             <p className="text-teal-300 text-xs font-bold uppercase tracking-wider mb-4">📋 Identitas Kelas</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 desktop:grid-cols-3 phone-land:grid-cols-2 gap-3">
               {([
                 ["satuanPendidikan", "Satuan Pendidikan", "SMPN ..."],
                 ["mataPelajaran", "Mata Pelajaran", "Matematika"],

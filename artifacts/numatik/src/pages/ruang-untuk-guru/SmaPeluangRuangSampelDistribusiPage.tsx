@@ -442,7 +442,7 @@ const SmaPeluangRuangSampelDistribusiPage = () => {
           </div>
         </header>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-10">
             <section id="ruang-sampel" className="scroll-mt-6" data-testid="section-sample-space">
               <SectionHeading
@@ -783,7 +783,7 @@ const SmaPeluangRuangSampelDistribusiPage = () => {
                 intro="Peluang selalu berada antara 0 dan 1, termasuk kedua ujungnya. Nilai ini langsung memberi petunjuk: apakah kejadian mustahil, mungkin, atau pasti?"
               />
               <ProbabilityNumberLineSvg />
-              <div className="mt-4 grid gap-3 md:grid-cols-3">
+              <div className="mt-4 grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-2xl border border-rose-200/15 bg-rose-300/[.05] p-4">
                   <p className="font-display text-sm font-bold text-rose-100">Peluang 0</p>
                   <p className="mt-2 text-xs leading-relaxed text-slate-300">Kejadian mustahil—tidak ada titik sampel yang memenuhinya.</p>
@@ -877,7 +877,7 @@ const SmaPeluangRuangSampelDistribusiPage = () => {
             </section>
           </div>
 
-          <aside className="hidden lg:block">
+          <aside className="hidden desktop:block">
             <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#0a1424]/80 p-4 backdrop-blur">
               <p className="font-display text-sm font-bold text-white">Jelajahi materi</p>
               <nav className="mt-3 space-y-1" aria-label="Navigasi bagian materi">

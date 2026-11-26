@@ -211,7 +211,7 @@ const SmaDefinisiBentukUmumPersamaanLingkaranPage = () => (
         </div>
       </header>
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_260px]">
+      <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_260px] phone-land:grid-cols-2">
         <div className="min-w-0 space-y-12">
           <section id="gagasan-lingkaran">
             <SectionHeading
@@ -243,7 +243,7 @@ const SmaDefinisiBentukUmumPersamaanLingkaranPage = () => (
             />
             <div className="space-y-4">
               <Equation math="\sqrt{(x-a)^2+(y-b)^2}=r" label="Jarak titik P(x,y) dari pusat C(a,b)" />
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-2xl border border-cyan-200/15 bg-cyan-200/[.045] p-4">
                   <h3 className="font-display font-bold text-cyan-100">1 · Tulis selisih koordinat</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">Selisih mendatar adalah <InlineMath math="x-a" />, sedangkan selisih tegak adalah <InlineMath math="y-b" />.</p>
@@ -385,7 +385,7 @@ const SmaDefinisiBentukUmumPersamaanLingkaranPage = () => (
             />
             <div className="space-y-4">
               <Equation math="r^2=\frac{A^2+B^2-4C}{4}" label="Periksa nilai r²" />
-              <div className="grid gap-3 md:grid-cols-3">
+              <div className="grid gap-3 desktop:grid-cols-3 phone-land:grid-cols-2">
                 <div className="rounded-2xl border border-emerald-200/20 bg-emerald-200/[.05] p-4">
                   <h3 className="font-display font-bold text-emerald-100">Jika r² &gt; 0</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-300">Ada lingkaran real dengan jari-jari positif.</p>
@@ -460,7 +460,7 @@ const SmaDefinisiBentukUmumPersamaanLingkaranPage = () => (
           </section>
         </div>
 
-        <aside className="hidden lg:block">
+        <aside className="hidden desktop:block">
           <div className="sticky top-6 rounded-3xl border border-white/10 bg-[#101b2d]/90 p-4 backdrop-blur">
             <p className="mb-3 flex items-center gap-2 font-display text-sm font-bold text-cyan-100">
               <Target className="h-4 w-4" aria-hidden="true" /> Peta belajar

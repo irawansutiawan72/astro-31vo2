@@ -321,7 +321,7 @@ const SmaStatistikaUkuranPemusatanDataPage = () => {
           </div>
         </header>
 
-        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 lg:hidden" aria-label="Peta materi">
+        <nav className="mb-8 flex gap-2 overflow-x-auto pb-2 desktop:hidden" aria-label="Peta materi">
           {lessonOutline.map(([label, target]) => (
             <a
               key={target}
@@ -333,7 +333,7 @@ const SmaStatistikaUkuranPemusatanDataPage = () => {
           ))}
         </nav>
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_245px]">
+        <div className="grid gap-8 desktop:grid-cols-[minmax(0,1fr)_245px] phone-land:grid-cols-2">
           <div className="min-w-0 space-y-12">
             <section id="pengantar" className="scroll-mt-8 space-y-5">
               <SectionHeading
@@ -837,7 +837,7 @@ const SmaStatistikaUkuranPemusatanDataPage = () => {
 
           </div>
 
-          <aside className="hidden lg:block" aria-label="Daftar bagian materi">
+          <aside className="hidden desktop:block" aria-label="Daftar bagian materi">
             <div className="sticky top-6 rounded-2xl border border-white/10 bg-[#0d1728]/90 p-4 backdrop-blur">
               <p className="mb-4 font-body text-[10px] font-black uppercase tracking-[.2em] text-slate-400">Peta materi</p>
               <ol className="space-y-3 font-body text-xs text-slate-300">
